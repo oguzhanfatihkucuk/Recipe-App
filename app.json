@@ -1,0 +1,7 @@
+{
+  "name": "PatikaStoreApp",
+  "displayName": "PatikaStoreApp",
+  "plugins": [
+    "expo-font"
+  ]
+}
