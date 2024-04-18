@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { View, TouchableOpacity, BackHandler, SafeAreaView } from "react-native";
+import React, { useContext} from "react";
+import { View,SafeAreaView } from "react-native";
 import DarkMode from "../../utils/darkmode.context.ts";
 import { Text } from "../../utils/Theme.tsx";
 const ExploreScreen = () => {

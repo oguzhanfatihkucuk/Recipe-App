@@ -1,1 +1,0 @@
-import SettingsScreen from "./SettingsScreen";

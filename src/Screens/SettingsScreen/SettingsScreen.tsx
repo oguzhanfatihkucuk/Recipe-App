@@ -1,14 +1,14 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { Button, View, TouchableOpacity, BackHandler, useColorScheme } from "react-native";
+import {View, TouchableOpacity, BackHandler, } from "react-native";
 import styles from "./SettingsScreen.Style";
-import { Divider, Provider, SegmentedButtons, Switch } from "react-native-paper";
+import { Divider, SegmentedButtons, Switch } from "react-native-paper";
 import i18next from "../../../services/i18next";
 import { useTranslation } from "react-i18next";
 import DarkMode from "../../utils/darkmode.context";
 import { Text } from "../../utils/Theme";
 import { Icon } from "react-native-paper";
 import { Alert } from "react-native";
-import { NavigationContext, NavigationRouteContext, useNavigation } from "@react-navigation/native";
+
 
 const SettingsScreen = () => {
 
@@ -23,7 +23,6 @@ const SettingsScreen = () => {
 
   const { t } = useTranslation();
 
-
   const changeLng = (lng: string | undefined) => {
     i18next.changeLanguage(lng);
   };
@@ -37,15 +36,11 @@ const SettingsScreen = () => {
   const { isDarkMode, setIsDarkMode } =
     useContext(DarkMode);
 
-  const navigation = useNavigation();
-
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode(!isDarkMode);
   }, [isDarkMode]);
 
   const iconColor = isDarkMode ? "white" : "black";
-
-  // @ts-ignore
 
   // @ts-ignore
   return (
@@ -151,7 +146,6 @@ const SettingsScreen = () => {
               label: "Türkçe",
               labelStyle: { color: isDarkMode ? "white" : "black" },
               onPress: event => {
-
                 Alert.alert( // Display alert
                   "Language Changed",
                   "The app will restart to apply the new language. Are you sure you want to continue?",

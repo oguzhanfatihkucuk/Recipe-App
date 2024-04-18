@@ -4,7 +4,7 @@ import styles from "../../Components/ShiftEnterOut/ShiftCard.Style";
 import { t } from "i18next";
 import { Text } from "../../utils/Theme.tsx";
 import DarkMode from "../../utils/darkmode.context.ts";
-import { Divider, Icon } from "react-native-paper";
+import {Icon } from "react-native-paper";
 
 // @ts-ignore
 const ShiftCard = ({ inOut, date, hour, sales, salesCount }) => {

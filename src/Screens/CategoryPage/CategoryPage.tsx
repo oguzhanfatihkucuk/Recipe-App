@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { SafeAreaView, View } from "react-native";
-import { Card, Text } from "../../utils/Theme.tsx";
+import { Text } from "../../utils/Theme.tsx";
 import DarkMode from "../../utils/darkmode.context.ts";
 // @ts-ignore
 const Category = ({ navigation }) => {

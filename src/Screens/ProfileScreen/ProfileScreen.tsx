@@ -1,7 +1,7 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext} from "react";
 import { View, TouchableOpacity, Image, FlatList } from "react-native";
 import styles from "./ProfileScreen.Style";
-import { Divider, Provider } from "react-native-paper";
+import { Divider} from "react-native-paper";
 import ShiftCard from "../../Components/ShiftEnterOut/ShiftCard";
 import { useTranslation } from "react-i18next";
 import data from "../../Assets/datainout";

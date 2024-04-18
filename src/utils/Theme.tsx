@@ -1,7 +1,5 @@
 import { View, Text as DefaultText, TextProps, ViewProps } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
-
 
 type ThemeProps = {
   isDarkMode?: boolean;
