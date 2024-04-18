@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 const BottomTabNavigator = createBottomTabNavigator();
 
 export default function BottomTab() {
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
 
   const iconColor = isDarkMode ? "white" : "black";
@@ -49,7 +49,7 @@ export default function BottomTab() {
         name={t("explore")}
         component={Explore}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Icon source={"card-search-outline"} size={23} color={iconColor} />
           )
         }}
@@ -58,7 +58,7 @@ export default function BottomTab() {
         name={t("reports")}
         component={Reports}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Icon source={"clipboard-file-outline"} size={23} color={iconColor} />
           )
         }}
@@ -67,14 +67,14 @@ export default function BottomTab() {
         name={t("transection")}
         component={Category}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Icon source={"clipboard-list-outline"} size={23} color={iconColor} />
           )
         }}
       />
       <BottomTabNavigator.Screen
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Icon source={"shield-account-outline"} size={23} color={iconColor} />
           )
         }}
@@ -83,7 +83,7 @@ export default function BottomTab() {
       />
       <BottomTabNavigator.Screen
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Icon source={"card-bulleted-settings"} size={23} color={iconColor} />
           )
         }}

@@ -3,9 +3,9 @@ import { SafeAreaView, View } from "react-native";
 import { Text } from "../../utils/Theme.tsx";
 import DarkMode from "../../utils/darkmode.context.ts";
 // @ts-ignore
-const Category = ({ navigation }) => {
+const Category = () => {
 
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
 
   return (

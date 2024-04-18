@@ -9,7 +9,7 @@ import {Icon } from "react-native-paper";
 // @ts-ignore
 const ShiftCard = ({ inOut, date, hour, sales, salesCount }) => {
 
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
 
   return (

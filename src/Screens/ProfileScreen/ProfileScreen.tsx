@@ -11,12 +11,12 @@ const ProfileScreen = () => {
 
   const myImage = require("../../Assets/images.png");
 
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
 
   const { t } = useTranslation();
 
-  const iconColor = isDarkMode ? "white" : "black";
+
   // @ts-ignore
   const renderItem = ({ item }) => (
     <ShiftCard

@@ -1,8 +1,6 @@
 {
   "change-language": "Dili Değiştir",
   "welcome": "hosgeldiniz",
-  "change-language": "Dili Değiştir",
-  "welcome": "Uygulamama Hoş Geldiniz",
   "sound": "Ses",
   "privacy": "Gizlilik",
   "aboutus": "Hakkımızda",
@@ -29,6 +27,9 @@
   "transection": "İşlemler",
   "settings": "Ayarlar",
   "profile": "Profil",
-  "category": "Kategori"
+  "category": "Kategori",
+  "LanguageChanged":"Dili Değiştir",
+  "LanguageChangedText":"Uygulama yeni dili uygulamak için yeniden başlatılacaktır. Devam etmek istediğine emin misin?"
+
 
 }

@@ -1,8 +1,6 @@
 {
   "change-language": "Sprache ändern",
   "welcome": "Willkommen in meiner App",
-  "change-language": "Sprache ändern",
-  "welcome": "Willkommen in meiner App",
   "sound": "Ton",
   "privacy": "Datenschutz",
   "aboutus": "Über uns",
@@ -29,5 +27,7 @@
   "transection": "Transaktionen",
   "settings": "Einstellungen",
   "profile": "Profil",
-  "category": "Categorien"
+  "category": "Categorien",
+  "LanguageChanged":"Sprache ändern",
+  "LanguageChangedText":"Die App wird neu gestartet, um die neue Sprache anzuwenden. Bist du dir sicher, dass du weitermachen willst?"
 }

@@ -8,13 +8,11 @@ import {
 import StackNavigator from "./src/Navigation/StackNavigator";
 import DarkMode from "./src/utils/darkmode.context";
 import { useState } from "react";
-import { useColorScheme } from "react-native";
 
 export default function App() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const scheme = useColorScheme(); // this gets the current native appearance of device
 
   const CustomDarkTheme: Theme = {
     ...DarkTheme,

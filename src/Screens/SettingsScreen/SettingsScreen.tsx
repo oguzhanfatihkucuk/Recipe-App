@@ -110,7 +110,6 @@ const SettingsScreen = () => {
       <SegmentedButtons
         style={{ marginTop: 15 }}
         value={selectedLanguage}
-
         onValueChange={() => {
         }}
         buttons={
@@ -119,11 +118,11 @@ const SettingsScreen = () => {
               value: "English",
               label: "English",
               labelStyle: { color: isDarkMode ? "white" : "black" },
-              onPress: event => {
+              onPress: () => {
                 // @ts-ignore
                 Alert.alert( // Display alert
-                  "Language Changed",
-                  "The app will restart to apply the new language. Are you sure you want to continue?",
+                  t("LanguageChanged"),
+                  t("LanguageChangedText"),
                   [
                     {
                       text: "Cancel", onPress: () => {
@@ -145,10 +144,10 @@ const SettingsScreen = () => {
               value: "Türkçe",
               label: "Türkçe",
               labelStyle: { color: isDarkMode ? "white" : "black" },
-              onPress: event => {
+              onPress:() => {
                 Alert.alert( // Display alert
-                  "Language Changed",
-                  "The app will restart to apply the new language. Are you sure you want to continue?",
+                  t("LanguageChanged"),
+                  t("LanguageChangedText"),
                   [
                     {
                       text: "Cancel", onPress: () => {
@@ -169,10 +168,10 @@ const SettingsScreen = () => {
               value: "Deustch",
               label: "Deustch",
               labelStyle: { color: isDarkMode ? "white" : "black" },
-              onPress: event => {
+              onPress: () => {
                 Alert.alert( // Display alert
-                  "Language Changed",
-                  "The app will restart to apply the new language. Are you sure you want to continue?",
+                  t("LanguageChanged"),
+                  t("LanguageChangedText"),
                   [
                     {
                       text: "Cancel", onPress: () => {

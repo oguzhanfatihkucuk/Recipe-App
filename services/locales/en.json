@@ -27,5 +27,8 @@
   "transection": "Transection",
   "settings": "Settings",
   "profile": "Profile",
-  "category": "Category"
+  "category": "Category",
+  "LanguageChanged":"Change Language",
+  "LanguageChangedText":"The app will restart to apply the new language. Are you sure you want to continue?"
+
 }

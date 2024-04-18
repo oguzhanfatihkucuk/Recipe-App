@@ -3,7 +3,7 @@ import { View,SafeAreaView } from "react-native";
 import DarkMode from "../../utils/darkmode.context.ts";
 import { Text } from "../../utils/Theme.tsx";
 const ExploreScreen = () => {
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
   return (
     <SafeAreaView>

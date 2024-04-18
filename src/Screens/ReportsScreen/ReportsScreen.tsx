@@ -4,7 +4,7 @@ import { Text } from "../../utils/Theme.tsx";
 import DarkMode from "../../utils/darkmode.context.ts";
 
 const ReportsScreen = () => {
-  const { isDarkMode, setIsDarkMode } =
+  const { isDarkMode} =
     useContext(DarkMode);
   return (
     <SafeAreaView>
