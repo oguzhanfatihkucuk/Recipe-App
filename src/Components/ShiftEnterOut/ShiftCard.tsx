@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import {View} from "react-native";
 import styles from "../../Components/ShiftEnterOut/ShiftCard.Style";
 import { t } from "i18next";
-import { Text } from "../../utils/Theme.tsx";
-import DarkMode from "../../utils/darkmode.context.ts";
+import { Text } from "../../../services/utils/Theme.tsx";
+import DarkMode from "../../../services/utils/darkmode.context.ts";
 import {Icon } from "react-native-paper";
 
 // @ts-ignore

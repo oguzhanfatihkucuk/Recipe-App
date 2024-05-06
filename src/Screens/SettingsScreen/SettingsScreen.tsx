@@ -4,8 +4,8 @@ import styles from "./SettingsScreen.Style";
 import { Divider, SegmentedButtons, Switch } from "react-native-paper";
 import i18next from "../../../services/i18next";
 import { useTranslation } from "react-i18next";
-import DarkMode from "../../utils/darkmode.context";
-import { Text } from "../../utils/Theme";
+import DarkMode from "../../../services/utils/darkmode.context";
+import { Text } from "../../../services/utils/Theme";
 import { Icon } from "react-native-paper";
 import { Alert } from "react-native";
 
@@ -45,7 +45,18 @@ const SettingsScreen = () => {
   // @ts-ignore
   return (
     <View style={[styles.container]}>
-      <TouchableOpacity style={styles.option}>
+      <TouchableOpacity style={styles.option} onPress={()=>{Alert.alert("Sound","Sound Text",[
+        {
+          text: "Cancel", onPress: () => {
+          }, style: "cancel"
+        },
+        {
+          text: "OK", onPress: () => {
+
+          }
+        }
+      ],
+      )}}>
         <Icon size={20} color={iconColor} source="account-tie-voice-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
           {t("sound")}

@@ -4,12 +4,12 @@ import styles from "./ProfileScreen.Style";
 import { Divider} from "react-native-paper";
 import ShiftCard from "../../Components/ShiftEnterOut/ShiftCard";
 import { useTranslation } from "react-i18next";
-import data from "../../Assets/datainout";
-import {Text} from "../../utils/Theme.tsx";
-import DarkMode from "../../utils/darkmode.context.ts";
+import data from "../../../Assets/datainout";
+import {Text} from "../../../services/utils/Theme.tsx";
+import DarkMode from "../../../services/utils/darkmode.context.ts";
 const ProfileScreen = () => {
 
-  const myImage = require("../../Assets/images.png");
+  const myImage = require("../../../Assets/images.png");
 
   const { isDarkMode} =
     useContext(DarkMode);

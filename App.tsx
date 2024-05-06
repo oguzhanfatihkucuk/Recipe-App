@@ -6,7 +6,7 @@ import {
   Theme
 } from "@react-navigation/native";
 import StackNavigator from "./src/Navigation/StackNavigator";
-import DarkMode from "./src/utils/darkmode.context";
+import DarkMode from "./services/utils/darkmode.context";
 import { useState } from "react";
 
 export default function App() {

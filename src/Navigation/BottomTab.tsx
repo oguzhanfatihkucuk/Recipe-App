@@ -5,10 +5,10 @@ import Settings from "../Screens/SettingsScreen/SettingsScreen.tsx";
 import Explore from "../Screens/ExploreScreen/ExploreScreen.tsx";
 import Profile from "../Screens/ProfileScreen/ProfileScreen.tsx";
 import Reports from "../Screens/ReportsScreen/ReportsScreen.tsx";
-import Category from "../Screens/CategoryPage/CategoryPage.tsx";
 import { Icon } from "react-native-paper";
-import DarkMode from "../utils/darkmode.context.ts";
+import DarkMode from "../../services/utils/darkmode.context.ts";
 import { useTranslation } from "react-i18next";
+import Transection from "../Screens/TransectionPage/TransectionPage.tsx";
 
 const BottomTabNavigator = createBottomTabNavigator();
 
@@ -25,7 +25,9 @@ export default function BottomTab() {
       screenOptions={{
         tabBarLabelStyle: styles.label,
         headerTitleStyle: styles.header,
+        headerTitleAlign:"center",
         tabBarStyle: [
+
           styles.tabContainer,
           Platform.OS === "ios" && {
             shadowOffset: { height: -2, width: 2 },
@@ -65,7 +67,7 @@ export default function BottomTab() {
       />
       <BottomTabNavigator.Screen
         name={t("transection")}
-        component={Category}
+        component={Transection}
         options={{
           tabBarIcon: () => (
             <Icon source={"clipboard-list-outline"} size={23} color={iconColor} />
