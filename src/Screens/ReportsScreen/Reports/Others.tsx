@@ -1,15 +1,15 @@
 import React, {} from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const OtherReportScreen = () => {
 
+  const navigation = useNavigation();
   // @ts-ignore
   return (
     <SafeAreaView>
       <View>
-        <Text>
-          Other Reports
-        </Text>
+        <Text>other</Text>
       </View>
     </SafeAreaView>
   );

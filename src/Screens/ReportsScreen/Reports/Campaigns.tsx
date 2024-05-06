@@ -1,15 +1,15 @@
 import React, {} from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const CampaignsScreen = () => {
 
+  const navigation = useNavigation();
   // @ts-ignore
   return (
     <SafeAreaView>
       <View>
-        <Text>
-          Campaigns
-        </Text>
+        <Text>campaing</Text>
       </View>
     </SafeAreaView>
   );

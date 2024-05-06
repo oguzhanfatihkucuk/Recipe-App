@@ -3,6 +3,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTab from './BottomTab.tsx';
 import WelcomeScreen from "../Screens/WelcomeScreen/WelcomeScreen.tsx";
 import LoginPage from "../Screens/LoginPage/LoginPage.tsx";
+import XReports from "../Screens/ReportsScreen/Reports/X-Report.tsx";
+import ZReports from "../Screens/ReportsScreen/Reports/Z-Report.tsx";
+import CampaignsScreen from "../Screens/ReportsScreen/Reports/Campaigns.tsx";
+import OtherReportScreen from "../Screens/ReportsScreen/Reports/Others.tsx";
 
 
 
@@ -10,10 +14,14 @@ const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false}}>
       <Stack.Screen name="Welcome" component={WelcomeScreen}/>
       <Stack.Screen name="Login" component={LoginPage}/>
       <Stack.Screen name="app" component={BottomTab} />
+      <Stack.Screen name="X-Report" component={XReports} options={{headerShown:true}}/>
+      <Stack.Screen name="Z-Report" component={ZReports} options={{headerShown:true}}/>
+      <Stack.Screen name="Campaings" component={CampaignsScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="Other" component={OtherReportScreen} options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 }
