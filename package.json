@@ -22,6 +22,7 @@
     "expo-status-bar": "^1.11.1",
     "i18next": "^23.11.1",
     "lottie-react-native": "^6.7.0",
+    "pspdfkit": "^2024.3.1",
     "react": "18.2.0",
     "react-i18next": "^14.1.0",
     "react-native": "0.73.6",
