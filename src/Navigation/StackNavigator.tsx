@@ -7,6 +7,11 @@ import XReports from "../Screens/ReportsScreen/Reports/X-Report.tsx";
 import ZReports from "../Screens/ReportsScreen/Reports/Z-Report.tsx";
 import CampaignsScreen from "../Screens/ReportsScreen/Reports/Campaigns.tsx";
 import OtherReportScreen from "../Screens/ReportsScreen/Reports/Others.tsx";
+import AddProduct from "../Screens/TransectionPage/Trensections/AddProduct.tsx";
+import AddProductScreen from "../Screens/TransectionPage/Trensections/AddProduct.tsx";
+import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Others.tsx";
+import ProductsScreen from "../Screens/TransectionPage/Trensections/Products.tsx";
+import SalesScreen from "../Screens/TransectionPage/Trensections/Sales.tsx";
 
 
 
@@ -22,6 +27,10 @@ export default function StackNavigator() {
       <Stack.Screen name="Z-Report" component={ZReports} options={{headerShown:true}}/>
       <Stack.Screen name="Campaings" component={CampaignsScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Other" component={OtherReportScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="AddProduct" component={AddProductScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="OtherTrans" component={OtherTransectionScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="Products" component={ProductsScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="Sales" component={SalesScreen} options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 }
