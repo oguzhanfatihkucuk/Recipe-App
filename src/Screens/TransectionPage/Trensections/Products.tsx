@@ -8,10 +8,7 @@ import { Divider, TextInput } from "react-native-paper";  // Import your product
 const ProductsScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredProducts = products.filter((item) => item.title.startsWith("B"));
   const filteredProducts2 = products.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
-  // @ts-ignore
-  // @ts-ignore
   // @ts-ignore
   return (
     <SafeAreaView>
