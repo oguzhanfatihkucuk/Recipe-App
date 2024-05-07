@@ -47,7 +47,8 @@ const ProductsScreen = () => {
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()} />
-          </View><Divider style={{ height: 15, backgroundColor: "transparent" }}></Divider><View>
+          </View>
+            <View>
             <Text>
               Hot Deals
             </Text>
@@ -60,7 +61,49 @@ const ProductsScreen = () => {
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()} />
-          </View></>)}
+          </View>
+            <View>
+              <Text>
+                Campaings
+              </Text>
+              <FlatList
+                horizontal={true} // Enable horizontal scrolling
+                data={products}
+                renderItem={({ item }) => (
+                  <View style={{ flexDirection: "row" }}>
+                    <ProductCard product={item} />
+                  </View>
+                )}
+                keyExtractor={(item) => item.id.toString()} />
+            </View>
+            <View>
+              <Text>
+                Food
+              </Text>
+              <FlatList
+                horizontal={true} // Enable horizontal scrolling
+                data={products}
+                renderItem={({ item }) => (
+                  <View style={{ flexDirection: "row" }}>
+                    <ProductCard product={item} />
+                  </View>
+                )}
+                keyExtractor={(item) => item.id.toString()} />
+            </View>
+            <View>
+              <Text>
+                2 buy 1 pay
+              </Text>
+              <FlatList
+                horizontal={true} // Enable horizontal scrolling
+                data={products}
+                renderItem={({ item }) => (
+                  <View style={{ flexDirection: "row" }}>
+                    <ProductCard product={item} />
+                  </View>
+                )}
+                keyExtractor={(item) => item.id.toString()} />
+            </View></>)}
         </View>
       </ScrollView>
     </SafeAreaView>
