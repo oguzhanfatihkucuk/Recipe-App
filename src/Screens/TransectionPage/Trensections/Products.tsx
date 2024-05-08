@@ -1,11 +1,11 @@
 import React, {  useState } from "react";
-import { View, FlatList, Text, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { View, FlatList, Text, SafeAreaView, ScrollView} from "react-native";
 import products from "../../../../Assets/product";  // Import your product data
 import ProductCard from "../../../../src/Components/productcard.tsx";
-import { Button, Divider, TextInput } from "react-native-paper";  // Import your product card component
-import { List } from 'react-native-paper';
+import { Button,TextInput } from "react-native-paper";  // Import your product card component
 import { useNavigation } from "@react-navigation/native";
-import ProductFiltered from "./ProductFiltered.tsx";
+import ProductFilteredName from "./ProductFilteredName.tsx";
+
 const ProductsScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const filteredAsFL = products.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
@@ -22,6 +22,11 @@ const ProductsScreen = () => {
         <Button onPress={()=>navigation.navigate("ProductFilteredPrice")}>
           <Text>
             Filter as Price
+          </Text>
+        </Button>
+        <Button onPress={()=>navigation.navigate("ProductFilteredName")}>
+          <Text>
+            Category as Name
           </Text>
         </Button>
         <TextInput

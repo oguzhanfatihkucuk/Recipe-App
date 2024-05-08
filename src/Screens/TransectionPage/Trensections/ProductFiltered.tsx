@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, ScrollView, Text, View } from "react-native";
-import { Button, List, TextInput } from "react-native-paper";
+import { FlatList, SafeAreaView, Text, View } from "react-native";
+import {  List,} from "react-native-paper";
 import ProductCard from "../../../Components/productcard.tsx";
 import products from "../../../../Assets/product";
 

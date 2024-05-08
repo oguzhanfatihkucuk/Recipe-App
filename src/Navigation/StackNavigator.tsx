@@ -7,13 +7,13 @@ import XReports from "../Screens/ReportsScreen/Reports/X-Report.tsx";
 import ZReports from "../Screens/ReportsScreen/Reports/Z-Report.tsx";
 import CampaignsScreen from "../Screens/ReportsScreen/Reports/Campaigns.tsx";
 import OtherReportScreen from "../Screens/ReportsScreen/Reports/Others.tsx";
-import AddProduct from "../Screens/TransectionPage/Trensections/AddProduct.tsx";
 import AddProductScreen from "../Screens/TransectionPage/Trensections/AddProduct.tsx";
 import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Others.tsx";
 import ProductsScreen from "../Screens/TransectionPage/Trensections/Products.tsx";
 import SalesScreen from "../Screens/TransectionPage/Trensections/Sales.tsx";
 import ProductFiltered from "../Screens/TransectionPage/Trensections/ProductFiltered.tsx";
 import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/ProductFilteredPrice.tsx";
+import ProductFilteredName from "../Screens/TransectionPage/Trensections/ProductFilteredName.tsx";
 
 
 
@@ -35,6 +35,7 @@ export default function StackNavigator() {
       <Stack.Screen name="Sales" component={SalesScreen} options={{headerShown:true}}/>
       <Stack.Screen name="ProductFiltered" component={ProductFiltered} options={{headerShown:true}}/>
       <Stack.Screen name="ProductFilteredPrice" component={ProductFilteredPrice} options={{headerShown:true}}/>
+      <Stack.Screen name="ProductFilteredName" component={ProductFilteredName} options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import products from "../../../../Assets/product";
 import { List } from "react-native-paper";
 import ProductCard from "../../../Components/productcard.tsx";
