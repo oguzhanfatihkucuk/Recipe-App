@@ -12,6 +12,8 @@ import AddProductScreen from "../Screens/TransectionPage/Trensections/AddProduct
 import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Others.tsx";
 import ProductsScreen from "../Screens/TransectionPage/Trensections/Products.tsx";
 import SalesScreen from "../Screens/TransectionPage/Trensections/Sales.tsx";
+import ProductFiltered from "../Screens/TransectionPage/Trensections/ProductFiltered.tsx";
+import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/ProductFilteredPrice.tsx";
 
 
 
@@ -31,6 +33,8 @@ export default function StackNavigator() {
       <Stack.Screen name="OtherTrans" component={OtherTransectionScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Products" component={ProductsScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Sales" component={SalesScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="ProductFiltered" component={ProductFiltered} options={{headerShown:true}}/>
+      <Stack.Screen name="ProductFilteredPrice" component={ProductFilteredPrice} options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 }

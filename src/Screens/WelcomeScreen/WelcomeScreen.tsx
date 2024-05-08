@@ -8,8 +8,8 @@ const WelcomeScreen= ({navigation}) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigation.navigate('Login');
-    }, 5000); // 5 seconds delay
+      navigation.navigate('app');
+    }, 1000); // 5 seconds delay
     return () => clearTimeout(timeoutId); // Cleanup on unmount
   }, []);
 
