@@ -1,0 +1,4 @@
+[
+  { "usercode": 1000, "password": "hashed_password1" },
+  { "usercode": 1001, "password": "hashed_password2" }
+]

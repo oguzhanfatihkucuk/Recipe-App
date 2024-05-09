@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import products from "../../../../Assets/product";
 import { List } from "react-native-paper";
 import ProductCard from "../../../Components/productcard.tsx";
@@ -42,6 +42,9 @@ const ProductFilteredPrice = () => {
             <List.Item title="500-" onPress={()=>{setpricTerm(5)}}/>
           </List.Accordion>
         </List.Section>
+        <Text>
+          {filteredAsPR.length} items found
+        </Text>
         <FlatList
           data={filteredAsPR}
           renderItem={({ item }) => (

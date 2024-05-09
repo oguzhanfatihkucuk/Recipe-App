@@ -38,7 +38,7 @@ const ProductsScreen = () => {
         <View>
           {searchTerm ? (<View>
             <Text>
-              New Products
+              {filteredAsFL.length} items found
             </Text>
             <FlatList
               horizontal={true}  // Enable horizontal scrolling
@@ -52,7 +52,7 @@ const ProductsScreen = () => {
             />
           </View>) : (<><View>
             <Text>
-              Favorites
+              Favorites {products.length} item found
             </Text>
             <FlatList
               horizontal={true} // Enable horizontal scrolling
@@ -66,7 +66,7 @@ const ProductsScreen = () => {
           </View>
             <View>
             <Text>
-              Hot Deals
+              Hot Deals {products.length} item found
             </Text>
             <FlatList
               horizontal={true} // Enable horizontal scrolling
@@ -80,7 +80,7 @@ const ProductsScreen = () => {
           </View>
             <View>
               <Text>
-                Campaings
+                Campaings {products.length} item found
               </Text>
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
@@ -95,7 +95,7 @@ const ProductsScreen = () => {
 
             <View>
               <Text>
-                2 buy 1 pay
+                2 buy 1 pay {products.length} item found
               </Text>
               <FlatList
                 horizontal={true} // Enable horizontal scrolling

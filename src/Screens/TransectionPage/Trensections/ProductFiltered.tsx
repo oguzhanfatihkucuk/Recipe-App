@@ -26,7 +26,7 @@ const ProductFiltered = () => {
         </List.Section>
         <View>
           <Text>
-            {categoryTerm}
+            {categoryTerm} {filteredAsCT.length} items found
           </Text>
           <FlatList
             data={filteredAsCT}
