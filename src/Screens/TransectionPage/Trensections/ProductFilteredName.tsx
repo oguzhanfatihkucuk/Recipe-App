@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import {List } from "react-native-paper";
-import ProductCard from "../../../Components/productcard.tsx";
+import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import API_URL from "../../../../Assets/api";
+import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 
 const ProductFilteredName = () => {
+
+  useEffect(() => {
+    fetchMockBackendData(); // Call the function on component mount
+  }, []);
+  const [loading, setLoading] = useState(true);
 
   let data;
   let id: any[],price: any[], category: any[],description:any[];
@@ -46,7 +52,7 @@ const ProductFilteredName = () => {
 
       data = await response.json();
       setData(data);
-
+      setLoading(false);
       id = data.map((user: any) => user.id);
       price = data.map((user: any) => user.price);
       category=data.map((user:any)=>user.category);
@@ -59,12 +65,16 @@ const ProductFilteredName = () => {
     }
   };
 
+
+  if (loading) {
+    return <LoadingAnimation />;
+  }
   return (
 
     <View>
       <List.Section>
         <List.Accordion
-          onPress={()=>fetchMockBackendData()}
+
           title="Choose First Letter Range "
           left={props => <List.Icon {...props} icon="folder" />}>
           <List.Item title="A-E" onPress={() => {

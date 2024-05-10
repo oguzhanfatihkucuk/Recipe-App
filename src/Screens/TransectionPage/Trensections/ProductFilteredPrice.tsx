@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { List } from "react-native-paper";
-import ProductCard from "../../../Components/productcard.tsx";
+import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import API_URL from "../../../../Assets/api";
+import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 
 const ProductFilteredPrice = () => {
 
+  useEffect(() => {
+    fetchMockBackendData(); // Call the function on component mount
+  }, []);
+
   const [data2, setData] = useState<any[]>([]);
   const [pricTerm, setpricTerm] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   let data;
   let id: any[],price: any[], category: any[],description:any[];
@@ -21,7 +27,7 @@ const ProductFilteredPrice = () => {
 
       data = await response.json();
       setData(data);
-
+      setLoading(false);
       id = data.map((user: any) => user.id);
       price = data.map((user: any) => user.price);
       category=data.map((user:any)=>user.category);
@@ -54,13 +60,17 @@ const ProductFilteredPrice = () => {
         return false;
     }
   });
+
+  if (loading) {
+    return <LoadingAnimation />;
+  }
   // @ts-ignore
   return (
 
       <View>
         <List.Section>
           <List.Accordion
-            onPress={fetchMockBackendData}
+
             title="Choose Price Range"
             left={props => <List.Icon {...props} icon="folder" />}>
             <List.Item title="0-10" onPress={()=>{setpricTerm(1)}}/>

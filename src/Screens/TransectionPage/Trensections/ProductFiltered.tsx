@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 import {  List,} from "react-native-paper";
-import ProductCard from "../../../Components/productcard.tsx";
+import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import API_URL from "../../../../Assets/api";
+import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 
 
 const ProductFiltered = () => {
 
+  useEffect(() => {
+    fetchMockBackendData(); // Call the function on component mount
+  }, []);
+
   const [data2, setData] = useState<any[]>([]);
   const [categoryTerm, setcategoryTerm] = useState("");
   const filteredAsCT = data2.filter((item) => item.category.toLowerCase().startsWith(categoryTerm.toLowerCase()));
+  const [loading, setLoading] = useState(true);
 
   let data;
   let id: any[],price: any[], category: any[],description:any[];
@@ -23,7 +29,7 @@ const ProductFiltered = () => {
 
       data = await response.json();
       setData(data);
-
+      setLoading(false);
       id = data.map((user: any) => user.id);
       price = data.map((user: any) => user.price);
       category=data.map((user:any)=>user.category);
@@ -35,13 +41,16 @@ const ProductFiltered = () => {
       return null;
     }
   };
+
+  if (loading) {
+    return <LoadingAnimation />;
+  }
   // @ts-ignore
   return (
     <SafeAreaView>
 
         <List.Section >
           <List.Accordion
-            onPress={fetchMockBackendData}
             title="Choose Category"
             left={props => <List.Icon {...props} icon="folder" />}>
             <List.Item title="Clothing" onPress={()=>{setcategoryTerm("clothing")}}/>
