@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Image, NativeModules, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
-import DeviceInfo, { getIpAddress } from "react-native-device-info";
+import DeviceInfo from "react-native-device-info";
 
 const myImage = require("../../../Assets/recipe-book.png");
 
@@ -19,13 +19,11 @@ const LoginPage = ({ navigation }) => {
   let model = DeviceInfo.getModel();
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
-  const [validationMessage, setValidationMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Optional loading indicator
 
   const MOCK_BACKEND_URL = "http://192.168.1.25:3000/users";
 
   let data;
-  let userPassword: any[],userName: any[], firstName: any[];
+  let userPassword: any[],userName: any[];
 
   const fetchMockBackendData = async () => {
     try {

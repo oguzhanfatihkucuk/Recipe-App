@@ -2,7 +2,6 @@ import React, {  useState } from "react";
 import { View, FlatList, Text, SafeAreaView, ScrollView} from "react-native";
 import ProductCard from "../../../../src/Components/productcard.tsx";
 import { Button,TextInput } from "react-native-paper";  // Import your product card component
-import { useNavigation } from "@react-navigation/native";
 import API_URL from "../../../../Assets/api";
 
 
