@@ -13,8 +13,7 @@ const ProductsScreen = ({ navigation }) => {
   const [data2, setData] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
-  const { isDarkMode, setIsDarkMode } =
-    useContext(DarkMode);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,6 +43,7 @@ const ProductsScreen = ({ navigation }) => {
       return null;
     }
   };
+
   // @ts-ignore
   if (loading) {
     return <LoadingAnimation />;
@@ -64,15 +64,15 @@ const ProductsScreen = ({ navigation }) => {
                 label: "Category",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
                 onPress: () => {
-                  navigation.navigate("ProductFiltered")
+                  navigation.navigate("ProductFiltered");
                 }
               },
               {
                 value: "Türkçe",
                 label: "Price",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
-                onPress:() => {
-                  navigation.navigate("ProductFilteredPrice")
+                onPress: () => {
+                  navigation.navigate("ProductFilteredPrice");
                 }
               },
               {
@@ -80,7 +80,7 @@ const ProductsScreen = ({ navigation }) => {
                 label: "Name",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
                 onPress: () => {
-                  navigation.navigate("ProductFilteredName")
+                  navigation.navigate("ProductFilteredName");
                 }
               }
             ]}

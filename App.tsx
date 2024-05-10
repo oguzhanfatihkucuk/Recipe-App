@@ -16,7 +16,6 @@ export default function App() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-
   const CustomDarkTheme: Theme = {
     ...DarkTheme,
     dark: true,

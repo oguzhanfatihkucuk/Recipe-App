@@ -34,6 +34,7 @@
     "react-native-gesture-handler": "^2.15.0",
     "react-native-html-to-pdf": "^0.12.0",
     "react-native-info": "^0.0.0",
+    "react-native-nfc-manager": "^3.14.14",
     "react-native-paper": "^5.12.3",
     "react-native-pdf": "^6.7.5",
     "react-native-picker-select": "^9.1.3",
