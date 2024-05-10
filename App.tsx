@@ -8,6 +8,9 @@ import {
 import StackNavigator from "./src/Navigation/StackNavigator";
 import DarkMode from "./services/utils/darkmode.context";
 import { useState } from "react";
+import { AppRegistry } from "react-native";
+
+AppRegistry.registerComponent('PatikaStoreApp', () => App);
 
 export default function App() {
 

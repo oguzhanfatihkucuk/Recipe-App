@@ -98,18 +98,6 @@ const LoginPage = ({ navigation }) => {
           </View>
         </View>
       </View>
-      <Text>
-        {appName}
-      </Text>
-      <Text>
-        {model}
-      </Text>
-      <Text>
-        {readableVersion}
-      </Text>
-      <Text>
-        {systemVersion}
-      </Text>
     </SafeAreaView>
   );
 };
