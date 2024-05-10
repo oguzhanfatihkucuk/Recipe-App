@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import { FlatList, Text, View } from "react-native";
-import products from "../../../../Assets/product";
 import { List } from "react-native-paper";
 import ProductCard from "../../../Components/productcard.tsx";
+import API_URL from "../../../../Assets/api";
 
 const ProductFilteredPrice = () => {
 
+  const [data2, setData] = useState<any[]>([]);
   const [pricTerm, setpricTerm] = useState(0);
-  const filteredAsPR = products.filter((item) => {
+
+  let data;
+  let id: any[],price: any[], category: any[],description:any[];
+  const fetchMockBackendData = async () => {
+
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      data = await response.json();
+      setData(data);
+
+      id = data.map((user: any) => user.id);
+      price = data.map((user: any) => user.price);
+      category=data.map((user:any)=>user.category);
+      description=data.map((user:any)=>user.description);
+
+      return data;
+    } catch (error) {
+      console.error("Error fetching mock backend data:", error);
+      return null;
+    }
+  };
+
+  const filteredAsPR = data2.filter((item) => {
     const itemPrice = item.price; // Extract the price from the product item
 
     switch (pricTerm) {
@@ -31,8 +58,9 @@ const ProductFilteredPrice = () => {
   return (
 
       <View>
-        <List.Section >
+        <List.Section>
           <List.Accordion
+            onPress={fetchMockBackendData}
             title="Choose Price Range"
             left={props => <List.Icon {...props} icon="folder" />}>
             <List.Item title="0-10" onPress={()=>{setpricTerm(1)}}/>

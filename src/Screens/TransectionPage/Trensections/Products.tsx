@@ -1,16 +1,43 @@
 import React, {  useState } from "react";
 import { View, FlatList, Text, SafeAreaView, ScrollView} from "react-native";
-import products from "../../../../Assets/product";  // Import your product data
 import ProductCard from "../../../../src/Components/productcard.tsx";
 import { Button,TextInput } from "react-native-paper";  // Import your product card component
 import { useNavigation } from "@react-navigation/native";
-import ProductFilteredName from "./ProductFilteredName.tsx";
+import API_URL from "../../../../Assets/api";
 
-const ProductsScreen = () => {
+
+//@ts-ignore
+const ProductsScreen = ({navigation}) => {
+
+  const [data2, setData] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredAsFL = products.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
-  const navigation = useNavigation();
+  const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
+
+  let data;
+  let id: any[],price: any[], category: any[],description:any[];
+  const fetchMockBackendData = async () => {
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      data = await response.json();
+      setData(data);
+
+      id = data.map((user: any) => user.id);
+      price = data.map((user: any) => user.price);
+      category=data.map((user:any)=>user.category);
+      description=data.map((user:any)=>user.description);
+
+      return data;
+    } catch (error) {
+      console.error("Error fetching mock backend data:", error);
+      return null;
+    }
+  };
   // @ts-ignore
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -27,6 +54,11 @@ const ProductsScreen = () => {
         <Button onPress={()=>navigation.navigate("ProductFilteredName")}>
           <Text>
             Category as Name
+          </Text>
+        </Button>
+        <Button onPress={fetchMockBackendData}>
+          <Text>
+            get products
           </Text>
         </Button>
         <TextInput
@@ -52,11 +84,11 @@ const ProductsScreen = () => {
             />
           </View>) : (<><View>
             <Text>
-              Favorites {products.length} item found
+              Favorites {data2.length} item found
             </Text>
             <FlatList
               horizontal={true} // Enable horizontal scrolling
-              data={products}
+              data={data2}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
                   <ProductCard product={item} />
@@ -66,11 +98,11 @@ const ProductsScreen = () => {
           </View>
             <View>
             <Text>
-              Hot Deals {products.length} item found
+              Hot Deals {data2.length} item found
             </Text>
             <FlatList
               horizontal={true} // Enable horizontal scrolling
-              data={products}
+              data={data2}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
                   <ProductCard product={item} />
@@ -80,11 +112,11 @@ const ProductsScreen = () => {
           </View>
             <View>
               <Text>
-                Campaings {products.length} item found
+                Campaings {data2.length} item found
               </Text>
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
-                data={products}
+                data={data2}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
                     <ProductCard product={item} />
@@ -95,18 +127,19 @@ const ProductsScreen = () => {
 
             <View>
               <Text>
-                2 buy 1 pay {products.length} item found
+                2 buy 1 pay {data2.length} item found
               </Text>
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
-                data={products}
+                data={data2}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
                     <ProductCard product={item} />
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
-            </View></>)}
+            </View>
+            </>)}
         </View>
       </ScrollView>
     </SafeAreaView>
