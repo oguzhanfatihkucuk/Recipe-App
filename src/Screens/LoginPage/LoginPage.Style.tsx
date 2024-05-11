@@ -51,6 +51,12 @@ export default StyleSheet.create({
     borderRadius: 15,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15
+  },
+  warningText: {
+    textAlign:"left",
+    paddingHorizontal:15,
+    fontWeight:"bold",
+    fontSize:14,
   }
 
 });

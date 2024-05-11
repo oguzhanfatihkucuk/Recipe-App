@@ -4,7 +4,9 @@ import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
 const myImage = require("../../../Assets/recipe-book.png");
-import API_URL from "../../../Assets/api";
+
+
+const API_URL="http://192.168.1.25:3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
@@ -14,11 +16,14 @@ const LoginPage = ({ navigation }) => {
 
   const [usercode, setText] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [textColor, setTextColor] = React.useState(true);
+
   let appName = DeviceInfo.getApplicationName();
   let model = DeviceInfo.getModel();
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
 
+  console.log(DeviceInfo.getIpAddress().then(ip => {}));
 
   let data;
   let userPassword: any[],userName: any[];
@@ -45,6 +50,10 @@ const LoginPage = ({ navigation }) => {
       if (userName[i] == userNameParam && userPassword[i] == passwordParam){
         navigation.navigate("app");
       }
+      else{
+        setTextColor(false);
+      }
+
     }});
 
     return false;
@@ -59,24 +68,32 @@ const LoginPage = ({ navigation }) => {
             <TextInput
               label="User Code"
               value={usercode}
-              style={styles.textinput}
-              onChangeText={text => setText(text)}
+              style={{ ...styles.textinput, borderColor: textColor ? 'white' : 'red'}}
+              onChangeText={(text) => {
+                setText(text); // Call setText as before
+                setTextColor(true); // Call your new function
+              }}
               cursorColor={"white"}
               keyboardType="numeric"
             />
+            {textColor? <View></View> : <Text style={styles.warningText}>Your Information was not correct</Text>}
             <TextInput
               label="Password"
               value={password}
-              style={styles.textinput}
-              onChangeText={text => setPassword(text)}
+              style={{ ...styles.textinput, borderColor: textColor ? 'white' : 'red'}}
+              onChangeText={(text) => {
+                setPassword(text); // Call setText as before
+                setTextColor(true); // Call your new function
+              }}
               secureTextEntry={true}
               placeholderTextColor="#ccc"
               cursorColor={"white"}
             />
+            {textColor? <View></View> : <Text style={styles.warningText}>Your Information was not correct</Text>}
             <TouchableOpacity style={styles.button} onPress={() => checkUser(usercode, password)}
                               children={<Text style={styles.button_text}>Giriş Yap</Text>} />
           </View>
-          <TouchableOpacity children={<Text style={styles.password} onPress={fetchMockBackendData}>
+          <TouchableOpacity children={<Text style={styles.password} >
             Sifremi Unuttum
           </Text>} />
 
