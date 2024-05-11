@@ -68,7 +68,7 @@ const LoginPage = ({ navigation }) => {
             <TextInput
               label="User Code"
               value={usercode}
-              style={{ ...styles.textinput, borderColor: textColor ? 'white' : 'red'}}
+              style={{ ...styles.textinput, borderColor: textColor ? 'white' : '#D71313'}}
               onChangeText={(text) => {
                 setText(text); // Call setText as before
                 setTextColor(true); // Call your new function
@@ -80,7 +80,7 @@ const LoginPage = ({ navigation }) => {
             <TextInput
               label="Password"
               value={password}
-              style={{ ...styles.textinput, borderColor: textColor ? 'white' : 'red'}}
+              style={{ ...styles.textinput, borderColor: textColor ? 'white' : '#D71313'}}
               onChangeText={(text) => {
                 setPassword(text); // Call setText as before
                 setTextColor(true); // Call your new function
