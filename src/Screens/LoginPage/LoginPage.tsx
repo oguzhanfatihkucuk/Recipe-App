@@ -1,5 +1,5 @@
-import React, { useCallback, useRef } from "react";
-import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, SafeAreaView, Text, TouchableOpacity, View ,Vibration} from "react-native";
 import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
@@ -10,9 +10,6 @@ const API_URL="http://192.168.1.25:3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
-  function goToCategoryPage() {
-    navigation.navigate("app");
-  }
 
   const [usercode, setText] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -22,8 +19,10 @@ const LoginPage = ({ navigation }) => {
   let model = DeviceInfo.getModel();
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
-
-  console.log(DeviceInfo.getIpAddress().then(ip => {}));
+  const startVibration=()=>{
+    Vibration.vibrate(1000);
+    console.log("Vibrated");
+  }
 
   let data;
   let userPassword: any[],userName: any[];
@@ -52,10 +51,9 @@ const LoginPage = ({ navigation }) => {
       }
       else{
         setTextColor(false);
+        startVibration();
       }
-
     }});
-
     return false;
   }
 
@@ -110,6 +108,19 @@ const LoginPage = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
+          <Divider style={{height:25,backgroundColor:"transparent"}}></Divider>
+          <Text style={styles.info}>
+            App Name:  {appName}
+          </Text>
+          <Text style={styles.info}>
+            Device Name:  {model}
+          </Text>
+          <Text style={styles.info}>
+            App Version : {readableVersion}
+          </Text>
+          <Text style={styles.info}>
+            System Version:  {systemVersion}
+          </Text>
         </View>
       </View>
     </SafeAreaView>

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Button } from "react-native";
+import React, {  useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
-import { useNavigation } from "@react-navigation/native";
+
 import NFCwait from "../../Components/NFCwait/NFCwait.tsx";
 import NFCok from "../../Components/NCFok/NFCok.tsx";
 

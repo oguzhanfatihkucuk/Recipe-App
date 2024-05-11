@@ -26,6 +26,7 @@ export default function BottomTab() {
         tabBarLabelStyle: styles.label,
         headerTitleStyle: styles.header,
         headerTitleAlign:"center",
+
         tabBarStyle: [
 
           styles.tabContainer,
@@ -46,6 +47,7 @@ export default function BottomTab() {
       safeAreaInsets={{
         bottom: 0
       }}
+      initialRouteName={t("transection")}
     >
       <BottomTabNavigator.Screen
         name={t("explore")}

@@ -57,6 +57,9 @@ export default StyleSheet.create({
     paddingHorizontal:15,
     fontWeight:"bold",
     fontSize:14,
+  },
+  info: {
+    textAlign:"center"
   }
 
 });
