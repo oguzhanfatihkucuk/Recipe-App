@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, FlatList, Text, SafeAreaView, ScrollView, Alert } from "react-native";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import { Button, SegmentedButtons, TextInput } from "react-native-paper";  // Import your product card component
+import {SegmentedButtons, TextInput } from "react-native-paper";  // Import your product card component
 import API_URL from "../../../../Assets/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import DarkMode from "../../../../services/utils/darkmode.context.ts";

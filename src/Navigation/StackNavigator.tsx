@@ -37,7 +37,7 @@ export default function StackNavigator() {
       <Stack.Screen name="ProductFiltered" component={ProductFiltered} options={{headerShown:true}}/>
       <Stack.Screen name="ProductFilteredPrice" component={ProductFilteredPrice} options={{headerShown:true}}/>
       <Stack.Screen name="ProductFilteredName" component={ProductFilteredName} options={{headerShown:true}}/>
-      <Stack.Screen name="NFCPage" component={NFCPage} options={{headerShown:true}}/>
+      <Stack.Screen name="NFCPage" component={NFCPage} />
     </Stack.Navigator>
   );
 }

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
-
 const myImage = require("../../../Assets/recipe-book.png");
-
+import API_URL from "../../../Assets/api";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
@@ -20,22 +19,20 @@ const LoginPage = ({ navigation }) => {
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
 
-  const MOCK_BACKEND_URL = "http://192.168.1.25:3000/users";
 
   let data;
   let userPassword: any[],userName: any[];
 
   const fetchMockBackendData = async () => {
     try {
-      const response = await fetch(MOCK_BACKEND_URL);
+      const response = await fetch(API_URL);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       data = await response.json();
       userPassword = data.map((user: any) => user.password);
       userName = data.map((user: any) => user.username);
-      console.log(userPassword[0]);
-      console.log(userName[0]);
+
       return data;
     } catch (error) {
       console.error("Error fetching mock backend data:", error);
@@ -44,7 +41,6 @@ const LoginPage = ({ navigation }) => {
   };
 
   function checkUser(userNameParam: any, passwordParam: any) {
-    console.log("hi");
     fetchMockBackendData().then(r => {for (let i = 0; i < 10; i++) {
       if (userName[i] == userNameParam && userPassword[i] == passwordParam){
         navigation.navigate("app");
@@ -83,6 +79,7 @@ const LoginPage = ({ navigation }) => {
           <TouchableOpacity children={<Text style={styles.password} onPress={fetchMockBackendData}>
             Sifremi Unuttum
           </Text>} />
+
           <Divider style={{ height: 30, backgroundColor: "transparent" }}></Divider>
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity style={styles.subButton} onPress={()=>navigation.navigate("NFCPage")}>
