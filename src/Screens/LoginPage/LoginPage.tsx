@@ -3,10 +3,10 @@ import { Image, SafeAreaView, Text, TouchableOpacity, View ,Vibration} from "rea
 import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
-const myImage = require("../../../Assets/recipe-book.png");
+const myImage = require("../../../assets/png/recipe-book.png");
 
 
-const API_URL="http://192.168.1.25:3000/users";
+const API_URL="http://172.16.18.152:3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 

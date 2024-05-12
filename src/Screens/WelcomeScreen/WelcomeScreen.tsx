@@ -13,7 +13,7 @@ const WelcomeScreen= ({navigation}) => {
     return () => clearTimeout(timeoutId); // Cleanup on unmount
   }, []);
 
-  const myImage = require('../../../Assets/recipe-book.png');
+  const myImage = require('../../../assets/png/recipe-book.png');
 
   return(
     <SafeAreaView style={styles.OuterContainer}>

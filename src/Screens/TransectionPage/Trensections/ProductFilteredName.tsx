@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import {List } from "react-native-paper";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import API_URL from "../../../../Assets/api";
+import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 
 const ProductFilteredName = () => {

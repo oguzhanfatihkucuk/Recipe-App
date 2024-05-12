@@ -3,7 +3,7 @@ import LottieView from "lottie-react-native";
 
 function LoadingAnimation() {
   return <LottieView
-    source={require("../../../Assets/loading.json")}
+    source={require("../../../assets/json/loading.json")}
     style={{ width: "100%", height: "100%" }}
     autoPlay
     loop

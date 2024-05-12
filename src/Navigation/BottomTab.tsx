@@ -1,4 +1,4 @@
-import { StyleSheet, Platform} from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../Screens/SettingsScreen/SettingsScreen.tsx";
@@ -13,7 +13,7 @@ import Transection from "../Screens/TransectionPage/TransectionPage.tsx";
 const BottomTabNavigator = createBottomTabNavigator();
 
 export default function BottomTab() {
-  const { isDarkMode} =
+  const { isDarkMode } =
     useContext(DarkMode);
 
   const iconColor = isDarkMode ? "white" : "black";
@@ -25,10 +25,8 @@ export default function BottomTab() {
       screenOptions={{
         tabBarLabelStyle: styles.label,
         headerTitleStyle: styles.header,
-        headerTitleAlign:"center",
-
+        headerTitleAlign: "center",
         tabBarStyle: [
-
           styles.tabContainer,
           Platform.OS === "ios" && {
             shadowOffset: { height: -2, width: 2 },
@@ -40,9 +38,7 @@ export default function BottomTab() {
           marginBottom: 7
         },
         tabBarInactiveTintColor: "gray",
-        tabBarActiveTintColor: "#02b875",
-
-
+        tabBarActiveTintColor: "#02b875"
       }}
       safeAreaInsets={{
         bottom: 0
