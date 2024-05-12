@@ -21,7 +21,6 @@ function NFCPage({ navigation }) {
       const tag = await NfcManager.getTag();
       console.warn('Tag found', tag);
       setLoading(false);
-
     } catch (ex) {
       console.warn('Oops!', ex);
     } finally {

@@ -31,7 +31,7 @@ const ReportsScreen = () => {
       icon: "file-star",
       nav: 3
     },
-    { reportname: "Other", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
+    { reportname: "other", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
   ];
   function navigateToPage(navValue: any) {
     switch (navValue) {
