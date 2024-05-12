@@ -5,6 +5,7 @@ import DarkMode from "../../../services/utils/darkmode.context.ts";
 import styles from "../ReportsScreen/ReportsScreenStyle.tsx";
 import { Divider, Icon } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { t } from "i18next";
 
 
 const ReportsScreen = () => {
@@ -14,23 +15,23 @@ const ReportsScreen = () => {
   const report = [
     {
       reportname: "X-Report",
-      description: "A report containing results such as sales and profit within a certain time interval.",
+      description: "X-ReportDesc",
       icon: "file-send",
       nav: 1
     },
     {
       reportname: "Z-Report",
-      description: "A report containing results such as sales and profit at the end of the day.",
+      description: "Z-ReportDesc",
       icon: "file-send-outline",
       nav: 2
     },
     {
       reportname: "Campaigns",
-      description: "The report containing detailed information about the campaign lists in the current store.",
+      description: "CampaignsDesc",
       icon: "file-star",
       nav: 3
     },
-    { reportname: "Other", description: "All other reports related to the store.", icon: "dots-horizontal", nav: 4 }
+    { reportname: "Other", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
   ];
   function navigateToPage(navValue: any) {
     switch (navValue) {
@@ -68,11 +69,11 @@ const ReportsScreen = () => {
                       <View style={{ alignItems: "center", paddingVertical: 5 }}>
                         <Icon size={102} color={"#718EBF"} source={item.icon} />
                         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
-                          {item.reportname}
+                          {t(item.reportname)}
                         </Text>
                         <Divider style={{ height: 15 }}></Divider>
                         <Text isDarkMode={isDarkMode} style={[[styles.subtext]]}>
-                          {item.description}
+                          {t(item.description)}
                         </Text>
                       </View>
                     </View>

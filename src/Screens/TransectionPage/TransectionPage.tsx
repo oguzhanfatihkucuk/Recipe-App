@@ -5,6 +5,7 @@ import DarkMode from "../../../services/utils/darkmode.context.ts";
 import styles from "../TransectionPage/TransectionPage.Style.tsx";
 import { Divider, Icon } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { t } from "i18next";
 // @ts-ignore
 const Transection = () => {
 
@@ -12,10 +13,10 @@ const Transection = () => {
     useContext(DarkMode);
   const navigation = useNavigation();
   const report = [
-    { name: "Sales", description: "Provides an overview of sales performance, including revenue and profit, over a specific time period.", icon: "cash-register", nav: 1 },
-    { name: "Products", description: "Offers a detailed breakdown of product sales and profitability at the end of the day.", icon: "clipboard-list-outline", nav: 2 },
-    { name: "Add Product", description: "This functionality allows you to add a new product to your inventory.", icon: "playlist-plus", nav: 3 },
-    { name: "Other", description: "All other transection related to the store.", icon: "dots-horizontal", nav: 4 }
+    { name: "Sales", description: "SalesDesc", icon: "cash-register", nav: 1 },
+    { name: "Products", description: "ProductDesc", icon: "clipboard-list-outline", nav: 2 },
+    { name: "Add Product", description: "AddProductDesc", icon: "playlist-plus", nav: 3 },
+    { name: "other", description: "Otherdesc", icon: "dots-horizontal", nav: 4 }
   ];
 
   function navigateToPage(navValue: any) {
@@ -54,11 +55,11 @@ const Transection = () => {
                           <View style={{alignItems:"center",paddingVertical:5}}>
                             <Icon size={102} color={"#718EBF"} source={item.icon} />
                             <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
-                              {item.name}
+                              {t(item.name)}
                             </Text>
                             <Divider style={{height:15}}></Divider>
                             <Text isDarkMode={isDarkMode} style={[[styles.subtext]]}>
-                              {item.description}
+                              {t(item.description)}
                             </Text>
                           </View>
                         </View>

@@ -51,7 +51,7 @@ const ExploreScreen = () => {
       <View>
         <Searchbar
           style={{ ...styles.searchbar, borderColor: isDarkMode ? "white" : "black" }}
-          placeholder="Search"
+          placeholder={t("search")}
           onChangeText={setSearchQuery}
           value={searchQuery}
         />
