@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import {View, TouchableOpacity, BackHandler, } from "react-native";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { View, TouchableOpacity, BackHandler, Linking } from "react-native";
 import styles from "./SettingsScreen.Style";
 import { Divider, SegmentedButtons, Switch } from "react-native-paper";
 import i18next from "../../../services/i18next";
@@ -8,7 +8,9 @@ import DarkMode from "../../../services/utils/darkmode.context";
 import { Text } from "../../../services/utils/Theme";
 import { Icon } from "react-native-paper";
 import { Alert } from "react-native";
-
+import { RingerSilentStatus, VolumeManager } from "react-native-volume-manager";
+import Slider from '@react-native-community/slider';
+import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
 
 const SettingsScreen = () => {
 
@@ -21,56 +23,76 @@ const SettingsScreen = () => {
     return () => backHandler.remove();
   }, []);
 
+  //@ts-ignore
+  useEffect(() => {
+    VolumeManager.getVolume().then((result) => {
+      setReportedSystemVolume(result.volume);
+      console.log('Read system volume', result);
+    });
+
+    const volumeListener = VolumeManager.addVolumeListener((result) => {
+      volumeChangedByListener.current = true;
+      setReportedSystemVolume(result.volume);
+    });
+
+    return () => {
+      volumeListener.remove();
+    };
+  }, []);
+
   const { t } = useTranslation();
-
-  const changeLng = (lng: string | undefined) => {
-    i18next.changeLanguage(lng);
-  };
-
+  const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
+  const [hideUI, setHideUI] = useState<boolean>(false);
+  const volumeChangedByListener = useRef(true);
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [isSwitchOn_2, setIsSwitchOn_2] = React.useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   const onToggleSwitch_2 = () => setIsSwitchOn_2(!isSwitchOn_2);
+  const changeLng = (lng: string | undefined) => {i18next.changeLanguage(lng);};
 
-  const { isDarkMode, setIsDarkMode } =
-    useContext(DarkMode);
-
-  const toggleDarkMode = useCallback(() => {
-    setIsDarkMode(!isDarkMode);
-  }, [isDarkMode]);
-
+  const { isDarkMode, setIsDarkMode } =useContext(DarkMode);
+  const toggleDarkMode = useCallback(() => {setIsDarkMode(!isDarkMode);}, [isDarkMode]);
   const iconColor = isDarkMode ? "white" : "black";
+  const [isChangePasswordVisible, setIsChangePasswordVisible] = useState(false);
 
+  const handlePasswordPress = () => {
+    setIsChangePasswordVisible(true);
+  };
   // @ts-ignore
   return (
     <View style={[styles.container]}>
-      <TouchableOpacity style={styles.option} onPress={()=>{Alert.alert("Sound","Sound Text",[
-        {
-          text: "Cancel", onPress: () => {
-          }, style: "cancel"
-        },
-        {
-          text: "OK", onPress: () => {
-
-          }
-        }
-      ],
-      )}}>
+      <TouchableOpacity style={{...styles.option,borderColor:"transparent"}} >
         <Icon size={20} color={iconColor} source="account-tie-voice-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
           {t("sound")}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.option}>
+      <Slider
+        style={{ width: '100%', height: 40 }}
+        minimumValue={0}
+        maximumValue={1}
+        minimumTrackTintColor="#000"
+        maximumTrackTintColor="#999"
+        onValueChange={(value) => {
+          VolumeManager.setVolume(value, { showUI: !hideUI });
+        }}
+        onSlidingComplete={async (value) => {
+          setReportedSystemVolume(value);
+        }}
+        value={currentSystemVolume}
+        step={0.001}
+      />
+      <Divider style={{height:2}}></Divider>
+      <TouchableOpacity style={styles.option}  onPress={handlePrivacyPress}>
         <Icon size={20} color={iconColor} source="security" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("privacy")}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.option}>
+      <TouchableOpacity style={styles.option} onPress={handleAboutUsPress}>
         <Icon size={20} color={iconColor} source="information-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("aboutus")}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.option}>
+      <TouchableOpacity style={styles.option} onPress={()=>{}}>
         <Icon size={20} color={iconColor} source="lock-open-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}> {t("changepassword")}</Text>
       </TouchableOpacity>

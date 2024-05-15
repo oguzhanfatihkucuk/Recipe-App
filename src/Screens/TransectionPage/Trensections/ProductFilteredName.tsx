@@ -21,7 +21,6 @@ const ProductFilteredName = () => {
       const firstLetter = itemName[0];
 
 
-
       switch (nameTerm) {
         case 0:
           return firstLetter >= "a" && firstLetter <= "e";
@@ -70,16 +69,12 @@ const ProductFilteredName = () => {
     return <LoadingAnimation />;
   }
   return (
-
     <View>
       <List.Section>
         <List.Accordion
-
           title="Choose First Letter Range "
           left={props => <List.Icon {...props} icon="folder" />}>
           <List.Item title="A-E" onPress={() => {
-            console.log("asda");
-
             setnameTerm(0);
           }} />
           <List.Item title="F-J" onPress={() => {
@@ -97,7 +92,6 @@ const ProductFilteredName = () => {
           <List.Item title="W-Z" onPress={() => {
             setnameTerm(5);
           }} />
-
         </List.Accordion>
       </List.Section>
       <Text>
@@ -113,7 +107,6 @@ const ProductFilteredName = () => {
         numColumns={3}
         keyExtractor={(item) => item.id.toString()} />
     </View>
-
   );
 };
 

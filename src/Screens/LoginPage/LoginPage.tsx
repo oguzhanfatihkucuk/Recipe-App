@@ -6,7 +6,7 @@ import DeviceInfo from "react-native-device-info";
 const myImage = require("../../../assets/png/recipe-book.png");
 
 
-const API_URL="http://172.16.18.152:3000/users";
+const API_URL="http://192.168.1.25:3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
@@ -48,6 +48,7 @@ const LoginPage = ({ navigation }) => {
     fetchMockBackendData().then(r => {for (let i = 0; i < 10; i++) {
       if (userName[i] == userNameParam && userPassword[i] == passwordParam){
         navigation.navigate("app");
+        break;
       }
       else{
         setTextColor(false);

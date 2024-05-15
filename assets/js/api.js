@@ -1,4 +1,4 @@
 
-const API_URL="http://172.16.18.152:3000/products";
+const API_URL="http://192.168.1.25:3000/products";
 
 export default API_URL;
