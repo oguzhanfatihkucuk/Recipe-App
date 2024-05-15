@@ -13,7 +13,7 @@ const ProductFilteredName = () => {
   const [loading, setLoading] = useState(true);
 
   let data;
-  let id: any[],price: any[], category: any[],description:any[];
+  //let id: any[],price: any[], category: any[],description:any[];
   const [data2, setData] = useState<any[]>([]);
   const [nameTerm, setnameTerm] = useState(99);
   const filteredAsNM = data2.filter((item) => {
@@ -52,10 +52,10 @@ const ProductFilteredName = () => {
       data = await response.json();
       setData(data);
       setLoading(false);
-      id = data.map((user: any) => user.id);
-      price = data.map((user: any) => user.price);
-      category=data.map((user:any)=>user.category);
-      description=data.map((user:any)=>user.description);
+      //id = data.map((user: any) => user.id);
+      //price = data.map((user: any) => user.price);
+      //category=data.map((user:any)=>user.category);
+      //description=data.map((user:any)=>user.description);
 
       return data;
     } catch (error) {

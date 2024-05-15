@@ -21,7 +21,7 @@ const ProductsScreen = ({ navigation }) => {
   }, []);
 
   let data;
-  let id: any[], price: any[], category: any[], description: any[];
+  //let id: any[], price: any[], category: any[], description: any[];
   const fetchMockBackendData = async () => {
     try {
       const response = await fetch(API_URL);
@@ -32,10 +32,10 @@ const ProductsScreen = ({ navigation }) => {
       data = await response.json();
       setData(data);
       setLoading(false);
-      id = data.map((user: any) => user.id);
-      price = data.map((user: any) => user.price);
-      category = data.map((user: any) => user.category);
-      description = data.map((user: any) => user.description);
+      //id = data.map((user: any) => user.id);
+      //price = data.map((user: any) => user.price);
+      //category = data.map((user: any) => user.category);
+      //description = data.map((user: any) => user.description);
 
       return data;
     } catch (error) {
