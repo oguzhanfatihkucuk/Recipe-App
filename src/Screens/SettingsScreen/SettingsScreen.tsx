@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { View, TouchableOpacity, BackHandler, Linking } from "react-native";
+import { View, TouchableOpacity, BackHandler} from "react-native";
 import styles from "./SettingsScreen.Style";
 import { Divider, SegmentedButtons, Switch } from "react-native-paper";
 import i18next from "../../../services/i18next";
@@ -27,7 +27,6 @@ const SettingsScreen = () => {
   useEffect(() => {
     VolumeManager.getVolume().then((result) => {
       setReportedSystemVolume(result.volume);
-      console.log("Read system volume", result);
     });
 
     const volumeListener = VolumeManager.addVolumeListener((result) => {
@@ -42,7 +41,7 @@ const SettingsScreen = () => {
 
   const { t } = useTranslation();
   const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
-  const [hideUI, setHideUI] = useState<boolean>(false);
+  const [hideUI] = useState<boolean>(false);
   const volumeChangedByListener = useRef(true);
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [isSwitchOn_2, setIsSwitchOn_2] = React.useState(false);

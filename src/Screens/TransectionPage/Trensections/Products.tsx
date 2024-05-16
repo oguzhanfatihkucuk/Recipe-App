@@ -6,14 +6,14 @@ import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import DarkMode from "../../../../services/utils/darkmode.context.ts";
 
-
 //@ts-ignore
 const ProductsScreen = ({ navigation }) => {
+
 
   const [data2, setData] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
+  const { isDarkMode} = useContext(DarkMode);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,22 +21,15 @@ const ProductsScreen = ({ navigation }) => {
   }, []);
 
   let data;
-  //let id: any[], price: any[], category: any[], description: any[];
   const fetchMockBackendData = async () => {
     try {
       const response = await fetch(API_URL);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       data = await response.json();
       setData(data);
       setLoading(false);
-      //id = data.map((user: any) => user.id);
-      //price = data.map((user: any) => user.price);
-      //category = data.map((user: any) => user.category);
-      //description = data.map((user: any) => user.description);
-
       return data;
     } catch (error) {
       console.error("Error fetching mock backend data:", error);
@@ -60,7 +53,7 @@ const ProductsScreen = ({ navigation }) => {
           buttons={
             [
               {
-                value: "English",
+                value: "Category",
                 label: "Category",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
                 onPress: () => {
@@ -68,15 +61,15 @@ const ProductsScreen = ({ navigation }) => {
                 }
               },
               {
-                value: "Türkçe",
-                label: "Price",
+                value: "Price",
+                label: "Cost",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
                 onPress: () => {
                   navigation.navigate("ProductFilteredPrice");
                 }
               },
               {
-                value: "Deustch",
+                value: "Name",
                 label: "Name",
                 labelStyle: { color: isDarkMode ? "white" : "black" },
                 onPress: () => {

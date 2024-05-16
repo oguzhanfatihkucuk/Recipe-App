@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Settings from "../Screens/SettingsScreen/SettingsScreen.tsx";
@@ -9,8 +9,20 @@ import { Icon } from "react-native-paper";
 import DarkMode from "../../services/utils/darkmode.context.ts";
 import { useTranslation } from "react-i18next";
 import Transection from "../Screens/TransectionPage/TransectionPage.tsx";
-
 const BottomTabNavigator = createBottomTabNavigator();
+
+
+const { width, height } = Dimensions.get('window');
+let fontSize = 12; // Varsayılan değer
+let iconSize=23;
+
+const isTablet = width >= 600 && height >= 600; // Örnek bir değer, gerçek bir değere göre değiştirin
+
+if (isTablet) {
+  fontSize = 28; // Tablet için 28 piksel font boyutu
+  iconSize=30;
+}
+
 
 export default function BottomTab() {
   const { isDarkMode } =
@@ -50,7 +62,7 @@ export default function BottomTab() {
         component={Explore}
         options={{
           tabBarIcon: () => (
-            <Icon source={"card-search-outline"} size={23} color={iconColor} />
+            <Icon source={"card-search-outline"} size={iconSize} color={iconColor} />
           )
         }}
       />
@@ -59,7 +71,7 @@ export default function BottomTab() {
         component={Reports}
         options={{
           tabBarIcon: () => (
-            <Icon source={"clipboard-file-outline"} size={23} color={iconColor} />
+            <Icon source={"clipboard-file-outline"} size={iconSize} color={iconColor} />
           )
         }}
       />
@@ -68,14 +80,15 @@ export default function BottomTab() {
         component={Transection}
         options={{
           tabBarIcon: () => (
-            <Icon source={"clipboard-list-outline"} size={23} color={iconColor} />
+            <Icon source={"clipboard-list-outline"} size={iconSize} color={iconColor} />
           )
         }}
       />
       <BottomTabNavigator.Screen
         options={{
+
           tabBarIcon: () => (
-            <Icon source={"shield-account-outline"} size={23} color={iconColor} />
+            <Icon source={"shield-account-outline"} size={iconSize} color={iconColor} />
           )
         }}
         name={t("profile")}
@@ -84,7 +97,7 @@ export default function BottomTab() {
       <BottomTabNavigator.Screen
         options={{
           tabBarIcon: () => (
-            <Icon source={"card-bulleted-settings"} size={23} color={iconColor} />
+            <Icon source={"card-bulleted-settings"} size={iconSize} color={iconColor} />
           )
         }}
         name={t("settings")}
@@ -106,6 +119,6 @@ const styles = StyleSheet.create({
   },
   label: {
     textTransform: "capitalize",
-    fontSize: 12
+    fontSize: fontSize
   }
 });

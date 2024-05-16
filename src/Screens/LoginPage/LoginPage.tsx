@@ -6,7 +6,7 @@ import DeviceInfo from "react-native-device-info";
 const myImage = require("../../../assets/png/recipe-book.png");
 
 
-const API_URL="http://192.168.1.25:3000/users";
+const API_URL="http://10.7.86.92:3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
@@ -21,7 +21,6 @@ const LoginPage = ({ navigation }) => {
   let systemVersion = DeviceInfo.getSystemVersion();
   const startVibration=()=>{
     Vibration.vibrate(1000);
-    console.log("Vibrated");
   }
 
   let data;

@@ -44,7 +44,7 @@ const Transection = () => {
   }
   return (
     <SafeAreaView>
-        <View>
+        <View style={styles.outContainer}>
           <Text isDarkMode={isDarkMode}>
             <FlatList style={styles.list}
                       data={report}

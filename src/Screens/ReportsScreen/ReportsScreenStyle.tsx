@@ -1,5 +1,9 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width } = Dimensions.get("window");
+const columnWidth = 3 * width / 8;
 
+const { height } = Dimensions.get('window');
+const columnHeight = 3*height / 8;
 export default StyleSheet.create({
   text: {
     fontSize: 22,
@@ -14,7 +18,7 @@ export default StyleSheet.create({
     borderColor:"black",
     margin:10,
     paddingVertical:15,
-    width:185
+    width: columnWidth,
   },
   list: {
 
@@ -30,6 +34,6 @@ export default StyleSheet.create({
     paddingHorizontal:8,
     textAlign:"center",
 
-  }
-
+  },
+  outContainer: { alignItems: "center",height:columnHeight }
 });

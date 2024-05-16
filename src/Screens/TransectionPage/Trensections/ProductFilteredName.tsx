@@ -4,16 +4,16 @@ import {List } from "react-native-paper";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-
+import { getNumColumns } from '../../../../assets/js/deviceutils';
 const ProductFilteredName = () => {
 
+  const numColumns = getNumColumns();
   useEffect(() => {
     fetchMockBackendData(); // Call the function on component mount
   }, []);
   const [loading, setLoading] = useState(true);
 
   let data;
-  //let id: any[],price: any[], category: any[],description:any[];
   const [data2, setData] = useState<any[]>([]);
   const [nameTerm, setnameTerm] = useState(99);
   const filteredAsNM = data2.filter((item) => {
@@ -48,15 +48,9 @@ const ProductFilteredName = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       data = await response.json();
       setData(data);
       setLoading(false);
-      //id = data.map((user: any) => user.id);
-      //price = data.map((user: any) => user.price);
-      //category=data.map((user:any)=>user.category);
-      //description=data.map((user:any)=>user.description);
-
       return data;
     } catch (error) {
       console.error("Error fetching mock backend data:", error);
@@ -104,7 +98,7 @@ const ProductFilteredName = () => {
             <ProductCard product={item} />
           </View>
         )}
-        numColumns={3}
+        numColumns={numColumns}
         keyExtractor={(item) => item.id.toString()} />
     </View>
   );

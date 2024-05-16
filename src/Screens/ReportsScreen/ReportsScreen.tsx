@@ -59,7 +59,7 @@ const ReportsScreen = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
-      <View>
+      <View style={{alignItems:"center"}}>
         <FlatList style={styles.list}
                   data={report}
                   renderItem={({ item }) => <TouchableOpacity
