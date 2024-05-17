@@ -63,11 +63,9 @@ const ProductFilteredPrice = () => {
   }
   // @ts-ignore
   return (
-
       <View>
         <List.Section>
           <List.Accordion
-
             title="Choose Price Range"
             left={props => <List.Icon {...props} icon="folder" />}>
             <List.Item title="0-10" onPress={()=>{setpricTerm(1)}}/>

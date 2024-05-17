@@ -217,6 +217,30 @@ const SettingsScreen = () => {
                   ]
                 );
               }
+            },
+            {
+              value: "Japenese",
+              label: "Japenese",
+              labelStyle: { color: isDarkMode ? "white" : "black" },
+              onPress: () => {
+                Alert.alert( // Display alert
+                  t("LanguageChanged"),
+                  t("LanguageChangedText"),
+                  [
+                    {
+                      text: "Cancel", onPress: () => {
+                      }, style: "cancel"
+                    },
+                    {
+                      text: "OK", onPress: () => {
+                        changeLng("jp");
+                        setSelectedLanguage("Japanese");
+                      }
+                    }
+
+                  ]
+                );
+              }
             }
           ]}
       />
