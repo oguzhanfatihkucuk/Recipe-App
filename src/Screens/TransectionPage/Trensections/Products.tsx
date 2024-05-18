@@ -20,6 +20,7 @@ const ProductsScreen = ({ navigation }) => {
     fetchMockBackendData(); // Call the function on component mount
   }, []);
 
+  const ProductCardMemoized = React.memo(ProductCard);
   let data;
   const fetchMockBackendData = async () => {
     try {
@@ -94,7 +95,7 @@ const ProductsScreen = ({ navigation }) => {
               data={filteredAsFL}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
-                  <ProductCard product={item} />
+                  <ProductCardMemoized  product={item} />
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()}
@@ -108,7 +109,7 @@ const ProductsScreen = ({ navigation }) => {
               data={data2}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
-                  <ProductCard product={item} />
+                  <ProductCardMemoized  product={item} />
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()} />
@@ -124,7 +125,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
-                    <ProductCard product={item} />
+                    <ProductCardMemoized  product={item} />
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
@@ -140,7 +141,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
-                    <ProductCard product={item} />
+                    <ProductCardMemoized  product={item} />
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
@@ -157,7 +158,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
-                    <ProductCard product={item} />
+                    <ProductCardMemoized  product={item} />
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />

@@ -19,7 +19,7 @@ const ProductFiltered = () => {
   const [loading, setLoading] = useState(true);
 
   let data;
-
+  const ProductCardMemoized = React.memo(ProductCard);
   const fetchMockBackendData = async () => {
 
     try {
@@ -62,7 +62,7 @@ const ProductFiltered = () => {
             data={filteredAsCT}
             renderItem={({ item }) => (
               <View style={{ flexDirection: "row" }}>
-                <ProductCard product={item} />
+                <ProductCardMemoized product={item} />
               </View>
             )}
             numColumns={numColumns}

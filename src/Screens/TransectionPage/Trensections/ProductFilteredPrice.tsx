@@ -7,6 +7,7 @@ import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../assets/js/deviceutils';
 const ProductFilteredPrice = () => {
 
+  const ProductCardMemoized = React.memo(ProductCard);
   const numColumns = getNumColumns();
   useEffect(() => {
     fetchMockBackendData(); // Call the function on component mount
@@ -82,7 +83,7 @@ const ProductFilteredPrice = () => {
           data={filteredAsPR}
           renderItem={({ item }) => (
             <View style={{ flexDirection: "row" }}>
-              <ProductCard product={item} />
+              <ProductCardMemoized product={item} />
             </View>
           )}
           numColumns={numColumns}
