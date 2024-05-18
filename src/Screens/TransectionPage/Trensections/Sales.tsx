@@ -4,11 +4,11 @@ import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import {myTuple} from "../../../../assets/js/myTuple";
 import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
-import { TextInput } from "react-native-paper";
+import { Divider, TextInput } from "react-native-paper";
 import {addItemToTuple} from "../../../../assets/js/myTuple";
 
-
-const SalesScreen = () => {
+//@ts-ignore
+const SalesScreen = ({ navigation }) => {
   const [data2, setData] = useState<any[]>([]);
   const [lenghtOfSales, setlenghtOfSales] = useState(0);
   let [totalPrice, setTotalPrice] = useState(0);
@@ -17,7 +17,7 @@ const SalesScreen = () => {
   const [productId, setProductId] = React.useState("1");
   const ProductCardMemoized = React.memo(SalesCard);
   let data;
-
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetchMockBackendData(); // Call the function on component mount
@@ -72,12 +72,14 @@ const SalesScreen = () => {
   const handlePress = () => {
     myTuple.length = 0;
     setData([]);
+    handleTextChange(0);
+  };
+  //@ts-ignore
+  const handleTextChange = (text) => {
+    const intValue = parseInt(text, 10);
+    setCount(intValue);
   };
 
-  ////@ts-ignore
-  //   updatedFilteredAsSaleList.forEach(item => {
-  //     setTotalPrice(totalPrice += item.price);
-  //   });
   //@ts-ignore
   const handleAddItem = (productid) => {
     addItemToTuple(productid);
@@ -114,17 +116,34 @@ const SalesScreen = () => {
       return null;
     }
   };
+  const calculateRemainingAmount = () => {
+    const remainingAmount = totalPrice - count;
+    if (remainingAmount < 0) {
+      return `Para üstünüz: ${Math.abs(remainingAmount).toFixed(2)}`; // Negatifse para üstünü göster
+    } else {
+      return `Kalan Tutar: ${remainingAmount.toFixed(2)}`; // Negatif değilse kalan tutarı göster
+    }
+  };
+
+  const calculateRemainingAmount2 = () => {
+    const remainingAmount = totalPrice - count;
+    return remainingAmount;
+  };
+
+  const isButtonActive = () => {
+    return calculateRemainingAmount2() >= 0; // Kalan tutar pozitifse true, değilse false döndür
+  };
 
   if (loading) {
     return <LoadingAnimation />;
   }
 
 
-
   // @ts-ignore
   return (
     <SafeAreaView >
-      <View style={{flexDirection:"row"}}>
+      <View style={{flexDirection:"row",borderWidth:2}}>
+
         <TextInput
           label="Enter Product Id "
           style={{ borderColor: 'black',width:280,margin:15,height:50,borderWidth:3}}
@@ -134,43 +153,73 @@ const SalesScreen = () => {
             setProductId(text);
           }}
         />
-        <TouchableOpacity onPress={()=>handleAddItem(productId)} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20}}>
+        <TouchableOpacity onPress={()=>handleAddItem(productId)} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
           <Text>
             Add Product
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>handleRefresh()} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20}}>
+        <TouchableOpacity onPress={()=>handleRefresh()} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
           <Text>
             Refresh
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("Products")} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
+          <Text>
+            Go to Category Page
+          </Text>
+        </TouchableOpacity>
       </View>
-      <View style={{justifyContent:"space-between",flexDirection:"row",marginBottom:200,marginTop:20,width:1100}}>
+      <View style={{borderWidth:2,justifyContent:"space-between",flexDirection:"row",marginBottom:200,marginTop:20,width:1100}}>
         <View>
           <FlatList
-            horizontal={false}  // Enable horizontal scrolling
+            horizontal={false}  // Dikey yönde liste oluştur
             data={filteredAsSaleList}
             renderItem={({ item }) => (
               <View style={{ flexDirection: "row"}}>
                 <ProductCardMemoized  product={item} />
               </View>
             )}
-            //keyExtractor={(item) => item.id.toString()}
+            ListEmptyComponent={() => (
+              <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                <Text style={{fontSize:24,margin:15}}>Sepetinizde Ürün Yok </Text>
+              </View>
+            )}
           />
         </View>
         <View >
-          <Text style={{fontSize:24,width:270,height:50,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+          <Text style={{marginVertical:10,fontSize:24,width:270,height:50,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
             Toplam Ürün sayısı:{lenghtOfSales}
           </Text>
-          <Text style={{fontSize:24,width:270,height:100,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
-            Toplam Tutar:{totalPrice}
+          <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+            Toplam Tutar:{totalPrice.toString().substring(0, 6)}
+          </Text>
+          <TextInput onChangeText={handleTextChange} placeholder="Ödenen Miktarı Giriniz" style={{backgroundColor:"transparent",marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+          </TextInput>
+          <Divider style={{marginVertical:10,width:270,height:3}}></Divider>
+          <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+            {calculateRemainingAmount()}
           </Text>
         </View>
-        <TouchableOpacity style={{height:50,width:110,backgroundColor:"blue",alignItems:"center",justifyContent:"center"}} onPress={handlePress}>
-          <Text>
-            Satıs Onayla
-          </Text>
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={{margin:10,height:50,width:110,backgroundColor:"white",alignItems:"center",justifyContent:"center"}} onPress={handlePress} >
+            <Text>
+              Tüm Belge İptal
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor: !isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} >
+            <Text>
+              E-Arşiv
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor:!isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} >
+            <Text>
+              Satıs Onayla
+            </Text>
+          </TouchableOpacity>
+
+        </View>
+
+
       </View>
 
     </SafeAreaView>

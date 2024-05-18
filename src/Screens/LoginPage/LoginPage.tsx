@@ -64,7 +64,7 @@ const LoginPage = ({ navigation }) => {
         <View>
           <View>
             <TextInput
-              label="User Code"
+              label="User Name"
               value={usercode}
               style={{ ...styles.textinput, borderColor: textColor ? 'white' : '#D71313'}}
               onChangeText={(text) => {
