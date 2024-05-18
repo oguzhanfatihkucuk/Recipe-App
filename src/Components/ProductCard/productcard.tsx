@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/ProductCard/productCardStyle.tsx";
-import { addItemToTuple, myTuple } from "../../../assets/js/myTuple.js";
+import { addItemToTuple} from "../../../assets/js/myTuple.js";
 
 //@ts-ignore
 const ProductCard = ({ product }) => {

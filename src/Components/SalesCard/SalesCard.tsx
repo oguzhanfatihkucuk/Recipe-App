@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/SalesCard/SalesCardStyle.tsx";
-import { deleteItemToTuple, myTuple } from "../../../assets/js/myTuple";
+import { deleteItemToTuple} from "../../../assets/js/myTuple";
 
 
 //@ts-ignore
