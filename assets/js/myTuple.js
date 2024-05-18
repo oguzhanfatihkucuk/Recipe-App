@@ -7,3 +7,13 @@ export const addItemToTuple = (item) => {
     console.log(myTuple)
   }
 };
+
+export const deleteItemToTuple = (item) => {
+  const index = myTuple.indexOf(item);
+  if (index !== -1) {
+    myTuple.splice(index, 1);
+    console.log(myTuple); // Updated myTuple without the deleted item
+  } else {
+    console.log("Item not found in myTuple");
+  }
+};
