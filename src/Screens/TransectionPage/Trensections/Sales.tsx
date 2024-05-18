@@ -159,9 +159,6 @@ const SalesScreen = () => {
           />
         </View>
         <View >
-          <TouchableOpacity >
-            <Text>Hesapla</Text>
-          </TouchableOpacity>
           <Text style={{fontSize:24,width:270,height:50,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
             Toplam Ürün sayısı:{lenghtOfSales}
           </Text>
