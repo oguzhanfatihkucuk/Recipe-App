@@ -152,6 +152,7 @@ const SalesScreen = ({ navigation }) => {
           onChangeText={(text) => {
             setProductId(text);
           }}
+
         />
         <TouchableOpacity onPress={()=>handleAddItem(productId)} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
           <Text>
