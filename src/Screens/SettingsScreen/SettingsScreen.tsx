@@ -126,14 +126,7 @@ const SettingsScreen = () => {
         <Icon size={20} color={iconColor} source="close-circle" />
       </View>
       <Divider style={styles.divider}></Divider>
-      <TouchableOpacity style={styles.option}>
-        <Icon size={20} color={iconColor} source="printer-settings" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("printertest")}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.option}>
-        <Icon size={20} color={iconColor} source="abacus" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization")} </Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         disabled={true}
         style={styles.languagebutton}>

@@ -14,7 +14,7 @@ const ReportsScreen = () => {
   const navigation = useNavigation();
   const report = [
     {
-      reportname: "X-Report",
+      reportname: "UserList",
       description: "X-ReportDesc",
       icon: "file-send",
       nav: 1

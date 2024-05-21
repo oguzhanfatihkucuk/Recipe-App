@@ -102,11 +102,11 @@ const ProductsScreen = ({ navigation }) => {
             />
           </View>) : (<><View>
             {data2.length > 1 && (
-              <Text>Favorites {data2.length} item found</Text>
+              <Text style={{fontSize:24,margin:5,fontStyle:"italic"}}>Favorites {data2.filter((item) => item.title.toLowerCase().startsWith("b")).length} item found</Text>
             )}
             <FlatList
               horizontal={true} // Enable horizontal scrolling
-              data={data2}
+              data={data2.filter((item) => item.title.toLowerCase().startsWith("b"))}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
                   <ProductCardMemoized  product={item} />
@@ -116,13 +116,13 @@ const ProductsScreen = ({ navigation }) => {
           </View>
             <View>
               {data2.length > 1 && (
-                <Text>
-                  Hot Deals {data2.length} item found
+                <Text style={{fontSize:24,margin:5,fontStyle:"italic"}}>
+                  Hot Deals {data2.filter((item) => item.title.toLowerCase().startsWith("c")).length} item found
                 </Text>
               )}
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
-                data={data2}
+                data={data2.filter((item) => item.title.toLowerCase().startsWith("c"))}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
                     <ProductCardMemoized  product={item} />
@@ -132,13 +132,13 @@ const ProductsScreen = ({ navigation }) => {
             </View>
             <View>
               {data2.length > 1 && (
-                <Text>
-                  Campaings {data2.length} item found
+                <Text style={{fontSize:24,margin:5,fontStyle:"italic"}}>
+                  Campaings {data2.filter((item) => item.title.toLowerCase().startsWith("d")).length} item found
                 </Text>
               )}
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
-                data={data2}
+                data={data2.filter((item) => item.title.toLowerCase().startsWith("d"))}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
                     <ProductCardMemoized  product={item} />
@@ -149,13 +149,13 @@ const ProductsScreen = ({ navigation }) => {
 
             <View>
               {data2.length > 1 && (
-                <Text>
-                  2 buy 1 pay {data2.length} item found
+                <Text style={{fontSize:24,margin:5,fontStyle:"italic"}}>
+                  2 buy 1 pay {data2.filter((item) => item.title.toLowerCase().startsWith("e")).length} item found
                 </Text>
               )}
               <FlatList
                 horizontal={true} // Enable horizontal scrolling
-                data={data2}
+                data={data2.filter((item) => item.title.toLowerCase().startsWith("e"))}
                 renderItem={({ item }) => (
                   <View style={{ flexDirection: "row" }}>
                     <ProductCardMemoized  product={item} />

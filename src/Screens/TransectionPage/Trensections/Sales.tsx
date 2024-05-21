@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import {myTuple} from "../../../../assets/js/myTuple";
 import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
 import {addItemToTuple} from "../../../../assets/js/myTuple";
+import {addItemToReports} from "../../../../assets/js/reports";
+import {reports} from "../../../../assets/js/reports";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -18,10 +20,16 @@ const SalesScreen = ({ navigation }) => {
   const ProductCardMemoized = React.memo(SalesCard);
   let data;
   const [count, setCount] = useState(0);
-
+  const [email, setEmail] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     fetchMockBackendData(); // Call the function on component mount
   }, []);
+  const currentDateTime = new Date();
+  const date = currentDateTime.toLocaleDateString();
+  const time = currentDateTime.toLocaleTimeString();
+
+  //@ts-ignore
 
   const handleRefresh = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -40,6 +48,8 @@ const SalesScreen = ({ navigation }) => {
     setTotalPrice(totalPrice);
 
   };
+
+
 
   useEffect(handleRefresh, [data2, myTuple]);
 
@@ -80,6 +90,14 @@ const SalesScreen = ({ navigation }) => {
     setCount(intValue);
   };
 
+
+  const sendRecipeToMail = () => {
+    // E-posta gönderme işlemini burada gerçekleştirin
+    console.log('E-posta adresi:', email);
+    // Modalı gizle
+    setModalVisible(false);
+    sendRecipeToMail2();
+  };
   //@ts-ignore
   const handleAddItem = (productid) => {
     addItemToTuple(productid);
@@ -130,6 +148,59 @@ const SalesScreen = ({ navigation }) => {
     return remainingAmount;
   };
 
+  function showDataInAlert() {
+    var message = "Satış Fişi:\n";
+    message += "***********************\n";
+    message += "Staff Name:Oguz     \n";
+    message += "Staff Id:00004    \n";
+    message += "                   "+time+"\n";
+    message += "                   "+date+"\n";
+    message += "***********************\n";
+    filteredAsSaleList.forEach(function(item) {
+      //@ts-ignore
+      message += "Title: " + item.title + "\n";
+      //@ts-ignore
+      message += "Id: " + item.id + "";
+      //@ts-ignore
+      message += "        Price:$" + item.price.toFixed(2) + "\n";
+      message += "***********************\n";
+    });
+    message += "Toplam Tutar:"+ totalPrice.toString().substring(0, 6) +"\n";
+    message += "Ödenen Tutar:"+ count +"\n";
+    message += "Para Üstü :" + Math.abs(count-totalPrice).toFixed(2)+"\n";
+    message += "***********************\n";
+    message += "       Good Days...";
+    Alert.alert("",message);
+    handlePress();
+    addItemToReports(message);
+  }
+
+  function sendRecipeToMail2() {
+    var message = "Satış Fişi:\n";
+    message += "***********************\n";
+    message += "Staff Name:Oguz     \n";
+    message += "Staff Id:00004    \n";
+    message += "                   "+time+"\n";
+    message += "                   "+date+"\n";
+    message += "***********************\n";
+    filteredAsSaleList.forEach(function(item) {
+      //@ts-ignore
+      message += "Title: " + item.title + "\n";
+      //@ts-ignore
+      message += "Id: " + item.id + "";
+      //@ts-ignore
+      message += "        Price:$" + item.price.toFixed(2) + "\n";
+      message += "***********************\n";
+    });
+    message += "Toplam Tutar:"+ totalPrice.toString().substring(0, 6) +"\n";
+    message += "Ödenen Tutar:"+ count +"\n";
+    message += "Para Üstü :" + Math.abs(count-totalPrice).toFixed(2)+"\n";
+    message += "***********************\n";
+    message += "       Good Days...";
+    handlePress();
+    addItemToReports(message);
+
+  }
   const isButtonActive = () => {
     return calculateRemainingAmount2() >= 0; // Kalan tutar pozitifse true, değilse false döndür
   };
@@ -143,7 +214,6 @@ const SalesScreen = ({ navigation }) => {
   return (
     <SafeAreaView >
       <View style={{flexDirection:"row",borderWidth:2}}>
-
         <TextInput
           label="Enter Product Id "
           style={{ borderColor: 'black',width:280,margin:15,height:50,borderWidth:3}}
@@ -152,7 +222,6 @@ const SalesScreen = ({ navigation }) => {
           onChangeText={(text) => {
             setProductId(text);
           }}
-
         />
         <TouchableOpacity onPress={()=>handleAddItem(productId)} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
           <Text>
@@ -207,22 +276,38 @@ const SalesScreen = ({ navigation }) => {
               Tüm Belge İptal
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor: !isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} >
+          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor: !isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}}  onPress={() => setModalVisible(true)} >
             <Text>
               E-Arşiv
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor:!isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} >
+          {/* Modal */}
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => setModalVisible(false)}
+          >
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+              <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10, alignItems: 'center' }}>
+                <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
+                <TextInput
+                  style={{ borderColor: 'gray', borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
+                  value={email}
+                  onChangeText={setEmail}
+                />
+                <Button title="Gönder" onPress={sendRecipeToMail} />
+                <Button title="İptal" onPress={() => setModalVisible(false)} />
+              </View>
+            </View>
+          </Modal>
+          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor:!isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} onPress={showDataInAlert} >
             <Text>
               Satıs Onayla
             </Text>
           </TouchableOpacity>
-
         </View>
-
-
       </View>
-
     </SafeAreaView>
   );
 };

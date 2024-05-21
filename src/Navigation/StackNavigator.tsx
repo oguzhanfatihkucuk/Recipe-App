@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTab from './BottomTab.tsx';
 import WelcomeScreen from "../Screens/WelcomeScreen/WelcomeScreen.tsx";
 import LoginPage from "../Screens/LoginPage/LoginPage.tsx";
-import XReports from "../Screens/ReportsScreen/Reports/X-Report.tsx";
+import XReports from "../Screens/ReportsScreen/Reports/UserList.tsx";
 import ZReports from "../Screens/ReportsScreen/Reports/Z-Report.tsx";
 import CampaignsScreen from "../Screens/ReportsScreen/Reports/Campaigns.tsx";
 import OtherReportScreen from "../Screens/ReportsScreen/Reports/Others.tsx";
