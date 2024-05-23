@@ -7,7 +7,7 @@ import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
 import {addItemToTuple} from "../../../../assets/js/myTuple";
 import {addItemToReports} from "../../../../assets/js/reports";
-import {reports} from "../../../../assets/js/reports";
+//import {updateEmail} from "../../../../services/e-mail/email.js";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -92,11 +92,12 @@ const SalesScreen = ({ navigation }) => {
 
 
   const sendRecipeToMail = () => {
-    // E-posta gönderme işlemini burada gerçekleştirin
+
     console.log('E-posta adresi:', email);
     // Modalı gizle
     setModalVisible(false);
     sendRecipeToMail2();
+
   };
   //@ts-ignore
   const handleAddItem = (productid) => {
@@ -173,6 +174,7 @@ const SalesScreen = ({ navigation }) => {
     Alert.alert("",message);
     handlePress();
     addItemToReports(message);
+
   }
 
   function sendRecipeToMail2() {
@@ -199,6 +201,7 @@ const SalesScreen = ({ navigation }) => {
     message += "       Good Days...";
     handlePress();
     addItemToReports(message);
+    //updateEmail(email,message);
 
   }
   const isButtonActive = () => {
