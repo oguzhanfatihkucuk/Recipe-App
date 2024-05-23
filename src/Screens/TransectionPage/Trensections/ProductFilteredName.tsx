@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import {List } from "react-native-paper";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../assets/js/deviceutils';
+import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
 const ProductFilteredName = () => {
 
   const ProductCardMemoized = React.memo(ProductCard);
   const numColumns = getNumColumns();
   useEffect(() => {
-    fetchMockBackendData(); // Call the function on component mount
+    fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
   const [loading, setLoading] = useState(true);
 
@@ -43,19 +43,13 @@ const ProductFilteredName = () => {
     }
   );
 
-  const fetchMockBackendData = async () => {
+  const fetchDataFromMockBackend = async () => {
     try {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      data = await response.json();
+      data = await fetchMockBackendData();
       setData(data);
       setLoading(false);
-      return data;
     } catch (error) {
-      console.error("Error fetching mock backend data:", error);
-      return null;
+      console.error('Error fetching data:', error);
     }
   };
 

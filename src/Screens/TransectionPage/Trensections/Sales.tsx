@@ -7,8 +7,7 @@ import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
 import {addItemToTuple} from "../../../../assets/js/myTuple";
 import {addItemToReports} from "../../../../assets/js/reports";
-//import {updateEmail} from "../../../../services/e-mail/email.js";
-
+import axios from 'axios';
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
   const [data2, setData] = useState<any[]>([]);
@@ -137,6 +136,7 @@ const SalesScreen = ({ navigation }) => {
   const fetchMockBackendData = async () => {
     try {
       const response = await fetch(API_URL);
+      //const response = await axios.get(API_URL);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

@@ -5,6 +5,7 @@ import {SegmentedButtons, TextInput } from "react-native-paper";  // Import your
 import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import DarkMode from "../../../../services/utils/darkmode.context.ts";
+import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
 
 //@ts-ignore
 const ProductsScreen = ({ navigation }) => {
@@ -17,24 +18,18 @@ const ProductsScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchMockBackendData(); // Call the function on component mount
+    fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
 
   const ProductCardMemoized = React.memo(ProductCard);
   let data;
-  const fetchMockBackendData = async () => {
+  const fetchDataFromMockBackend = async () => {
     try {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      data = await response.json();
+      data = await fetchMockBackendData();
       setData(data);
       setLoading(false);
-      return data;
     } catch (error) {
-      console.error("Error fetching mock backend data:", error);
-      return null;
+      console.error('Error fetching data:', error);
     }
   };
 
