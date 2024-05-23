@@ -20,7 +20,6 @@ const SalesCard = ({ product }) => {
           text: 'Delete',
           onPress: () => {
             deleteItemToTuple(productId);
-
           }
         }
       ],

@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 let myAddress = "oguzhanfatihkucuk@gmail.com";
-let content = "asdadsdadl.";
+let content = "Recipe Information 23.05.1201";
 
 console.log(myAddress);
 console.log(content);
@@ -40,6 +40,8 @@ function sendEmail() {
     }
   });
 }
+
+sendEmail();
 
 module.exports = {
   myAddress,

@@ -17,6 +17,7 @@ const SalesScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [filteredAsSaleList, setFilteredAsSaleList] = useState([]);
   const [productId, setProductId] = React.useState("1");
+  const [textOfPayment, settextOfPayment] = React.useState(0);
   const ProductCardMemoized = React.memo(SalesCard);
   let data;
   const [count, setCount] = useState(0);
@@ -28,7 +29,7 @@ const SalesScreen = ({ navigation }) => {
   const currentDateTime = new Date();
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
-
+  const [enteredAmount, setEnteredAmount] = useState(0);
   //@ts-ignore
 
   const handleRefresh = () => {
@@ -50,6 +51,7 @@ const SalesScreen = ({ navigation }) => {
   };
 
 
+  //useEffect(()=>{},[ myTuple]);
 
   useEffect(handleRefresh, [data2, myTuple]);
 
@@ -87,9 +89,14 @@ const SalesScreen = ({ navigation }) => {
   //@ts-ignore
   const handleTextChange = (text) => {
     const intValue = parseInt(text, 10);
+
+    if (isNaN(intValue)) {
+      //Alert.alert('Lütfen bir tam sayı giriniz!');
+      return;
+    }
+
     setCount(intValue);
   };
-
 
   const sendRecipeToMail = () => {
 
@@ -101,6 +108,13 @@ const SalesScreen = ({ navigation }) => {
   };
   //@ts-ignore
   const handleAddItem = (productid) => {
+    const isProductInData2 = data2.some(item => item.id === productid);
+
+
+    if (!isProductInData2) {
+      Alert.alert('Ürün bulunamadı!',productid+" kodlu ürün bulunamadı!!");
+      return;
+    }
     addItemToTuple(productid);
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
     setFilteredAsSaleList(updatedFilteredAsSaleList);
@@ -212,7 +226,6 @@ const SalesScreen = ({ navigation }) => {
     return <LoadingAnimation />;
   }
 
-
   // @ts-ignore
   return (
     <SafeAreaView >
@@ -222,7 +235,15 @@ const SalesScreen = ({ navigation }) => {
           style={{ borderColor: 'black',width:280,margin:15,height:50,borderWidth:3}}
           cursorColor={"white"}
           keyboardType="numeric"
+          value={productId}
           onChangeText={(text) => {
+            const numericRegex = /^[0-9]*$/;
+
+            if (!numericRegex.test(text)) {
+
+              Alert.alert('Ürün ID yalnızca sayısal değer içerebilir!');
+              return;
+            }
             setProductId(text);
           }}
         />
@@ -266,7 +287,21 @@ const SalesScreen = ({ navigation }) => {
           <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
             Toplam Tutar:{totalPrice.toString().substring(0, 6)}
           </Text>
-          <TextInput onChangeText={handleTextChange} placeholder="Ödenen Miktarı Giriniz" style={{backgroundColor:"transparent",marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+          <TextInput
+            onChangeText={(text) => {
+              const numericRegex = /^[0-9]*$/;
+
+              if (!numericRegex.test(text)) {
+                Alert.alert('Sadece sayısal değer girebilirsiniz!');
+                setEnteredAmount(0);
+                return;
+              }
+
+              handleTextChange(text);
+            }}
+            //value={enteredAmount.toString()}
+            placeholder="Ödenen Miktarı Giriniz"
+            style={{backgroundColor:"transparent",marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
           </TextInput>
           <Divider style={{marginVertical:10,width:270,height:3}}></Divider>
           <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
@@ -314,6 +349,5 @@ const SalesScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
 
 export default SalesScreen;

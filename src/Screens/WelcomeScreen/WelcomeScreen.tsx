@@ -5,10 +5,9 @@ import styles from "./WelcomeScreen.Style";
 //@ts-ignore
 const WelcomeScreen= ({navigation}) => {
 
-
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigation.navigate('app');
+      navigation.navigate('Login');
     }, 1000); // 5 seconds delay
     return () => clearTimeout(timeoutId); // Cleanup on unmount
   }, []);
