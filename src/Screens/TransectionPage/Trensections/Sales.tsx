@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
-import API_URL from "../../../../assets/js/api";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import {myTuple} from "../../../../assets/js/myTuple";
+import { addItemToTuple, myTuple } from "../../../../assets/js/myTuple";
 import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
-import {addItemToTuple} from "../../../../assets/js/myTuple";
-import {addItemToReports} from "../../../../assets/js/reports";
+import { addItemToReports } from "../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
+import axios from "axios";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -21,15 +20,15 @@ const SalesScreen = ({ navigation }) => {
   const ProductCardMemoized = React.memo(SalesCard);
   let data;
   const [count, setCount] = useState(0);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const currentDateTime = new Date();
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   const [enteredAmount, setEnteredAmount] = useState(0);
+  const [myContent, setContent] = useState("");
 
   //@ts-ignore
-
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
@@ -82,13 +81,12 @@ const SalesScreen = ({ navigation }) => {
     myTuple.length = 0;
     setData([]);
     handleTextChange(0);
+    sendEmail();
   };
   //@ts-ignore
   const handleTextChange = (text) => {
     const intValue = parseInt(text, 10);
-
     if (isNaN(intValue)) {
-      //Alert.alert('Lütfen bir tam sayı giriniz!');
       return;
     }
 
@@ -97,11 +95,9 @@ const SalesScreen = ({ navigation }) => {
 
   const sendRecipeToMail = () => {
 
-    console.log('E-posta adresi:', email);
-    // Modalı gizle
+    console.log("E-posta adresi:", email);
     setModalVisible(false);
     sendRecipeToMail2();
-
   };
   //@ts-ignore
   const handleAddItem = (productid) => {
@@ -109,7 +105,7 @@ const SalesScreen = ({ navigation }) => {
 
 
     if (!isProductInData2) {
-      Alert.alert('Ürün bulunamadı!',productid+" kodlu ürün bulunamadı!!");
+      Alert.alert("Ürün bulunamadı!", productid + " kodlu ürün bulunamadı!!");
       return;
     }
     addItemToTuple(productid);
@@ -137,7 +133,7 @@ const SalesScreen = ({ navigation }) => {
       setData(data);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
   const calculateRemainingAmount = () => {
@@ -150,8 +146,7 @@ const SalesScreen = ({ navigation }) => {
   };
 
   const calculateRemainingAmount2 = () => {
-    const remainingAmount = totalPrice - count;
-    return remainingAmount;
+    return totalPrice - count;
   };
 
   function showDataInAlert() {
@@ -159,8 +154,8 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
     message += "Staff Id:00004    \n";
-    message += "                   "+time+"\n";
-    message += "                   "+date+"\n";
+    message += "                   " + time + "\n";
+    message += "                   " + date + "\n";
     message += "***********************\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
@@ -171,24 +166,27 @@ const SalesScreen = ({ navigation }) => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Toplam Tutar:"+ totalPrice.toString().substring(0, 6) +"\n";
-    message += "Ödenen Tutar:"+ count +"\n";
-    message += "Para Üstü :" + Math.abs(count-totalPrice).toFixed(2)+"\n";
+    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Ödenen Tutar:" + count + "\n";
+    message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
-    Alert.alert("",message);
+    Alert.alert("", message);
     handlePress();
     addItemToReports(message);
 
   }
 
+  //@ts-ignore
+
   function sendRecipeToMail2() {
+
     var message = "Satış Fişi:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
     message += "Staff Id:00004    \n";
-    message += "                   "+time+"\n";
-    message += "                   "+date+"\n";
+    message += "                   " + time + "\n";
+    message += "                   " + date + "\n";
     message += "***********************\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
@@ -199,16 +197,32 @@ const SalesScreen = ({ navigation }) => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Toplam Tutar:"+ totalPrice.toString().substring(0, 6) +"\n";
-    message += "Ödenen Tutar:"+ count +"\n";
-    message += "Para Üstü :" + Math.abs(count-totalPrice).toFixed(2)+"\n";
+    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Ödenen Tutar:" + count + "\n";
+    message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
-    handlePress();
-    addItemToReports(message);
-    //updateEmail(email,message);
 
+    setContent(message);
+    addItemToReports(message);
+    handlePress();
   }
+
+
+  const sendEmail = () => {
+
+    axios.post("http://192.168.1.25:3002/send-email", {
+      myAddress: email,
+      content: myContent
+    })
+      .then(response => {
+        Alert.alert("Success", "Email sent successfully");
+      })
+      .catch(error => {
+        console.error(error);
+        Alert.alert("Error", "Failed to send email");
+      });
+  };
   const isButtonActive = () => {
     return calculateRemainingAmount2() >= 0; // Kalan tutar pozitifse true, değilse false döndür
   };
@@ -219,11 +233,11 @@ const SalesScreen = ({ navigation }) => {
 
   // @ts-ignore
   return (
-    <SafeAreaView >
-      <View style={{flexDirection:"row",borderWidth:2}}>
+    <SafeAreaView>
+      <View style={{ flexDirection: "row", borderWidth: 2 }}>
         <TextInput
           label="Enter Product Id "
-          style={{ borderColor: 'black',width:280,margin:15,height:50,borderWidth:3}}
+          style={{ borderColor: "black", width: 280, margin: 15, height: 50, borderWidth: 3 }}
           cursorColor={"white"}
           keyboardType="numeric"
           value={productId}
@@ -232,50 +246,102 @@ const SalesScreen = ({ navigation }) => {
 
             if (!numericRegex.test(text)) {
 
-              Alert.alert('Ürün ID yalnızca sayısal değer içerebilir!');
+              Alert.alert("Ürün ID yalnızca sayısal değer içerebilir!");
               return;
             }
             setProductId(text);
           }}
         />
-        <TouchableOpacity onPress={()=>handleAddItem(productId)} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
+        <TouchableOpacity onPress={() => handleAddItem(productId)} style={{
+          alignItems: "center",
+          width: 120,
+          height: 50,
+          borderColor: "black",
+          borderWidth: 3,
+          justifyContent: "center",
+          marginVertical: 20,
+          marginHorizontal: 10
+        }}>
           <Text>
             Add Product
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>handleRefresh()} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
+        <TouchableOpacity onPress={() => handleRefresh()} style={{
+          alignItems: "center",
+          width: 120,
+          height: 50,
+          borderColor: "black",
+          borderWidth: 3,
+          justifyContent: "center",
+          marginVertical: 20,
+          marginHorizontal: 10
+        }}>
           <Text>
             Refresh
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate("Products")} style={{alignItems:"center",width:120,height:50,borderColor:"black",borderWidth:3,justifyContent:"center",marginVertical:20,marginHorizontal:10}}>
+        <TouchableOpacity onPress={() => navigation.navigate("Products")} style={{
+          alignItems: "center",
+          width: 120,
+          height: 50,
+          borderColor: "black",
+          borderWidth: 3,
+          justifyContent: "center",
+          marginVertical: 20,
+          marginHorizontal: 10
+        }}>
           <Text>
             Go to Category Page
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{borderWidth:2,justifyContent:"space-between",flexDirection:"row",marginBottom:200,marginTop:20,width:1100}}>
+      <View style={{
+        borderWidth: 2,
+        justifyContent: "space-between",
+        flexDirection: "row",
+        marginBottom: 200,
+        marginTop: 20,
+        width: 1100
+      }}>
         <View>
           <FlatList
             horizontal={false}  // Dikey yönde liste oluştur
             data={filteredAsSaleList}
             renderItem={({ item }) => (
-              <View style={{ flexDirection: "row"}}>
-                <ProductCardMemoized  product={item} />
+              <View style={{ flexDirection: "row" }}>
+                <ProductCardMemoized product={item} />
               </View>
             )}
             ListEmptyComponent={() => (
-              <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                <Text style={{fontSize:24,margin:15}}>Sepetinizde Ürün Yok </Text>
+              <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+                <Text style={{ fontSize: 24, margin: 15 }}>Sepetinizde Ürün Yok </Text>
               </View>
             )}
           />
         </View>
-        <View >
-          <Text style={{marginVertical:10,fontSize:24,width:270,height:50,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+        <View>
+          <Text style={{
+            marginVertical: 10,
+            fontSize: 24,
+            width: 270,
+            height: 50,
+            borderWidth: 2,
+            borderColor: "black",
+            borderRadius: 15,
+            padding: 5
+          }}>
             Toplam Ürün sayısı:{lenghtOfSales}
           </Text>
-          <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+          <Text style={{
+            marginVertical: 10,
+            fontSize: 24,
+            width: 270,
+            height: 80,
+            borderWidth: 2,
+            borderColor: "black",
+            borderRadius: 15,
+            padding: 5
+          }}>
             Toplam Tutar:{totalPrice.toString().substring(0, 6)}
           </Text>
           <TextInput
@@ -283,7 +349,7 @@ const SalesScreen = ({ navigation }) => {
               const numericRegex = /^[0-9]*$/;
 
               if (!numericRegex.test(text)) {
-                Alert.alert('Sadece sayısal değer girebilirsiniz!');
+                Alert.alert("Sadece sayısal değer girebilirsiniz!");
                 setEnteredAmount(0);
                 return;
               }
@@ -292,20 +358,53 @@ const SalesScreen = ({ navigation }) => {
             }}
             //value={enteredAmount.toString()}
             placeholder="Ödenen Miktarı Giriniz"
-            style={{backgroundColor:"transparent",marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+            style={{
+              backgroundColor: "transparent",
+              marginVertical: 10,
+              fontSize: 24,
+              width: 270,
+              height: 80,
+              borderWidth: 2,
+              borderColor: "black",
+              borderRadius: 15,
+              padding: 5
+            }}>
           </TextInput>
-          <Divider style={{marginVertical:10,width:270,height:3}}></Divider>
-          <Text style={{marginVertical:10,fontSize:24,width:270,height:80,borderWidth:2,borderColor:"black",borderRadius:15,padding:5}}>
+          <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
+          <Text style={{
+            marginVertical: 10,
+            fontSize: 24,
+            width: 270,
+            height: 80,
+            borderWidth: 2,
+            borderColor: "black",
+            borderRadius: 15,
+            padding: 5
+          }}>
             {calculateRemainingAmount()}
           </Text>
         </View>
         <View>
-          <TouchableOpacity style={{margin:10,height:50,width:110,backgroundColor:"white",alignItems:"center",justifyContent:"center"}} onPress={handlePress} >
+          <TouchableOpacity style={{
+            margin: 10,
+            height: 50,
+            width: 110,
+            backgroundColor: "white",
+            alignItems: "center",
+            justifyContent: "center"
+          }} onPress={handlePress}>
             <Text>
               Tüm Belge İptal
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor: !isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}}  onPress={() => setModalVisible(true)} >
+          <TouchableOpacity disabled={isButtonActive()} style={{
+            margin: 10,
+            height: 50,
+            width: 110,
+            backgroundColor: !isButtonActive() ? "green" : "red",
+            alignItems: "center",
+            justifyContent: "center"
+          }} onPress={() => setModalVisible(true)}>
             <Text>
               E-Arşiv
             </Text>
@@ -317,20 +416,33 @@ const SalesScreen = ({ navigation }) => {
             visible={modalVisible}
             onRequestClose={() => setModalVisible(false)}
           >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-              <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10, alignItems: 'center' }}>
+            <View style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.5)"
+            }}>
+              <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, alignItems: "center" }}>
                 <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
                 <TextInput
-                  style={{ borderColor: 'gray', borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
+                  style={{ borderColor: "gray", borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
                   value={email}
                   onChangeText={setEmail}
+
                 />
                 <Button title="Gönder" onPress={sendRecipeToMail} />
                 <Button title="İptal" onPress={() => setModalVisible(false)} />
               </View>
             </View>
           </Modal>
-          <TouchableOpacity disabled={isButtonActive()} style={{margin:10,height:50,width:110,backgroundColor:!isButtonActive() ? "green" : "red",alignItems:"center",justifyContent:"center"}} onPress={showDataInAlert} >
+          <TouchableOpacity disabled={isButtonActive()} style={{
+            margin: 10,
+            height: 50,
+            width: 110,
+            backgroundColor: !isButtonActive() ? "green" : "red",
+            alignItems: "center",
+            justifyContent: "center"
+          }} onPress={showDataInAlert}>
             <Text>
               Satıs Onayla
             </Text>
