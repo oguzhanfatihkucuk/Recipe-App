@@ -7,16 +7,19 @@ import { getNumColumns } from '../../../../assets/js/deviceutils';
 import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
 const ProductFilteredName = () => {
 
-  const ProductCardMemoized = React.memo(ProductCard);
-  const numColumns = getNumColumns();
+
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
-  const [loading, setLoading] = useState(true);
 
-  let data;
+  const ProductCardMemoized = React.memo(ProductCard);
+  const numColumns = getNumColumns();
+  const [loading, setLoading] = useState(true);
   const [data2, setData] = useState<any[]>([]);
   const [nameTerm, setnameTerm] = useState(99);
+  let data;
+
+
   const filteredAsNM = data2.filter((item) => {
       const itemName = item.title.toLowerCase();
       const firstLetter = itemName[0];

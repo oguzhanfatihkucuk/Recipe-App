@@ -7,29 +7,32 @@ import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
 import {addItemToTuple} from "../../../../assets/js/myTuple";
 import {addItemToReports} from "../../../../assets/js/reports";
-import axios from 'axios';
+import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
+
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
+
   const [data2, setData] = useState<any[]>([]);
   const [lenghtOfSales, setlenghtOfSales] = useState(0);
   let [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [filteredAsSaleList, setFilteredAsSaleList] = useState([]);
-  const [productId, setProductId] = React.useState("1");
-  const [textOfPayment, settextOfPayment] = React.useState(0);
+  const [productId, setProductId] = React.useState("");
   const ProductCardMemoized = React.memo(SalesCard);
   let data;
   const [count, setCount] = useState(0);
   const [email, setEmail] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  useEffect(() => {
-    fetchMockBackendData(); // Call the function on component mount
-  }, []);
   const currentDateTime = new Date();
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   const [enteredAmount, setEnteredAmount] = useState(0);
+
   //@ts-ignore
+
+  useEffect(() => {
+    fetchDataFromMockBackend(); // Call the function on component mount
+  }, []);
 
   const handleRefresh = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -48,11 +51,6 @@ const SalesScreen = ({ navigation }) => {
     setTotalPrice(totalPrice);
 
   };
-
-
-  //useEffect(()=>{},[ myTuple]);
-
-  useEffect(handleRefresh, [data2, myTuple]);
 
   useEffect(() => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -133,20 +131,13 @@ const SalesScreen = ({ navigation }) => {
 
   };
 
-  const fetchMockBackendData = async () => {
+  const fetchDataFromMockBackend = async () => {
     try {
-      const response = await fetch(API_URL);
-      //const response = await axios.get(API_URL);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      data = await response.json();
+      data = await fetchMockBackendData();
       setData(data);
       setLoading(false);
-      return data;
     } catch (error) {
-      console.error("Error fetching mock backend data:", error);
-      return null;
+      console.error('Error fetching data:', error);
     }
   };
   const calculateRemainingAmount = () => {

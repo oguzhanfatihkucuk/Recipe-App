@@ -1,5 +1,5 @@
 import React, {} from "react";
-import { Alert, Button, FlatList, SafeAreaView, Text, View } from "react-native";
+import { Alert, Button, FlatList, SafeAreaView, View } from "react-native";
 import { reports } from "../../../../assets/js/reports";
 
 const ZReports = () => {
