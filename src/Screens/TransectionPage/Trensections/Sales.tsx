@@ -26,7 +26,7 @@ const SalesScreen = ({ navigation }) => {
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   const [enteredAmount, setEnteredAmount] = useState(0);
-  const [myContent, setContent] = useState("");
+  let [myContent, setContent] = useState("");
 
   //@ts-ignore
   useEffect(() => {
@@ -78,6 +78,13 @@ const SalesScreen = ({ navigation }) => {
   };
 
   const handlePress = () => {
+    myTuple.length = 0;
+    setData([]);
+    handleTextChange(0);
+
+  };
+
+  const handlePressEmail = () => {
     myTuple.length = 0;
     setData([]);
     handleTextChange(0);
@@ -179,7 +186,7 @@ const SalesScreen = ({ navigation }) => {
 
   //@ts-ignore
 
-  function sendRecipeToMail2() {
+  const sendRecipeToMail2 = () =>{
 
     var message = "Satış Fişi:\n";
     message += "***********************\n";
@@ -203,9 +210,14 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "       Good Days...";
 
+
+
+
     setContent(message);
+    console.log(message);
+    console.log(myContent);
     addItemToReports(message);
-    handlePress();
+    handlePressEmail();
   }
 
 

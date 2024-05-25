@@ -24,7 +24,7 @@ const sendEmail = (myAddress, content) => {
     from: 'oguzhanfatihk@gmail.com',
     to: myAddress,
     subject: 'Sending Email using Nodemailer',
-    text: content,
+    text: content
   };
 
   return transporter.sendMail(mailOptions);
