@@ -7,6 +7,7 @@ import { Divider, TextInput } from "react-native-paper";
 import { addItemToReports } from "../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
 import axios from "axios";
+import MY_IP from "../../../../assets/js/myIp";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -48,7 +49,6 @@ const SalesScreen = ({ navigation }) => {
       }
     }
     setTotalPrice(totalPrice);
-
   };
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const SalesScreen = ({ navigation }) => {
     myTuple.length = 0;
     setData([]);
     handleTextChange(0);
-
+    fetchDataFromMockBackend();
   };
 
   const handlePressEmail = () => {
@@ -89,6 +89,8 @@ const SalesScreen = ({ navigation }) => {
     setData([]);
     handleTextChange(0);
     sendEmail();
+    setContent("");
+    fetchDataFromMockBackend();
   };
   //@ts-ignore
   const handleTextChange = (text) => {
@@ -210,20 +212,24 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "       Good Days...";
 
-
-
-
     setContent(message);
-    console.log(message);
-    console.log(myContent);
-    addItemToReports(message);
-    handlePressEmail();
+    //console.log("MyMessage"+message);
+    //console.log("Mycontent"+myContent);
+    //addItemToReports(message);
+    //handlePressEmail();
   }
 
+  useEffect(() => {
+    if (myContent !== "") {
+      console.log("Mycontent"+myContent);
+      addItemToReports(myContent);
+      handlePressEmail();
 
+    }
+  }, [myContent]);
   const sendEmail = () => {
 
-    axios.post("http://192.168.1.25:3002/send-email", {
+    axios.post("http://"+MY_IP+":3002/send-email", {
       myAddress: email,
       content: myContent
     })

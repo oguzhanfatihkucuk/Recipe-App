@@ -1,3 +1,5 @@
-export const API_URL="http://192.168.1.25:3000/products";
+import MY_IP from "./myIp";
+
+export const API_URL="http://"+MY_IP+":3000/products";
 
 export default API_URL;
