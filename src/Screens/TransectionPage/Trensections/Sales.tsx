@@ -8,6 +8,7 @@ import { addItemToReports } from "../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
 import axios from "axios";
 import MY_IP from "../../../../assets/js/myIp";
+import Toast from "react-native-root-toast";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -28,11 +29,13 @@ const SalesScreen = ({ navigation }) => {
   const time = currentDateTime.toLocaleTimeString();
   const [enteredAmount, setEnteredAmount] = useState(0);
   let [myContent, setContent] = useState("");
+  const [refreshCount, setRefreshCount] = useState(0); // State to trigger re-render
 
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
+
 
   const handleRefresh = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -50,6 +53,7 @@ const SalesScreen = ({ navigation }) => {
     }
     setTotalPrice(totalPrice);
   };
+
 
   useEffect(() => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -98,20 +102,17 @@ const SalesScreen = ({ navigation }) => {
     if (isNaN(intValue)) {
       return;
     }
-
     setCount(intValue);
   };
 
   const sendRecipeToMail = () => {
 
-    console.log("E-posta adresi:", email);
     setModalVisible(false);
     sendRecipeToMail2();
   };
   //@ts-ignore
   const handleAddItem = (productid) => {
     const isProductInData2 = data2.some(item => item.id === productid);
-
 
     if (!isProductInData2) {
       Alert.alert("Ürün bulunamadı!", productid + " kodlu ürün bulunamadı!!");
@@ -183,12 +184,10 @@ const SalesScreen = ({ navigation }) => {
     Alert.alert("", message);
     handlePress();
     addItemToReports(message);
-
   }
 
-  //@ts-ignore
 
-  const sendRecipeToMail2 = () =>{
+  const sendRecipeToMail2 = () => {
 
     var message = "Satış Fişi:\n";
     message += "***********************\n";
@@ -211,17 +210,11 @@ const SalesScreen = ({ navigation }) => {
     message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
-
     setContent(message);
-    //console.log("MyMessage"+message);
-    //console.log("Mycontent"+myContent);
-    //addItemToReports(message);
-    //handlePressEmail();
-  }
+  };
 
   useEffect(() => {
     if (myContent !== "") {
-      console.log("Mycontent"+myContent);
       addItemToReports(myContent);
       handlePressEmail();
 
@@ -229,16 +222,27 @@ const SalesScreen = ({ navigation }) => {
   }, [myContent]);
   const sendEmail = () => {
 
-    axios.post("http://"+MY_IP+":3002/send-email", {
+    axios.post("http://" + MY_IP + ":3002/send-email", {
       myAddress: email,
       content: myContent
     })
       .then(response => {
-        Alert.alert("Success", "Email sent successfully");
+        Toast.show(
+          "Success!!\nEmail sent successfully",
+          {
+            duration: Toast.durations.SHORT,
+          }
+        );
+
       })
       .catch(error => {
         console.error(error);
-        Alert.alert("Error", "Failed to send email");
+        Toast.show(
+        "Error!!\nFailed to send email",
+          {
+            duration: Toast.durations.SHORT,
+          }
+        );
       });
   };
   const isButtonActive = () => {
@@ -250,6 +254,7 @@ const SalesScreen = ({ navigation }) => {
   }
 
   // @ts-ignore
+
   return (
     <SafeAreaView>
       <View style={{ flexDirection: "row", borderWidth: 2 }}>
@@ -263,8 +268,13 @@ const SalesScreen = ({ navigation }) => {
             const numericRegex = /^[0-9]*$/;
 
             if (!numericRegex.test(text)) {
+              Toast.show(
+                "Ürün ID yalnızca sayısal değer içerebilir!",
+                {
+                  duration: Toast.durations.SHORT,
+                }
+              );
 
-              Alert.alert("Ürün ID yalnızca sayısal değer içerebilir!");
               return;
             }
             setProductId(text);
@@ -284,7 +294,8 @@ const SalesScreen = ({ navigation }) => {
             Add Product
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleRefresh()} style={{
+        <TouchableOpacity onPress={() => { handleRefresh()
+        }} style={{
           alignItems: "center",
           width: 120,
           height: 50,
@@ -325,6 +336,7 @@ const SalesScreen = ({ navigation }) => {
           <FlatList
             horizontal={false}  // Dikey yönde liste oluştur
             data={filteredAsSaleList}
+            refreshing={loading}
             renderItem={({ item }) => (
               <View style={{ flexDirection: "row" }}>
                 <ProductCardMemoized product={item} />
@@ -367,7 +379,13 @@ const SalesScreen = ({ navigation }) => {
               const numericRegex = /^[0-9]*$/;
 
               if (!numericRegex.test(text)) {
-                Alert.alert("Sadece sayısal değer girebilirsiniz!");
+                Toast.show(
+                  "Sadece sayısal değer girebilirsiniz!",
+                  {
+                    duration: Toast.durations.SHORT,
+                  }
+                );
+
                 setEnteredAmount(0);
                 return;
               }

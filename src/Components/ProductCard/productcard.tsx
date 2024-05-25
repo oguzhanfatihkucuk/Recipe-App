@@ -1,26 +1,20 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert, ToastAndroid } from "react-native";
 import styles from "../../Components/ProductCard/productCardStyle.tsx";
 import { addItemToTuple} from "../../../assets/js/myTuple.js";
-
+import Toast from 'react-native-root-toast';
 //@ts-ignore
 const ProductCard = ({ product }) => {
 
   //@ts-ignore
-  const createTwoButtonAlert = (productId, productTitle) =>
-    Alert.alert( 'Product Details',
-      `Product ID: ${productId}\nProduct Title: ${productTitle}\nItem Succesfully Added Your List`, [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
-  //@ts-ignore
   const handlePress = (productId,productTitle) => {
     addItemToTuple(productId);
-    createTwoButtonAlert(productId, productTitle);
+    Toast.show(
+      `Product ID: ${productId}\nProduct Title: ${productTitle}\nItem Successfully Added to Your List`,
+      {
+        duration: Toast.durations.SHORT,
+      }
+    );
   };
 
   //@ts-ignore

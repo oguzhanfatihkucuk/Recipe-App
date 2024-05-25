@@ -79,7 +79,7 @@ const ProductsScreen = ({ navigation }) => {
           style={{ backgroundColor: "transparent" }}
           value={searchTerm}
         />
-        <View>
+        <View style={{flex:1}}>
           {searchTerm ? (<View>
             <Text>
               {filteredAsFL.length} items found
