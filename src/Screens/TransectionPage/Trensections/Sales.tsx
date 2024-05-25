@@ -106,10 +106,20 @@ const SalesScreen = ({ navigation }) => {
   };
 
   const sendRecipeToMail = () => {
-
     setModalVisible(false);
     sendRecipeToMail2();
   };
+
+  const creditCardMethod = () => {
+    setCount(calculateRemainingAmount2);
+    myTuple.length = 0;
+    setData([]);
+    handleTextChange(0);
+    fetchDataFromMockBackend();
+    showDataInAlertCreditCard();
+  };
+
+
   //@ts-ignore
   const handleAddItem = (productid) => {
     const isProductInData2 = data2.some(item => item.id === productid);
@@ -186,7 +196,33 @@ const SalesScreen = ({ navigation }) => {
     addItemToReports(message);
   }
 
-
+  function showDataInAlertCreditCard() {
+    var message = "Satış Fişi:\n";
+    message += "***********************\n";
+    message += "Staff Name:Oguz     \n";
+    message += "Staff Id:00004    \n";
+    message += "                   " + time + "\n";
+    message += "                   " + date + "\n";
+    message += "***********************\n";
+    filteredAsSaleList.forEach(function(item) {
+      //@ts-ignore
+      message += "Title: " + item.title + "\n";
+      //@ts-ignore
+      message += "Id: " + item.id + "";
+      //@ts-ignore
+      message += "        Price:$" + item.price.toFixed(2) + "\n";
+      message += "***********************\n";
+    });
+    message += "Ödeme Kredi Kartı İle Alındı\n" ;
+    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Ödenen Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Para Üstü : 0 \n";
+    message += "***********************\n";
+    message += "       Good Days...";
+    Alert.alert("", message);
+    handlePress();
+    addItemToReports(message);
+  }
   const sendRecipeToMail2 = () => {
 
     var message = "Satış Fişi:\n";
@@ -433,6 +469,18 @@ const SalesScreen = ({ navigation }) => {
               Tüm Belge İptal
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={{
+            margin: 10,
+            height: 50,
+            width: 110,
+            backgroundColor: "white",
+            alignItems: "center",
+            justifyContent: "center"
+          }} onPress={() => creditCardMethod()}>
+            <Text>
+              Kredi Kartı İle Ödeme
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity disabled={isButtonActive()} style={{
             margin: 10,
             height: 50,
@@ -445,6 +493,7 @@ const SalesScreen = ({ navigation }) => {
               E-Arşiv
             </Text>
           </TouchableOpacity>
+
           {/* Modal */}
           <Modal
             animationType="slide"
