@@ -130,7 +130,7 @@ const ProductsScreen = ({ navigation }) => {
             <View>
               {data2.length > 1 && (
                 <Text style={{fontSize:24,margin:5,fontStyle:"italic"}}>
-                  Campaings {data2.filter((item) => item.title.toLowerCase().startsWith("d")).length} item found
+                  Campaigns {data2.filter((item) => item.title.toLowerCase().startsWith("d")).length} item found
                 </Text>
               )}
               <FlatList

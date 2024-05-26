@@ -27,9 +27,7 @@ const SalesScreen = ({ navigation }) => {
   const currentDateTime = new Date();
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
-  const [enteredAmount, setEnteredAmount] = useState(0);
   let [myContent, setContent] = useState("");
-  const [refreshCount, setRefreshCount] = useState(0); // State to trigger re-render
 
   //@ts-ignore
   useEffect(() => {
@@ -422,7 +420,6 @@ const SalesScreen = ({ navigation }) => {
                   }
                 );
 
-                setEnteredAmount(0);
                 return;
               }
 
