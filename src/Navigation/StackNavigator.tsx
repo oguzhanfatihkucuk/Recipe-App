@@ -15,6 +15,7 @@ import ProductFiltered from "../Screens/TransectionPage/Trensections/ProductFilt
 import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/ProductFilteredPrice.tsx";
 import ProductFilteredName from "../Screens/TransectionPage/Trensections/ProductFilteredName.tsx";
 import NFCPage from "../Screens/LoginPage/nfc.tsx";
+import AllProducts from "../Screens/TransectionPage/Trensections/allprodcuts.tsx";
 
 
 
@@ -38,6 +39,7 @@ export default function StackNavigator() {
       <Stack.Screen name="ProductFilteredPrice" component={ProductFilteredPrice} options={{headerShown:true}}/>
       <Stack.Screen name="ProductFilteredName" component={ProductFilteredName} options={{headerShown:true}}/>
       <Stack.Screen name="NFCPage" component={NFCPage} />
+      <Stack.Screen name="AllProducts" component={AllProducts} options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 }

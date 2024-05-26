@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, FlatList, Text, SafeAreaView, ScrollView} from "react-native";
+import { View, FlatList, Text, SafeAreaView, ScrollView, TouchableOpacity, Button } from "react-native";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import {SegmentedButtons, TextInput } from "react-native-paper";  // Import your product card component
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
@@ -79,6 +79,9 @@ const ProductsScreen = ({ navigation }) => {
           style={{ backgroundColor: "transparent" }}
           value={searchTerm}
         />
+        <Button title={"See all Products"} onPress={()=>navigation.navigate("AllProducts")}/>
+
+
         <View style={{flex:1}}>
           {searchTerm ? (<View>
             <Text>

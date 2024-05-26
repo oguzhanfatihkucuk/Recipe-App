@@ -9,8 +9,9 @@ const ProductFilteredPrice = () => {
 
   const ProductCardMemoized = React.memo(ProductCard);
   const numColumns = getNumColumns();
+
   useEffect(() => {
-    fetchDataFromMockBackend(); // Call the function on component mount
+    setLoading(false); // Call the function on component mount
   }, []);
 
   const [data2, setData] = useState<any[]>([]);
@@ -49,36 +50,55 @@ const ProductFilteredPrice = () => {
         return false;
     }
   });
+  //@ts-ignore
+  const handlePriceTermPress = (priceTerm) => {
+    fetchDataFromMockBackend();
+    setLoading(true);
+    setpricTerm(priceTerm);
+  };
 
-  if (loading) {
-    return <LoadingAnimation />;
-  }
   // @ts-ignore
   return (
       <View>
         <List.Section>
           <List.Accordion
             title="Choose Price Range"
-            left={props => <List.Icon {...props} icon="folder" />}>
-            <List.Item title="0-10" onPress={()=>{setpricTerm(1)}}/>
-            <List.Item title="10-50" onPress={()=>{setpricTerm(2)}}/>
-            <List.Item title="50-100" onPress={()=>{setpricTerm(3)}}/>
-            <List.Item title="100-500" onPress={()=>{setpricTerm(4)}}/>
-            <List.Item title="500-" onPress={()=>{setpricTerm(5)}}/>
+            left={props => <List.Icon {...props} icon="folder" />}
+          >
+            {[
+              { title: "0-10", priceTerm: 1 },
+              { title: "10-50", priceTerm: 2 },
+              { title: "50-100", priceTerm: 3 },
+              { title: "100-500", priceTerm: 4 },
+              { title: "500-", priceTerm: 5 }
+            ].map(item => (
+              <List.Item
+                key={item.priceTerm}
+                title={item.title}
+                onPress={() => handlePriceTermPress(item.priceTerm)}
+              />
+            ))}
           </List.Accordion>
         </List.Section>
         <Text>
           {filteredAsPR.length} items found
         </Text>
-        <FlatList
-          data={filteredAsPR}
-          renderItem={({ item }) => (
-            <View style={{ flexDirection: "row" }}>
-              <ProductCardMemoized product={item} />
-            </View>
-          )}
-          numColumns={numColumns}
-          keyExtractor={(item) => item.id.toString()} />
+        {loading ? (
+          // isLoading true ise yükleme bileşenini döndür
+          <LoadingAnimation />
+        ) : (
+          // isLoading false ise FlatList bileşenini döndür
+          <FlatList
+            data={filteredAsPR}
+            renderItem={({ item }) => (
+              <View style={{ flexDirection: "row" }}>
+                <ProductCardMemoized product={item} />
+              </View>
+            )}
+            numColumns={numColumns}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        )}
       </View>
 
   );

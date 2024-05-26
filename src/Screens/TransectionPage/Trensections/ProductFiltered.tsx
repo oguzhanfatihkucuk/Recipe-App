@@ -6,12 +6,14 @@ import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../assets/js/deviceutils';
 import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData"; // DeviceUtils.js dosyasını içe aktarın
 
+
 const ProductFiltered = () => {
 
   const numColumns = getNumColumns();
 
+
   useEffect(() => {
-    fetchDataFromMockBackend(); // Call the function on component mount
+    setLoading(false); // Call the function on component mount
   }, []);
 
   const [data2, setData] = useState<any[]>([]);
@@ -30,37 +32,55 @@ const ProductFiltered = () => {
       console.error('Error fetching data:', error);
     }
   };
-
-  if (loading) {
-    return <LoadingAnimation />;
-  }
+  //@ts-ignore
+  const handleCategoryPress = (category) => {
+    setcategoryTerm(category);
+    setLoading(true);
+    fetchDataFromMockBackend();
+  };
   // @ts-ignore
   return (
     <SafeAreaView>
-        <List.Section >
-          <List.Accordion
-            title="Choose Category"
-            left={props => <List.Icon {...props} icon="folder" />}>
-            <List.Item title="Clothing" onPress={()=>{setcategoryTerm("clothing")}}/>
-            <List.Item title="accessories" onPress={()=>{setcategoryTerm("accessories")}}/>
-            <List.Item title="home" onPress={()=>{setcategoryTerm("home")}}/>
-            <List.Item title="kitchen" onPress={()=>{setcategoryTerm("kitchen")}}/>
-            <List.Item title="food" onPress={()=>{setcategoryTerm("food")}}/>
-          </List.Accordion>
-        </List.Section>
+      <List.Section>
+        <List.Accordion
+          title="Choose Category"
+          left={props => <List.Icon {...props} icon="folder" />}
+        >
+          {[
+            { title: "Clothing", category: "clothing" },
+            { title: "Accessories", category: "accessories" },
+            { title: "Home", category: "home" },
+            { title: "Kitchen", category: "kitchen" },
+            { title: "Food", category: "food" }
+          ].map(item => (
+            <List.Item
+              key={item.category}
+              title={item.title}
+              onPress={() => handleCategoryPress(item.category)}
+            />
+          ))}
+        </List.Accordion>
+      </List.Section>
         <View>
           <Text>
             {categoryTerm} {filteredAsCT.length} items found
           </Text>
-          <FlatList
-            data={filteredAsCT}
-            renderItem={({ item }) => (
-              <View style={{ flexDirection: "row" }}>
-                <ProductCardMemoized product={item} />
-              </View>
-            )}
-            numColumns={numColumns}
-            keyExtractor={(item) => item.id.toString()} />
+          {loading ? (
+            // isLoading true ise yükleme bileşenini döndür
+            <LoadingAnimation />
+          ) : (
+            // isLoading false ise FlatList bileşenini döndür
+            <FlatList
+              data={filteredAsCT}
+              renderItem={({ item }) => (
+                <View style={{ flexDirection: "row" }}>
+                  <ProductCardMemoized product={item} />
+                </View>
+              )}
+              numColumns={numColumns}
+              keyExtractor={(item) => item.id.toString()}
+            />
+          )}
         </View>
 
     </SafeAreaView>
