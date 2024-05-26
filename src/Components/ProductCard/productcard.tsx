@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, Alert, ToastAndroid } from "react-native";
+import { View, Text, Image, TouchableOpacity} from "react-native";
 import styles from "../../Components/ProductCard/productCardStyle.tsx";
 import { addItemToTuple} from "../../../assets/js/myTuple.js";
 import Toast from 'react-native-root-toast';

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, SafeAreaView, Text, View } from "react-native";
-import {  List,} from "react-native-paper";
+import { FlatList, SafeAreaView,View } from "react-native";
 import ProductCard from "../../../Components/ProductCard/productcard.tsx";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../assets/js/deviceutils';
