@@ -26,3 +26,4 @@ export const transferOfflineRecipeToReports = () => {
 
   reportsOffline.length = 0;
 };
+

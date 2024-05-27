@@ -13,7 +13,7 @@ import Slider from "@react-native-community/slider";
 import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
 import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
 import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
-import { transferOfflineRecipeToReports } from "../../../assets/js/reports";
+import { offlineRecipeCount, transferOfflineRecipeToReports } from "../../../assets/js/reports";
 
 const SettingsScreen = () => {
 
@@ -42,6 +42,7 @@ const SettingsScreen = () => {
     };
   }, []);
 
+  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
   const { isStoreOpen, setIsStoreOpen } = useStoreStatus();
   const { t } = useTranslation();
   const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
@@ -97,9 +98,10 @@ const SettingsScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => {
         transferOfflineRecipeToReports();
+        setCountOfPrinterWork(0);
       }}>
         <Icon size={20} color={iconColor} source="information-outline" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization")}</Text>
+        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization "+ countOfPrinterWork)}</Text>
       </TouchableOpacity>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
         <Icon size={20} color={iconColor} source="theme-light-dark" />
