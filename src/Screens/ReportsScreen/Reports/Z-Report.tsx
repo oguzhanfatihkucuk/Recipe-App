@@ -1,6 +1,6 @@
 import React, {} from "react";
-import { Alert, Button, FlatList, SafeAreaView, View } from "react-native";
-import { reports } from "../../../../assets/js/reports";
+import { Alert, Button, FlatList, SafeAreaView, Text, View } from "react-native";
+import { reports, reportsOffline } from "../../../../assets/js/reports";
 
 const ZReports = () => {
   //@ts-ignore
@@ -19,12 +19,26 @@ const ZReports = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
-      <FlatList
-        data={reports}
-        style={{margin:20}}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      <View style={{flexDirection:"row"}}>
+        <Text>
+          Printed Recipes
+        </Text>
+        <FlatList
+          data={reports}
+          style={{margin:20}}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+        <Text>
+          Haven't Printed Recipes
+        </Text>
+        <FlatList
+          data={reportsOffline}
+          style={{margin:20}}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
     </SafeAreaView>
   );
 };

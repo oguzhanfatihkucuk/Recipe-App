@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { View, TouchableOpacity, BackHandler} from "react-native";
+import { View, TouchableOpacity, BackHandler } from "react-native";
 import styles from "./SettingsScreen.Style";
 import { Divider, SegmentedButtons, Switch } from "react-native-paper";
 import i18next from "../../../services/i18next";
@@ -13,6 +13,7 @@ import Slider from "@react-native-community/slider";
 import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
 import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
 import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
+import { transferOfflineRecipeToReports } from "../../../assets/js/reports";
 
 const SettingsScreen = () => {
 
@@ -49,6 +50,7 @@ const SettingsScreen = () => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
   const changeLng = (lng: string | undefined) => {
     i18next.changeLanguage(lng);
   };
@@ -94,9 +96,10 @@ const SettingsScreen = () => {
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("aboutus")}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => {
+        transferOfflineRecipeToReports();
       }}>
-        <Icon size={20} color={iconColor} source="lock-open-outline" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}> {t("changepassword")}</Text>
+        <Icon size={20} color={iconColor} source="information-outline" />
+        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization")}</Text>
       </TouchableOpacity>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
         <Icon size={20} color={iconColor} source="theme-light-dark" />
@@ -115,7 +118,7 @@ const SettingsScreen = () => {
       </View>
       <Divider style={styles.divider}></Divider>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
-        <Icon size={20} color={iconColor} source="close-circle"/>
+        <Icon size={20} color={iconColor} source="close-circle" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
           {t("storeclosed")}
         </Text>
