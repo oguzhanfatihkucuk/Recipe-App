@@ -4,7 +4,7 @@ import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
 import { addItemToTuple, myTuple } from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
-import { addItemToReports } from "../../../../../assets/js/reports";
+import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
 import axios from "axios";
 import MY_IP from "../../../../../assets/js/myIp";
@@ -12,6 +12,7 @@ import Toast from "react-native-root-toast";
 import styles from "./SalesStyles.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
 import { useStoreStatus } from '../../../../../services/storeSituation/StoreStatusContext';
+import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
 
@@ -31,13 +32,12 @@ const SalesScreen = ({ navigation }) => {
   const currentDateTime = new Date();
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
-  let [myContent, setContent] = useState("");
+  let [myMailContent, setMyMailContent] = useState("");
 
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
-
 
   useEffect(() => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -57,6 +57,15 @@ const SalesScreen = ({ navigation }) => {
 
   }, [data2, myTuple]);
 
+  const fetchDataFromMockBackend = async () => {
+    try {
+      data = await fetchMockBackendData();
+      setData(data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleRefreshToItemList = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -75,7 +84,6 @@ const SalesScreen = ({ navigation }) => {
     setTotalPrice(totalPrice);
   };
 
-
   //@ts-ignore
   const filterSaleList = (data2, myTuple) => {
     //@ts-ignore
@@ -84,7 +92,7 @@ const SalesScreen = ({ navigation }) => {
     });
   };
 
-  const handlePress = () => {
+  const deleteData = () => {
     myTuple.length = 0;
     setData([]);
     handleTextChange(0);
@@ -92,9 +100,9 @@ const SalesScreen = ({ navigation }) => {
   };
 
   const handlePressEmail = () => {
-    handlePress();
-    sendEmail();
-    setContent("");
+    deleteData();
+    sendEmail(email,myMailContent);
+    setMyMailContent("");
   };
   //@ts-ignore
   const handleTextChange = (text) => {
@@ -107,16 +115,15 @@ const SalesScreen = ({ navigation }) => {
 
   const sendRecipeToMail = () => {
     setModalVisible(false);
-    sendRecipeToMail2();
+    showDataInAlertMail();
   };
 
   const creditCardMethod = () => {
-    setCount(calculateRemainingAmount2);
+    setCount(totalPrice - count);
     handleTextChange(0);
     showDataInAlertCreditCard();
-    handlePress();
+    deleteData();
   };
-
 
   //@ts-ignore
   const handleAddItem = (productid) => {
@@ -145,29 +152,16 @@ const SalesScreen = ({ navigation }) => {
 
   };
 
-  const fetchDataFromMockBackend = async () => {
-    try {
-      data = await fetchMockBackendData();
-      setData(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
   const calculateRemainingAmount = () => {
     const remainingAmount = totalPrice - count;
     if (remainingAmount < 0) {
-      return `Para üstünüz: ${Math.abs(remainingAmount).toFixed(2)}`; // Negatifse para üstünü göster
+      return `Para üstünüz: ${Math.abs(remainingAmount).toFixed(2)}`;
     } else {
-      return `Kalan Tutar: ${remainingAmount.toFixed(2)}`; // Negatif değilse kalan tutarı göster
+      return `Kalan Tutar: ${remainingAmount.toFixed(2)}`;
     }
   };
 
-  const calculateRemainingAmount2 = () => {
-    return totalPrice - count;
-  };
-
-  function showDataInAlert() {
+  const showDataInAlertSatisOnayla =()=> {
     var message = "Satış Fişi:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
@@ -202,12 +196,18 @@ const SalesScreen = ({ navigation }) => {
 
     }
     Alert.alert("", message);
-    handlePress();
-    addItemToReports(message);
+    deleteData();
+
+    if(!isStoreOpen){
+      addItemToReportsOffline(message)
+    }
+    else if(isStoreOpen){
+      addItemToReports(message)
+    }
 
   }
 
-  function showDataInAlertCreditCard() {
+  const showDataInAlertCreditCard=()=> {
     var message = "Satış Fişi:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
@@ -240,15 +240,20 @@ const SalesScreen = ({ navigation }) => {
     else{
       message += "Store is open, your recipe \nhave printed";
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-
     }
 
     Alert.alert("", message);
-    handlePress();
-    addItemToReports(message);
+    deleteData();
+    //addItemToReports(message);
+    if(!isStoreOpen){
+      addItemToReportsOffline(message)
+    }
+    else if(isStoreOpen){
+      addItemToReports(message)
+    }
   }
 
-  const sendRecipeToMail2 = () => {
+  const showDataInAlertMail = () => {
 
     var message = "Satış Fişi:\n";
     message += "***********************\n";
@@ -282,42 +287,26 @@ const SalesScreen = ({ navigation }) => {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
 
     }
-    setContent(message);
+    setMyMailContent(message);
   };
+
 
   useEffect(() => {
-    if (myContent !== "") {
-      addItemToReports(myContent);
-      handlePressEmail();
+    if (myMailContent !== "") {
+      if(!isStoreOpen){
+        addItemToReportsOffline(myMailContent)
+        handlePressEmail();
+      }
+      else if(isStoreOpen){
+
+        addItemToReports(myMailContent)
+        handlePressEmail();
+      }
     }
-  }, [myContent]);
-  const sendEmail = () => {
+  }, [myMailContent]);
 
-    axios.post("http://" + MY_IP + ":3002/send-email", {
-      myAddress: email,
-      content: myContent
-    })
-      .then(response => {
-        Toast.show(
-          "Success!!\nEmail sent successfully",
-          {
-            duration: Toast.durations.SHORT
-          }
-        );
-
-      })
-      .catch(error => {
-        console.error(error);
-        Toast.show(
-          "Error!!\nFailed to send email",
-          {
-            duration: Toast.durations.SHORT
-          }
-        );
-      });
-  };
   const isButtonActive = () => {
-    return calculateRemainingAmount2() >= 0; // Kalan tutar pozitifse true, değilse false döndür
+    return totalPrice - count >= 0; // Kalan tutar pozitifse true, değilse false döndür
   };
 
   if (loading) {
@@ -421,7 +410,7 @@ const SalesScreen = ({ navigation }) => {
           </Text>
         </View>
         <View>
-          <TouchableOpacity style={styles.belgeIptal} onPress={handlePress}>
+          <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
             <Text>
               Tüm Belge İptal
             </Text>
@@ -478,7 +467,7 @@ const SalesScreen = ({ navigation }) => {
             backgroundColor: !isButtonActive() ? "green" : "red",
             alignItems: "center",
             justifyContent: "center"
-          }} onPress={showDataInAlert}>
+          }} onPress={showDataInAlertSatisOnayla}>
             <Text>
               Satıs Onayla
             </Text>
