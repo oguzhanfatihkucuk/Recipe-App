@@ -11,9 +11,12 @@ import MY_IP from "../../../../../assets/js/myIp";
 import Toast from "react-native-root-toast";
 import styles from "./SalesStyles.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
+import { useStoreStatus } from '../../../../../services/storeSituation/StoreStatusContext';
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
 
+  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
+  const { isStoreOpen } = useStoreStatus();
   const [data2, setData] = useState<any[]>([]);
   const [lenghtOfSales, setlenghtOfSales] = useState(0);
   let [totalPrice, setTotalPrice] = useState(0);
@@ -89,12 +92,9 @@ const SalesScreen = ({ navigation }) => {
   };
 
   const handlePressEmail = () => {
-    myTuple.length = 0;
-    setData([]);
-    handleTextChange(0);
+    handlePress();
     sendEmail();
     setContent("");
-    fetchDataFromMockBackend();
   };
   //@ts-ignore
   const handleTextChange = (text) => {
@@ -112,11 +112,9 @@ const SalesScreen = ({ navigation }) => {
 
   const creditCardMethod = () => {
     setCount(calculateRemainingAmount2);
-    myTuple.length = 0;
-    setData([]);
     handleTextChange(0);
-    fetchDataFromMockBackend();
     showDataInAlertCreditCard();
+    handlePress();
   };
 
 
@@ -191,9 +189,22 @@ const SalesScreen = ({ navigation }) => {
     message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
+
+    if(!isStoreOpen)
+    {
+      message += "Store is closed, your recipe \nhaven't printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+      console.log(countOfPrinterWork);
+    }
+    else{
+      message += "Store is open, your recipe \nhave printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+
+    }
     Alert.alert("", message);
     handlePress();
     addItemToReports(message);
+
   }
 
   function showDataInAlertCreditCard() {
@@ -218,7 +229,20 @@ const SalesScreen = ({ navigation }) => {
     message += "Ödenen Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Para Üstü : 0 \n";
     message += "***********************\n";
-    message += "       Good Days...";
+    message += "       Good Days...\n";
+
+    if(!isStoreOpen)
+    {
+      message += "Store is closed, your recipe \nhaven't printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+      console.log(countOfPrinterWork);
+    }
+    else{
+      message += "Store is open, your recipe \nhave printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+
+    }
+
     Alert.alert("", message);
     handlePress();
     addItemToReports(message);
@@ -247,6 +271,17 @@ const SalesScreen = ({ navigation }) => {
     message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
+    if(!isStoreOpen)
+    {
+      message += "Store is closed, your recipe \nhaven't printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+      console.log(countOfPrinterWork);
+    }
+    else{
+      message += "Store is open, your recipe \nhave printed";
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
+
+    }
     setContent(message);
   };
 
@@ -254,7 +289,6 @@ const SalesScreen = ({ navigation }) => {
     if (myContent !== "") {
       addItemToReports(myContent);
       handlePressEmail();
-
     }
   }, [myContent]);
   const sendEmail = () => {
@@ -289,9 +323,7 @@ const SalesScreen = ({ navigation }) => {
   if (loading) {
     return <LoadingAnimation />;
   }
-
   // @ts-ignore
-  //
   return (
     <SafeAreaView>
       <StoreStatusText />
