@@ -7,6 +7,7 @@ import DarkMode from "../../../services/utils/darkmode.context.ts";
 import { useNavigation } from "@react-navigation/native";
 import items from "../../../assets/js/exploreitems";
 import { t } from "i18next";
+import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 
 const ExploreScreen = () => {
 
@@ -46,9 +47,9 @@ const ExploreScreen = () => {
   }
 
   return (
-
     <SafeAreaView>
       <View>
+        <StoreStatusText />
         <Searchbar
           style={{ ...styles.searchbar, borderColor: isDarkMode ? "white" : "black" }}
           placeholder={t("search")}

@@ -6,6 +6,7 @@ import styles from "../TransectionPage/TransectionPage.Style.tsx";
 import { Divider, Icon } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { t } from "i18next";
+import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 // @ts-ignore
 const Transection = () => {
 
@@ -44,6 +45,7 @@ const Transection = () => {
   }
   return (
     <SafeAreaView>
+      <StoreStatusText />
         <View style={styles.outContainer}>
           <Text isDarkMode={isDarkMode}>
             <FlatList style={styles.list}

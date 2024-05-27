@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import data from "../../../assets/js/datainout";
 import {Text} from "../../../services/utils/Theme.tsx";
 import DarkMode from "../../../services/utils/darkmode.context.ts";
+import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 const ProfileScreen = () => {
 
   const myImage = require("../../../assets/png/images.png");
@@ -29,8 +30,11 @@ const ProfileScreen = () => {
   );
 
   return (
+
     <View style={styles.container}>
+      <StoreStatusText />
       <View style={styles.header}>
+
         <Image source={myImage} style={styles.image} />
         <Text isDarkMode={isDarkMode} style={styles.nameText}>{t("name")}</Text>
         <Text isDarkMode={isDarkMode} style={styles.nameText}>{t("salesperson")}</Text>
@@ -61,11 +65,15 @@ const ProfileScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.date + item.hour}
-      />
+      <View style={{alignItems:"center"}}>
+        <FlatList
+
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.date + item.hour}
+        />
+      </View>
+
     </View>
 
   );

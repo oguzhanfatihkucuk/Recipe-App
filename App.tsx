@@ -10,6 +10,7 @@ import DarkMode from "./services/utils/darkmode.context";
 import { useState } from "react";
 import { AppRegistry } from "react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
+import { StoreStatusProvider } from "./services/storeSituation/StoreStatusContext";
 
 AppRegistry.registerComponent("PatikaStoreApp", () => App);
 
@@ -29,18 +30,20 @@ export default function App() {
   };
 
   return (
-    <RootSiblingParent>{/* <- use RootSiblingParent to wrap your root component */}
-      <DarkMode.Provider
-        value={{
-          isDarkMode,
-          setIsDarkMode
-        }}
-      >
-        <NavigationContainer theme={isDarkMode ? CustomDarkTheme : DefaultTheme}>
-          <StatusBar style={isDarkMode ? "light" : "dark"} />
-          <StackNavigator />
-        </NavigationContainer>
-      </DarkMode.Provider>
-    </RootSiblingParent>
+    <StoreStatusProvider>
+      <RootSiblingParent>{/* <- use RootSiblingParent to wrap your root component */}
+        <DarkMode.Provider
+          value={{
+            isDarkMode,
+            setIsDarkMode
+          }}
+        >
+          <NavigationContainer theme={isDarkMode ? CustomDarkTheme : DefaultTheme}>
+            <StatusBar style={isDarkMode ? "light" : "dark"} />
+            <StackNavigator />
+          </NavigationContainer>
+        </DarkMode.Provider>
+      </RootSiblingParent>
+    </StoreStatusProvider>
   );
 }

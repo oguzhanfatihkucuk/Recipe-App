@@ -9,13 +9,13 @@ import CampaignsScreen from "../Screens/ReportsScreen/Reports/Campaigns.tsx";
 import OtherReportScreen from "../Screens/ReportsScreen/Reports/Others.tsx";
 import AddProductScreen from "../Screens/TransectionPage/Trensections/AddProduct.tsx";
 import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Others.tsx";
-import ProductsScreen from "../Screens/TransectionPage/Trensections/Products.tsx";
-import SalesScreen from "../Screens/TransectionPage/Trensections/Sales.tsx";
-import ProductFiltered from "../Screens/TransectionPage/Trensections/ProductFiltered.tsx";
-import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/ProductFilteredPrice.tsx";
-import ProductFilteredName from "../Screens/TransectionPage/Trensections/ProductFilteredName.tsx";
+import ProductsScreen from "../Screens/TransectionPage/Trensections/Products/Products.tsx";
+import SalesScreen from "../Screens/TransectionPage/Trensections/Sales/Sales.tsx";
+import ProductFiltered from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFiltered.tsx";
+import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFilteredPrice.tsx";
+import ProductFilteredName from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFilteredName.tsx";
 import NFCPage from "../Screens/LoginPage/nfc.tsx";
-import AllProducts from "../Screens/TransectionPage/Trensections/allprodcuts.tsx";
+import AllProducts from "../Screens/TransectionPage/Trensections/Products/FilterPages/allprodcuts.tsx";
 
 
 

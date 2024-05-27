@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import { addItemToTuple, myTuple } from "../../../../assets/js/myTuple";
-import SalesCard from "../../../Components/SalesCard/SalesCard.tsx";
+import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
+import { addItemToTuple, myTuple } from "../../../../../assets/js/myTuple";
+import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
-import { addItemToReports } from "../../../../assets/js/reports";
-import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
+import { addItemToReports } from "../../../../../assets/js/reports";
+import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
 import axios from "axios";
-import MY_IP from "../../../../assets/js/myIp";
+import MY_IP from "../../../../../assets/js/myIp";
 import Toast from "react-native-root-toast";
-
+import styles from "./SalesStyles.tsx";
+import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
 
@@ -35,24 +36,6 @@ const SalesScreen = ({ navigation }) => {
   }, []);
 
 
-  const handleRefresh = () => {
-    const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
-    setFilteredAsSaleList(updatedFilteredAsSaleList);
-    setlenghtOfSales(myTuple.length);
-    let totalPrice = 0;
-
-    for (let i = 0; i < myTuple.length; i++) {
-      const productId = myTuple[i];
-      //@ts-ignore
-      const item = updatedFilteredAsSaleList.find(item => item.id === productId);
-      if (item) {
-        totalPrice += item.price;
-      }
-    }
-    setTotalPrice(totalPrice);
-  };
-
-
   useEffect(() => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
     setFilteredAsSaleList(updatedFilteredAsSaleList);
@@ -70,6 +53,25 @@ const SalesScreen = ({ navigation }) => {
     setTotalPrice(totalPrice);
 
   }, [data2, myTuple]);
+
+
+  const handleRefreshToItemList = () => {
+    const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
+    setFilteredAsSaleList(updatedFilteredAsSaleList);
+    setlenghtOfSales(myTuple.length);
+    let totalPrice = 0;
+
+    for (let i = 0; i < myTuple.length; i++) {
+      const productId = myTuple[i];
+      //@ts-ignore
+      const item = updatedFilteredAsSaleList.find(item => item.id === productId);
+      if (item) {
+        totalPrice += item.price;
+      }
+    }
+    setTotalPrice(totalPrice);
+  };
+
 
   //@ts-ignore
   const filterSaleList = (data2, myTuple) => {
@@ -211,7 +213,7 @@ const SalesScreen = ({ navigation }) => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Ödeme Kredi Kartı İle Alındı\n" ;
+    message += "Ödeme Kredi Kartı İle Alındı\n";
     message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Ödenen Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Para Üstü : 0 \n";
@@ -221,6 +223,7 @@ const SalesScreen = ({ navigation }) => {
     handlePress();
     addItemToReports(message);
   }
+
   const sendRecipeToMail2 = () => {
 
     var message = "Satış Fişi:\n";
@@ -264,7 +267,7 @@ const SalesScreen = ({ navigation }) => {
         Toast.show(
           "Success!!\nEmail sent successfully",
           {
-            duration: Toast.durations.SHORT,
+            duration: Toast.durations.SHORT
           }
         );
 
@@ -272,9 +275,9 @@ const SalesScreen = ({ navigation }) => {
       .catch(error => {
         console.error(error);
         Toast.show(
-        "Error!!\nFailed to send email",
+          "Error!!\nFailed to send email",
           {
-            duration: Toast.durations.SHORT,
+            duration: Toast.durations.SHORT
           }
         );
       });
@@ -288,13 +291,14 @@ const SalesScreen = ({ navigation }) => {
   }
 
   // @ts-ignore
-
+  //
   return (
     <SafeAreaView>
-      <View style={{ flexDirection: "row", borderWidth: 2 }}>
+      <StoreStatusText />
+      <View style={styles.OuterContainer}>
         <TextInput
           label="Enter Product Id "
-          style={{ borderColor: "black", width: 280, margin: 15, height: 50, borderWidth: 3 }}
+          style={styles.textProductId}
           cursorColor={"white"}
           keyboardType="numeric"
           value={productId}
@@ -305,7 +309,7 @@ const SalesScreen = ({ navigation }) => {
               Toast.show(
                 "Ürün ID yalnızca sayısal değer içerebilir!",
                 {
-                  duration: Toast.durations.SHORT,
+                  duration: Toast.durations.SHORT
                 }
               );
 
@@ -314,58 +318,25 @@ const SalesScreen = ({ navigation }) => {
             setProductId(text);
           }}
         />
-        <TouchableOpacity onPress={() => handleAddItem(productId)} style={{
-          alignItems: "center",
-          width: 120,
-          height: 50,
-          borderColor: "black",
-          borderWidth: 3,
-          justifyContent: "center",
-          marginVertical: 20,
-          marginHorizontal: 10
-        }}>
+        <TouchableOpacity onPress={() => handleAddItem(productId)} style={styles.textProductIdButton}>
           <Text>
             Add Product
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => { handleRefresh()
-        }} style={{
-          alignItems: "center",
-          width: 120,
-          height: 50,
-          borderColor: "black",
-          borderWidth: 3,
-          justifyContent: "center",
-          marginVertical: 20,
-          marginHorizontal: 10
-        }}>
+        <TouchableOpacity onPress={() => {
+          handleRefreshToItemList();
+        }} style={styles.refreshButton}>
           <Text>
             Refresh
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Products")} style={{
-          alignItems: "center",
-          width: 120,
-          height: 50,
-          borderColor: "black",
-          borderWidth: 3,
-          justifyContent: "center",
-          marginVertical: 20,
-          marginHorizontal: 10
-        }}>
+        <TouchableOpacity onPress={() => navigation.navigate("Products")} style={styles.goToCategoryPageButton}>
           <Text>
             Go to Category Page
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{
-        borderWidth: 2,
-        justifyContent: "space-between",
-        flexDirection: "row",
-        marginBottom: 200,
-        marginTop: 20,
-        width: 1100
-      }}>
+      <View style={styles.innerContainer}>
         <View>
           <FlatList
             horizontal={false}  // Dikey yönde liste oluştur
@@ -384,100 +355,51 @@ const SalesScreen = ({ navigation }) => {
           />
         </View>
         <View>
-          <Text style={{
-            marginVertical: 10,
-            fontSize: 24,
-            width: 270,
-            height: 50,
-            borderWidth: 2,
-            borderColor: "black",
-            borderRadius: 15,
-            padding: 5
-          }}>
+          <Text style={styles.info1}>
             Toplam Ürün sayısı:{lenghtOfSales}
           </Text>
-          <Text style={{
-            marginVertical: 10,
-            fontSize: 24,
-            width: 270,
-            height: 80,
-            borderWidth: 2,
-            borderColor: "black",
-            borderRadius: 15,
-            padding: 5
-          }}>
+          <Text style={styles.info2}>
             Toplam Tutar:{totalPrice.toString().substring(0, 6)}
           </Text>
           <TextInput
+            value={count.toString()}
             onChangeText={(text) => {
               const numericRegex = /^[0-9]*$/;
 
               if (!numericRegex.test(text)) {
+                setCount(0);
                 Toast.show(
                   "Sadece sayısal değer girebilirsiniz!",
                   {
-                    duration: Toast.durations.SHORT,
+                    duration: Toast.durations.SHORT
                   }
                 );
-
                 return;
               }
-
               handleTextChange(text);
+
             }}
             //value={enteredAmount.toString()}
             placeholder="Ödenen Miktarı Giriniz"
-            style={{
-              backgroundColor: "transparent",
-              marginVertical: 10,
-              fontSize: 24,
-              width: 270,
-              height: 80,
-              borderWidth: 2,
-              borderColor: "black",
-              borderRadius: 15,
-              padding: 5
-            }}>
+            style={styles.info3}>
           </TextInput>
           <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
-          <Text style={{
-            marginVertical: 10,
-            fontSize: 24,
-            width: 270,
-            height: 80,
-            borderWidth: 2,
-            borderColor: "black",
-            borderRadius: 15,
-            padding: 5
-          }}>
+          <Text style={styles.info4}>
             {calculateRemainingAmount()}
           </Text>
         </View>
         <View>
-          <TouchableOpacity style={{
-            margin: 10,
-            height: 50,
-            width: 110,
-            backgroundColor: "white",
-            alignItems: "center",
-            justifyContent: "center"
-          }} onPress={handlePress}>
+          <TouchableOpacity style={styles.belgeIptal} onPress={handlePress}>
             <Text>
               Tüm Belge İptal
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{
-            margin: 10,
-            height: 50,
-            width: 110,
-            backgroundColor: "white",
-            alignItems: "center",
-            justifyContent: "center"
-          }} onPress={() => creditCardMethod()}>
+          <TouchableOpacity style={styles.creditCard} onPress={() => creditCardMethod()}>
             <Text>
               Kredi Kartı İle Ödeme
             </Text>
           </TouchableOpacity>
+
           <TouchableOpacity disabled={isButtonActive()} style={{
             margin: 10,
             height: 50,

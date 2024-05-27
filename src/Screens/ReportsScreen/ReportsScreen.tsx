@@ -6,6 +6,7 @@ import styles from "../ReportsScreen/ReportsScreenStyle.tsx";
 import { Divider, Icon } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { t } from "i18next";
+import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 
 
 const ReportsScreen = () => {
@@ -59,6 +60,7 @@ const ReportsScreen = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
+      <StoreStatusText />
       <View style={{alignItems:"center"}}>
         <FlatList style={styles.list}
                   data={report}

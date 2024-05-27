@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { List } from "react-native-paper";
-import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from '../../../../assets/js/deviceutils';
-import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
+import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
+import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
+import { getNumColumns } from '../../../../../../assets/js/deviceutils';
+import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
+import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
 
 const ProductFilteredName = () => {
   const numColumns = getNumColumns();
@@ -59,6 +60,7 @@ const ProductFilteredName = () => {
 
   return (
     <View>
+      <StoreStatusText />
       <List.Section>
         <List.Accordion
           title="Choose First Letter Range"

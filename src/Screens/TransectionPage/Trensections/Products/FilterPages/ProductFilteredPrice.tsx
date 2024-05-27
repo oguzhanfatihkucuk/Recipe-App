@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { List } from "react-native-paper";
-import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from '../../../../assets/js/deviceutils';
-import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData";
+import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
+import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
+import { getNumColumns } from '../../../../../../assets/js/deviceutils';
+import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
+import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
 const ProductFilteredPrice = () => {
 
   const ProductCardMemoized = React.memo(ProductCard);
@@ -60,6 +61,7 @@ const ProductFilteredPrice = () => {
   // @ts-ignore
   return (
       <View>
+        <StoreStatusText />
         <List.Section>
           <List.Accordion
             title="Choose Price Range"

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 import {  List,} from "react-native-paper";
-import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from '../../../../assets/js/deviceutils';
-import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData"; // DeviceUtils.js dosyasını içe aktarın
+import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
+import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
+import { getNumColumns } from '../../../../../../assets/js/deviceutils';
+import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
+import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx"; // DeviceUtils.js dosyasını içe aktarın
 
 
 const ProductFiltered = () => {
@@ -41,6 +42,7 @@ const ProductFiltered = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
+      <StoreStatusText />
       <List.Section>
         <List.Accordion
           title="Choose Category"

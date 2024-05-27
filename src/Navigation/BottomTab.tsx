@@ -13,13 +13,13 @@ const BottomTabNavigator = createBottomTabNavigator();
 
 
 const { width, height } = Dimensions.get('window');
-let fontSize = 12; // Varsayılan değer
+let fontSize = 12;
 let iconSize=23;
 
 const isTablet = width >= 600 && height >= 600; // Örnek bir değer, gerçek bir değere göre değiştirin
 
 if (isTablet) {
-  fontSize = 28; // Tablet için 28 piksel font boyutu
+  fontSize = 28;
   iconSize=30;
 }
 
@@ -49,6 +49,7 @@ export default function BottomTab() {
         tabBarItemStyle: {
           marginBottom: 7
         },
+
         tabBarInactiveTintColor: "gray",
         tabBarActiveTintColor: "#02b875"
       }}
@@ -56,6 +57,7 @@ export default function BottomTab() {
         bottom: 0
       }}
       initialRouteName={t("transection")}
+
     >
       <BottomTabNavigator.Screen
         name={t("explore")}

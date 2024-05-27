@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, SafeAreaView,View } from "react-native";
-import ProductCard from "../../../Components/ProductCard/productcard.tsx";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from '../../../../assets/js/deviceutils';
-import { fetchMockBackendData } from "../../../../services/fetchingData/fetchData"; // DeviceUtils.js dosyasını içe aktarın
+import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
+import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
+import { getNumColumns } from '../../../../../../assets/js/deviceutils';
+import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
+import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx"; // DeviceUtils.js dosyasını içe aktarın
 
 const AllProducts = () => {
 
@@ -34,6 +35,7 @@ const AllProducts = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
+      <StoreStatusText />
       <View>
         <FlatList
           data={data2}

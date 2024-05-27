@@ -11,6 +11,8 @@ import { Alert } from "react-native";
 import { VolumeManager } from "react-native-volume-manager";
 import Slider from "@react-native-community/slider";
 import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
+import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
+import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 
 const SettingsScreen = () => {
 
@@ -39,15 +41,14 @@ const SettingsScreen = () => {
     };
   }, []);
 
+  const { isStoreOpen, setIsStoreOpen } = useStoreStatus();
   const { t } = useTranslation();
   const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
   const [hideUI] = useState<boolean>(false);
   const volumeChangedByListener = useRef(true);
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-  const [isSwitchOn_2, setIsSwitchOn_2] = React.useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
-  const onToggleSwitch_2 = () => setIsSwitchOn_2(!isSwitchOn_2);
   const changeLng = (lng: string | undefined) => {
     i18next.changeLanguage(lng);
   };
@@ -61,6 +62,7 @@ const SettingsScreen = () => {
   // @ts-ignore
   return (
     <View style={[styles.container]}>
+      <StoreStatusText />
       <TouchableOpacity style={{ ...styles.option, borderColor: "transparent" }}>
         <Icon size={20} color={iconColor} source="account-tie-voice-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
@@ -113,17 +115,17 @@ const SettingsScreen = () => {
       </View>
       <Divider style={styles.divider}></Divider>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
-        <Icon size={20} color={iconColor} source="check-circle" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
-          {t("storeopen")}
-        </Text>
-        <Divider style={{ width: 15, backgroundColor: isDarkMode ? "black" : "white" }} />
-        <Switch value={isSwitchOn_2} onValueChange={onToggleSwitch_2} />
-        <Divider style={{ width: 15, backgroundColor: isDarkMode ? "black" : "white" }} />
+        <Icon size={20} color={iconColor} source="close-circle"/>
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
           {t("storeclosed")}
         </Text>
-        <Icon size={20} color={iconColor} source="close-circle" />
+        <Divider style={{ width: 15, backgroundColor: isDarkMode ? "black" : "white" }} />
+        <Switch value={isStoreOpen} onValueChange={(value) => setIsStoreOpen(value)} />
+        <Divider style={{ width: 15, backgroundColor: isDarkMode ? "black" : "white" }} />
+        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
+          {t("storeopen")}
+        </Text>
+        <Icon size={20} color={iconColor} source="check-circle" />
       </View>
       <Divider style={styles.divider}></Divider>
 
