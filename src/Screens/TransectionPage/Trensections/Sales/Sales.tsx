@@ -9,8 +9,9 @@ import { fetchMockBackendData } from "../../../../../services/fetchingData/fetch
 import Toast from "react-native-root-toast";
 import styles from "./SalesStyles.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
-import { useStoreStatus } from '../../../../../services/storeSituation/StoreStatusContext';
+import { useStoreStatus } from "../../../../../services/storeSituation/StoreStatusContext";
 import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
+import { background } from "native-base/lib/typescript/theme/styled-system";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -32,7 +33,7 @@ const SalesScreen = ({ navigation }) => {
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   let [myMailContent, setMyMailContent] = useState("");
-  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
+  const { countOfPrinterWork, setCountOfPrinterWork } = useStoreStatus();
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
@@ -100,7 +101,7 @@ const SalesScreen = ({ navigation }) => {
 
   const handlePressEmail = () => {
     deleteData();
-    sendEmail(email,myMailContent);
+    sendEmail(email, myMailContent);
     setMyMailContent("");
   };
   //@ts-ignore
@@ -160,7 +161,7 @@ const SalesScreen = ({ navigation }) => {
     }
   };
 
-  const showDataInAlertSatisOnayla =()=> {
+  const showDataInAlertSatisOnayla = () => {
     var message = "Satış Fişi:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
@@ -186,17 +187,16 @@ const SalesScreen = ({ navigation }) => {
     Alert.alert("", message);
     deleteData();
 
-    if(!isStoreOpen){
+    if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-      addItemToReportsOffline(message)
-    }
-    else if(isStoreOpen){
-      addItemToReports(message)
+      addItemToReportsOffline(message);
+    } else if (isStoreOpen) {
+      addItemToReports(message);
     }
 
-  }
+  };
 
-  const showDataInAlertCreditCard=()=> {
+  const showDataInAlertCreditCard = () => {
     var message = "Satış Fişi:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
@@ -223,14 +223,13 @@ const SalesScreen = ({ navigation }) => {
     Alert.alert("", message);
     deleteData();
 
-    if(!isStoreOpen){
+    if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-      addItemToReportsOffline(message)
+      addItemToReportsOffline(message);
+    } else if (isStoreOpen) {
+      addItemToReports(message);
     }
-    else if(isStoreOpen){
-      addItemToReports(message)
-    }
-  }
+  };
 
   const showDataInAlertMail = () => {
 
@@ -256,8 +255,7 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "       Good Days...";
 
-    if(!isStoreOpen)
-    {
+    if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
     }
     setMyMailContent(message);
@@ -266,13 +264,12 @@ const SalesScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (myMailContent !== "") {
-      if(!isStoreOpen){
-        addItemToReportsOffline(myMailContent)
+      if (!isStoreOpen) {
+        addItemToReportsOffline(myMailContent);
         handlePressEmail();
-      }
-      else if(isStoreOpen){
+      } else if (isStoreOpen) {
 
-        addItemToReports(myMailContent)
+        addItemToReports(myMailContent);
         handlePressEmail();
       }
     }
@@ -330,123 +327,130 @@ const SalesScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.innerContainer}>
-        <View>
-          <FlatList
-            horizontal={false}  // Dikey yönde liste oluştur
-            data={filteredAsSaleList}
-            refreshing={loading}
-            renderItem={({ item }) => (
-              <View style={{ flexDirection: "row" }}>
-                <ProductCardMemoized product={item} />
-              </View>
-            )}
-            ListEmptyComponent={() => (
-              <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-                <Text style={{ fontSize: 24, margin: 15 }}>Sepetinizde Ürün Yok </Text>
-              </View>
-            )}
-          />
+
+      <View style={{ flexDirection: "row" }}>
+        <View style={{ borderWidth:2,borderColor:"black",width:330,margin:20,height:450}}>
         </View>
-        <View>
-          <Text style={styles.info1}>
-            Toplam Ürün sayısı:{lenghtOfSales}
-          </Text>
-          <Text style={styles.info2}>
-            Toplam Tutar:{totalPrice.toString().substring(0, 6)}
-          </Text>
-          <TextInput
-            value={count.toString()}
-            onChangeText={(text) => {
-              const numericRegex = /^[0-9]*$/;
 
-              if (!numericRegex.test(text)) {
-                setCount(0);
-                Toast.show(
-                  "Sadece sayısal değer girebilirsiniz!",
-                  {
-                    duration: Toast.durations.SHORT
-                  }
-                );
-                return;
-              }
-              handleTextChange(text);
-
-            }}
-            //value={enteredAmount.toString()}
-            placeholder="Ödenen Miktarı Giriniz"
-            style={styles.info3}>
-          </TextInput>
-          <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
-          <Text style={styles.info4}>
-            {calculateRemainingAmount()}
-          </Text>
-        </View>
-        <View>
-          <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
-            <Text>
-              Tüm Belge İptal
+        <View style={styles.innerContainer}>
+          <View>
+            <FlatList
+              horizontal={false}  // Dikey yönde liste oluştur
+              data={filteredAsSaleList}
+              refreshing={loading}
+              renderItem={({ item }) => (
+                <View style={{ flexDirection: "row" }}>
+                  <ProductCardMemoized product={item} />
+                </View>
+              )}
+              ListEmptyComponent={() => (
+                <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+                  <Text style={{ fontSize: 24, margin: 15 }}>Sepetinizde Ürün Yok </Text>
+                </View>
+              )}
+            />
+          </View>
+          <View>
+            <Text style={styles.info1}>
+              Toplam Ürün sayısı:{lenghtOfSales}
             </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.creditCard} onPress={() => creditCardMethod()}>
-            <Text>
-              Kredi Kartı İle Ödeme
+            <Text style={styles.info2}>
+              Toplam Tutar:{totalPrice.toString().substring(0, 6)}
             </Text>
-          </TouchableOpacity>
+            <TextInput
+              value={count.toString()}
+              onChangeText={(text) => {
+                const numericRegex = /^[0-9]*$/;
 
-          <TouchableOpacity disabled={isButtonActive()} style={{
-            margin: 10,
-            height: 50,
-            width: 110,
-            backgroundColor: !isButtonActive() ? "green" : "red",
-            alignItems: "center",
-            justifyContent: "center"
-          }} onPress={() => setModalVisible(true)}>
-            <Text>
-              E-Arşiv
+                if (!numericRegex.test(text)) {
+                  setCount(0);
+                  Toast.show(
+                    "Sadece sayısal değer girebilirsiniz!",
+                    {
+                      duration: Toast.durations.SHORT
+                    }
+                  );
+                  return;
+                }
+                handleTextChange(text);
+
+              }}
+              //value={enteredAmount.toString()}
+              placeholder="Ödenen Miktarı Giriniz"
+              style={styles.info3}>
+            </TextInput>
+            <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
+            <Text style={styles.info4}>
+              {calculateRemainingAmount()}
             </Text>
-          </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
+              <Text>
+                Tüm Belge İptal
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.creditCard} onPress={() => creditCardMethod()}>
+              <Text>
+                Kredi Kartı İle Ödeme
+              </Text>
+            </TouchableOpacity>
 
-          {/* Modal */}
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => setModalVisible(false)}
-          >
-            <View style={{
-              flex: 1,
-              justifyContent: "center",
+            <TouchableOpacity disabled={isButtonActive()} style={{
+              margin: 10,
+              height: 50,
+              width: 110,
+              backgroundColor: !isButtonActive() ? "green" : "red",
               alignItems: "center",
-              backgroundColor: "rgba(0, 0, 0, 0.5)"
-            }}>
-              <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, alignItems: "center" }}>
-                <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
-                <TextInput
-                  style={{ borderColor: "gray", borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
-                  value={email}
-                  onChangeText={setEmail}
+              justifyContent: "center"
+            }} onPress={() => setModalVisible(true)}>
+              <Text>
+                E-Arşiv
+              </Text>
+            </TouchableOpacity>
 
-                />
-                <Button title="Gönder" onPress={sendRecipeToMail} />
-                <Button title="İptal" onPress={() => setModalVisible(false)} />
+            {/* Modal */}
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => setModalVisible(false)}
+            >
+              <View style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "rgba(0, 0, 0, 0.5)"
+              }}>
+                <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, alignItems: "center" }}>
+                  <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
+                  <TextInput
+                    style={{ borderColor: "gray", borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
+                    value={email}
+                    onChangeText={setEmail}
+
+                  />
+                  <Button title="Gönder" onPress={sendRecipeToMail} />
+                  <Button title="İptal" onPress={() => setModalVisible(false)} />
+                </View>
               </View>
-            </View>
-          </Modal>
-          <TouchableOpacity disabled={isButtonActive()} style={{
-            margin: 10,
-            height: 50,
-            width: 110,
-            backgroundColor: !isButtonActive() ? "green" : "red",
-            alignItems: "center",
-            justifyContent: "center"
-          }} onPress={showDataInAlertSatisOnayla}>
-            <Text>
-              Satıs Onayla
-            </Text>
-          </TouchableOpacity>
+            </Modal>
+            <TouchableOpacity disabled={isButtonActive()} style={{
+              margin: 10,
+              height: 50,
+              width: 110,
+              backgroundColor: !isButtonActive() ? "green" : "red",
+              alignItems: "center",
+              justifyContent: "center"
+            }} onPress={showDataInAlertSatisOnayla}>
+              <Text>
+                Satıs Onayla
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
+
     </SafeAreaView>
   );
 };
