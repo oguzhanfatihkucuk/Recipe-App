@@ -6,17 +6,16 @@ import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, TextInput } from "react-native-paper";
 import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
-import axios from "axios";
-import MY_IP from "../../../../../assets/js/myIp";
 import Toast from "react-native-root-toast";
 import styles from "./SalesStyles.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
 import { useStoreStatus } from '../../../../../services/storeSituation/StoreStatusContext';
 import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
+
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
 
-  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
+
   const { isStoreOpen } = useStoreStatus();
   const [data2, setData] = useState<any[]>([]);
   const [lenghtOfSales, setlenghtOfSales] = useState(0);
@@ -33,7 +32,7 @@ const SalesScreen = ({ navigation }) => {
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   let [myMailContent, setMyMailContent] = useState("");
-
+  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
@@ -184,21 +183,11 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "       Good Days...";
 
-    if(!isStoreOpen)
-    {
-      message += "Store is closed, your recipe \nhaven't printed";
-      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-      console.log(countOfPrinterWork);
-    }
-    else{
-      message += "Store is open, your recipe \nhave printed";
-      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-
-    }
     Alert.alert("", message);
     deleteData();
 
     if(!isStoreOpen){
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
       addItemToReportsOffline(message)
     }
     else if(isStoreOpen){
@@ -231,21 +220,11 @@ const SalesScreen = ({ navigation }) => {
     message += "***********************\n";
     message += "       Good Days...\n";
 
-    if(!isStoreOpen)
-    {
-      message += "Store is closed, your recipe \nhaven't printed";
-      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-      console.log(countOfPrinterWork);
-    }
-    else{
-      message += "Store is open, your recipe \nhave printed";
-      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-    }
-
     Alert.alert("", message);
     deleteData();
-    //addItemToReports(message);
+
     if(!isStoreOpen){
+      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
       addItemToReportsOffline(message)
     }
     else if(isStoreOpen){
@@ -276,16 +255,10 @@ const SalesScreen = ({ navigation }) => {
     message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
+
     if(!isStoreOpen)
     {
-      message += "Store is closed, your recipe \nhaven't printed";
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-      console.log(countOfPrinterWork);
-    }
-    else{
-      message += "Store is open, your recipe \nhave printed";
-      setCountOfPrinterWork((prevCount: number) => prevCount + 1);
-
     }
     setMyMailContent(message);
   };

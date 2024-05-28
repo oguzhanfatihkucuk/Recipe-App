@@ -13,7 +13,7 @@ import Slider from "@react-native-community/slider";
 import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
 import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
 import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
-import { offlineRecipeCount, transferOfflineRecipeToReports } from "../../../assets/js/reports";
+import { transferOfflineRecipeToReports } from "../../../assets/js/reports";
 
 const SettingsScreen = () => {
 
