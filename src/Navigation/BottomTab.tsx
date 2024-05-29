@@ -20,7 +20,7 @@ const isTablet = width >= 600 && height >= 600; // Örnek bir değer, gerçek bi
 
 if (isTablet) {
   fontSize = 28;
-  iconSize=30;
+  iconSize=26;
 }
 
 

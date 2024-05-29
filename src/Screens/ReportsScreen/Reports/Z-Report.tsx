@@ -4,14 +4,14 @@ import { reports, reportsOffline } from "../../../../assets/js/reports";
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 const ZReports = () => {
 
-
+  const now = new Date();
   //@ts-ignore
   const createPDF = async (index,item) => {
-
+    const formattedTime = now.toTimeString().split(' ')[0].replace(/:/g, '_');
     try {
       let PDFOptions = {
         html: `<h2>${item}</h2>`,
-        fileName: "report"+index.toString(),
+        fileName: "report"+index.toString()+"-"+formattedTime,
         directory: Platform.OS === 'android' ? 'Downloads' : 'Documents',
       };
       let file = await RNHTMLtoPDF.convert(PDFOptions);

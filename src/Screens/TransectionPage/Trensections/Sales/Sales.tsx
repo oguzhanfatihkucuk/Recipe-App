@@ -11,7 +11,7 @@ import styles from "./SalesStyles.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
 import { useStoreStatus } from "../../../../../services/storeSituation/StoreStatusContext";
 import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
-import { background } from "native-base/lib/typescript/theme/styled-system";
+import ProductCard from "../../../../../src/Components/ProductCard/productcard.tsx";
 
 //@ts-ignore
 const SalesScreen = ({ navigation }) => {
@@ -24,7 +24,9 @@ const SalesScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [filteredAsSaleList, setFilteredAsSaleList] = useState([]);
   const [productId, setProductId] = React.useState("");
-  const ProductCardMemoized = React.memo(SalesCard);
+  const SalesCardMemorized = React.memo(SalesCard);
+  const ProductCardMemoized = React.memo(ProductCard);
+  const [countOfItem, setCountOfItem] = useState(0);
   let data;
   const [count, setCount] = useState(0);
   const [email, setEmail] = useState("");
@@ -33,11 +35,12 @@ const SalesScreen = ({ navigation }) => {
   const date = currentDateTime.toLocaleDateString();
   const time = currentDateTime.toLocaleTimeString();
   let [myMailContent, setMyMailContent] = useState("");
-  const { countOfPrinterWork, setCountOfPrinterWork } = useStoreStatus();
+  const { setCountOfPrinterWork } = useStoreStatus();
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
+
 
   useEffect(() => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -132,6 +135,14 @@ const SalesScreen = ({ navigation }) => {
     if (!isProductInData2) {
       Alert.alert("Ürün bulunamadı!", productid + " kodlu ürün bulunamadı!!");
       return;
+    }
+    else{
+      Toast.show(
+        `Product ID: ${productId}\nItem Successfully Added to Your List`,
+        {
+          duration: Toast.durations.SHORT,
+        }
+      );
     }
     addItemToTuple(productid);
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
@@ -328,19 +339,26 @@ const SalesScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ borderWidth:2,borderColor:"black",width:330,margin:20,height:450}}>
+      <View style={{ flexDirection: "row"}}>
+        <View style={{borderWidth:2,borderColor:"black",width:420,margin:20,height:450}}>
+          <FlatList data={data2} renderItem={({ item }) => (
+            <View style={{ flexDirection: "row",height:170,margin:2,width:135}}>
+              <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList}/>
+            </View>
+          )}
+          numColumns={3}
+          keyExtractor={(item) => item.id.toString()} />
         </View>
 
         <View style={styles.innerContainer}>
           <View>
             <FlatList
-              horizontal={false}  // Dikey yönde liste oluştur
+              horizontal={false}
               data={filteredAsSaleList}
               refreshing={loading}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
-                  <ProductCardMemoized product={item} />
+                  <SalesCardMemorized product={item} handlePress={handleRefreshToItemList}/>
                 </View>
               )}
               ListEmptyComponent={() => (
@@ -375,7 +393,7 @@ const SalesScreen = ({ navigation }) => {
                 handleTextChange(text);
 
               }}
-              //value={enteredAmount.toString()}
+
               placeholder="Ödenen Miktarı Giriniz"
               style={styles.info3}>
             </TextInput>

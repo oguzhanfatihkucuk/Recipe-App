@@ -53,8 +53,8 @@ const Transection = () => {
                       renderItem={({ item }) => <TouchableOpacity
                         style={{ ...styles.container, borderColor: isDarkMode ? "white" : "#718EBF" }} onPress={() => navigateToPage(item.nav)}
                        >
-                        <View style={{ flex: 1, flexDirection: "row" }}>
-                          <View style={{alignItems:"center",paddingVertical:5}}>
+                        <View style={{ flex: 1, flexDirection: "row" ,alignItems:"center",justifyContent:"center",}}>
+                          <View style={{alignItems:"center",paddingVertical:5,}}>
                             <Icon size={102} color={"#718EBF"} source={item.icon} />
                             <Text isDarkMode={isDarkMode} style={[[styles.text]]}>
                               {t(item.name)}

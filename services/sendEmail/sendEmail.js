@@ -1,8 +1,7 @@
 // sendEmail.js
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
-import MY_IP from "../../assets/js/myIp"; // Kullanılan toast kütüphanesini içe aktarın
-
+import MY_IP from "../../assets/js/myIp";
 
 
 export const sendEmail = (email, myContent) => {

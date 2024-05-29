@@ -2,12 +2,15 @@ import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/SalesCard/SalesCardStyle.tsx";
 import { deleteItemToTuple} from "../../../assets/js/myTuple";
+import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
 
 
 //@ts-ignore
-const SalesCard = ({ product }) => {
+const SalesCard = ({ product , handlePress}) => {
+
 //@ts-ignore
   const handleLongPress = (productId) => {
+
     Alert.alert(
       'Warning',
       `Are you sure you want to delete the product with ID: ${productId}?`,
@@ -20,6 +23,7 @@ const SalesCard = ({ product }) => {
           text: 'Delete',
           onPress: () => {
             deleteItemToTuple(productId);
+            handlePress();
           }
         }
       ],

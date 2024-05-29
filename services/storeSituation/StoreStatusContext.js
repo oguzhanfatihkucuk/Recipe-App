@@ -6,6 +6,7 @@ export const StoreStatusProvider = ({ children }) => {
   const [isStoreOpen, setIsStoreOpen] = useState(true);
   const [countOfPrinterWork, setCountOfPrinterWork] = useState(0);
 
+
   return (
     <StoreStatusContext.Provider value={{ isStoreOpen, setIsStoreOpen ,countOfPrinterWork,setCountOfPrinterWork}}>
       {children}

@@ -4,11 +4,13 @@ import styles from "../../Components/ProductCard/productCardStyle.tsx";
 import { addItemToTuple} from "../../../assets/js/myTuple.js";
 import Toast from 'react-native-root-toast';
 //@ts-ignore
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product ,handleRefresh}) => {
 
   //@ts-ignore
-  const handlePress = (productId,productTitle) => {
+  const handlePress = (productId, productTitle) => {
     addItemToTuple(productId);
+
+    handleRefresh && handleRefresh();
     Toast.show(
       `Product ID: ${productId}\nProduct Title: ${productTitle}\nItem Successfully Added to Your List`,
       {

@@ -51,11 +51,12 @@ export default StyleSheet.create(
     innerContainer: {
       borderWidth: 2,
       height:450,
-      justifyContent: "space-between",
+      justifyContent: "space-around",
       flexDirection: "row",
       marginBottom: 200,
       marginTop: 20,
-      width: 910
+      width: 818,
+
     },
     info1: {
       marginVertical: 10,
