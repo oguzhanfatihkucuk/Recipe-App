@@ -3,7 +3,7 @@ import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, V
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
 import { addItemToTuple, myTuple } from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
-import { Divider, TextInput } from "react-native-paper";
+import { Divider, List, TextInput } from "react-native-paper";
 import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
 import Toast from "react-native-root-toast";
@@ -36,6 +36,9 @@ const SalesScreen = ({ navigation }) => {
   const time = currentDateTime.toLocaleTimeString();
   let [myMailContent, setMyMailContent] = useState("");
   const { setCountOfPrinterWork } = useStoreStatus();
+  const [categoryTerm, setCategoryTerm] = useState("none");
+  const filteredAsCT = data2.filter((item) => item.category.toLowerCase().startsWith(categoryTerm.toLowerCase()));
+
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
@@ -242,6 +245,11 @@ const SalesScreen = ({ navigation }) => {
     }
   };
 
+  //@ts-ignore
+  const handleCategoryPress = (category) => {
+    setCategoryTerm(category);
+    fetchDataFromMockBackend();
+  };
   const showDataInAlertMail = () => {
 
     var message = "Satış Fişi:\n";
@@ -325,29 +333,39 @@ const SalesScreen = ({ navigation }) => {
             Add Product
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-          handleRefreshToItemList();
-        }} style={styles.refreshButton}>
-          <Text>
-            Refresh
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Products")} style={styles.goToCategoryPageButton}>
-          <Text>
-            Go to Category Page
-          </Text>
-        </TouchableOpacity>
+
       </View>
 
       <View style={{ flexDirection: "row"}}>
         <View style={{borderWidth:2,borderColor:"black",width:420,margin:20,height:450}}>
-          <FlatList data={data2} renderItem={({ item }) => (
+          <List.Section>
+            <List.Accordion
+              title="Choose Category"
+              left={props => <List.Icon {...props} icon="folder" />}
+            >
+              {[
+                { title: "Clothing", category: "clothing",icon:"alpha-c-circle-outline"},
+                { title: "Accessories", category: "accessories" ,icon:"alpha-a-box-outline"},
+                { title: "Home", category: "home" ,icon:"alpha-h-box-outline"},
+                { title: "Kitchen", category: "kitchen" ,icon:"alpha-k-box-outline"},
+                { title: "Food", category: "food" ,icon:"alpha-f-box-outline"}
+              ].map(item => (
+                <List.Item
+                  key={item.category}
+                  title={item.title}
+                  left={props => <List.Icon {...props} icon={item.icon} />}
+                  onPress={() => handleCategoryPress(item.category)}
+                />
+              ))}
+            </List.Accordion>
+          </List.Section>
+          <FlatList data={filteredAsCT} renderItem={({ item }) => (
             <View style={{ flexDirection: "row",height:170,margin:2,width:135}}>
               <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList}/>
             </View>
           )}
-          numColumns={3}
-          keyExtractor={(item) => item.id.toString()} />
+                    numColumns={3}
+                    keyExtractor={(item) => item.id.toString()} />
         </View>
 
         <View style={styles.innerContainer}>
@@ -474,3 +492,14 @@ const SalesScreen = ({ navigation }) => {
 };
 
 export default SalesScreen;
+
+
+/*
+<FlatList data={filteredAsCT} renderItem={({ item }) => (
+            <View style={{ flexDirection: "row",height:170,margin:2,width:135}}>
+              <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList}/>
+            </View>
+          )}
+          numColumns={3}
+          keyExtractor={(item) => item.id.toString()} />
+*/
