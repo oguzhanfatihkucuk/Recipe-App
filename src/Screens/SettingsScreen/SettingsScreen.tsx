@@ -76,14 +76,15 @@ const SettingsScreen = () => {
         },
         {
           text: "OK", onPress: () => {
-            transferOfflineRecipeToReports();
-            setCountOfPrinterWork(0);
             Toast.show(
               `Reports sent successfully center.`,
               {
                 duration: Toast.durations.SHORT,
               }
             );
+            transferOfflineRecipeToReports();
+            setCountOfPrinterWork(0);
+
           }
         }
       ]
@@ -127,6 +128,7 @@ const SettingsScreen = () => {
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("aboutus")}</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        disabled={countOfPrinterWork<=0}
         style={styles.option}
         onPress={() => {
           handleManualSYNC();
@@ -134,7 +136,6 @@ const SettingsScreen = () => {
       >
         <View style={styles.iconWithBadge}>
           <Icon size={20} color={iconColor} source="information-outline" />
-
         </View>
         <View style={styles.iconWithBadge}>
           <Text isDarkMode={isDarkMode} style={{...styles.text}}>
