@@ -1,12 +1,12 @@
 import React, {} from "react";
-import { SafeAreaView,View } from "react-native";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
+import ComingSoonAnimation from "../../../Components/ComingSoon/ComingSoon.tsx";
+
 
 const XReports = () => {
 
   // @ts-ignore
   return (
-    <LoadingAnimation/>
+    <ComingSoonAnimation/>
   );
 };
 

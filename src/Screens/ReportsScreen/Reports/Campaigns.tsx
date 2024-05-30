@@ -1,12 +1,12 @@
 import React, {} from "react";
-import LoadingAnimation from "../../../Components/Loading/Loading.tsx";
+import ComingSoonAnimation from "../../../Components/ComingSoon/ComingSoon.tsx";
 
 
 const CampaignsScreen = () => {
 
   // @ts-ignore
   return (
-      <LoadingAnimation/>
+      <ComingSoonAnimation/>
   );
 };
 
