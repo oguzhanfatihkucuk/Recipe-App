@@ -14,8 +14,19 @@ import { handlePrivacyPress, handleAboutUsPress } from "./functions.tsx";
 import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
 import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 import { transferOfflineRecipeToReports } from "../../../assets/js/reports";
+import Toast from 'react-native-root-toast';
 
 const SettingsScreen = () => {
+
+
+  const { countOfPrinterWork, setCountOfPrinterWork } = useStoreStatus();
+  const { isStoreOpen, setIsStoreOpen } = useStoreStatus();
+  const { t } = useTranslation();
+  const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
+  const [hideUI] = useState<boolean>(false);
+  const volumeChangedByListener = useRef(true);
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -41,15 +52,6 @@ const SettingsScreen = () => {
       volumeListener.remove();
     };
   }, []);
-
-  const {countOfPrinterWork, setCountOfPrinterWork} = useStoreStatus();
-  const { isStoreOpen, setIsStoreOpen } = useStoreStatus();
-  const { t } = useTranslation();
-  const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
-  const [hideUI] = useState<boolean>(false);
-  const volumeChangedByListener = useRef(true);
-  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("");
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   const changeLng = (lng: string | undefined) => {
@@ -57,10 +59,38 @@ const SettingsScreen = () => {
   };
 
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
+
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode(!isDarkMode);
   }, [isDarkMode]);
+
   const iconColor = isDarkMode ? "white" : "black";
+
+  const handleManualSYNC = ()=>{
+    Alert.alert( // Display alert
+      "Manuel SYNC",
+      t("If the press the OK, reports have not been sent center will be send. Do you confirm?"),
+      [
+        {
+          text: "Cancel",style: "cancel"
+        },
+        {
+          text: "OK", onPress: () => {
+            transferOfflineRecipeToReports();
+            setCountOfPrinterWork(0);
+            Toast.show(
+              `Reports sent successfully center.`,
+              {
+                duration: Toast.durations.SHORT,
+              }
+            );
+          }
+        }
+      ]
+    );
+
+  };
+
 
   // @ts-ignore
   return (
@@ -97,11 +127,10 @@ const SettingsScreen = () => {
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("aboutus")}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.option} onPress={() => {
-        transferOfflineRecipeToReports();
-        setCountOfPrinterWork(0);
+        handleManualSYNC();
       }}>
         <Icon size={20} color={iconColor} source="information-outline" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization "+ countOfPrinterWork)}</Text>
+        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization " + countOfPrinterWork)}</Text>
       </TouchableOpacity>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
         <Icon size={20} color={iconColor} source="theme-light-dark" />

@@ -94,7 +94,7 @@ const ProductsScreen = ({ navigation }) => {
               data={filteredAsFL}
               renderItem={({ item }) => (
                 <View style={styles.card}>
-                  <ProductCardMemoized product={item} />
+                  <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()}
@@ -110,7 +110,7 @@ const ProductsScreen = ({ navigation }) => {
               data={data2.filter((item) => item.title.toLowerCase().startsWith("b"))}
               renderItem={({ item }) => (
                 <View style={styles.card}>
-                  <ProductCardMemoized product={item} />
+                  <ProductCardMemoized product={item} handleRefresh={()=>{}} />
                 </View>
               )}
               keyExtractor={(item) => item.id.toString()} />
@@ -126,7 +126,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2.filter((item) => item.title.toLowerCase().startsWith("c"))}
                 renderItem={({ item }) => (
                   <View style={styles.card}>
-                    <ProductCardMemoized product={item} />
+                    <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
@@ -142,7 +142,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2.filter((item) => item.title.toLowerCase().startsWith("d"))}
                 renderItem={({ item }) => (
                   <View style={styles.card}>
-                    <ProductCardMemoized product={item} />
+                    <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
@@ -159,7 +159,7 @@ const ProductsScreen = ({ navigation }) => {
                 data={data2.filter((item) => item.title.toLowerCase().startsWith("e"))}
                 renderItem={({ item }) => (
                   <View style={styles.card}>
-                    <ProductCardMemoized product={item} />
+                    <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} />
