@@ -15,7 +15,7 @@ import { useStoreStatus } from "../../../services/storeSituation/StoreStatusCont
 import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 import { transferOfflineRecipeToReports } from "../../../assets/js/reports";
 import Toast from 'react-native-root-toast';
-
+import {  Badge } from 'react-native-paper';
 const SettingsScreen = () => {
 
 
@@ -126,11 +126,25 @@ const SettingsScreen = () => {
         <Icon size={20} color={iconColor} source="information-outline" />
         <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("aboutus")}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.option} onPress={() => {
-        handleManualSYNC();
-      }}>
-        <Icon size={20} color={iconColor} source="information-outline" />
-        <Text isDarkMode={isDarkMode} style={[[styles.text]]}>{t("manuelsynchronization " + countOfPrinterWork)}</Text>
+      <TouchableOpacity
+        style={styles.option}
+        onPress={() => {
+          handleManualSYNC();
+        }}
+      >
+        <View style={styles.iconWithBadge}>
+          <Icon size={20} color={iconColor} source="information-outline" />
+
+        </View>
+        <View style={styles.iconWithBadge}>
+          <Text isDarkMode={isDarkMode} style={{...styles.text}}>
+            {t("manuelsynchronization ")}
+          </Text>
+          {countOfPrinterWork > 0 && (
+            <Badge style={styles.badge}>{countOfPrinterWork}</Badge>
+          )}
+        </View>
+
       </TouchableOpacity>
       <View style={{ flexDirection: "row", alignItems: "center", padding: 12 }}>
         <Icon size={20} color={iconColor} source="theme-light-dark" />

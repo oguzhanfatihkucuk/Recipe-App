@@ -75,4 +75,12 @@ export default StyleSheet.create({
     opacity: 0.6,
     paddingHorizontal:8,
   },
+  iconWithBadge: {
+    position: 'relative',
+  },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -10,
+  },
 });
