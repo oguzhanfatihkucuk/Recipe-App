@@ -19,13 +19,13 @@ Make sure the following software is installed to run this project:
 ### Installation
 
 1. **Clone the repository**.
-   git clone https://github.com/phoenix9897/Recipe-App.git
+   -git clone https://github.com/phoenix9897/Recipe-App.git
 2. **Navigate to the project directory**.
-   cd Recipe-App
+   -cd Recipe-App
 3. **Install the necessary dependencies**.
-   npm install
+   -npm install
 4. **Start node package manager**.
-   npm start
+   -npm start
 5. **Chose a emulator**.
    i - run on iOS
    a - run on Android
