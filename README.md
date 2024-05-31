@@ -19,9 +19,9 @@ Make sure the following software is installed to run this project:
 ### Installation
 
 1. **Clone the repository**.
-   git clone https://github.com/username/repository.git
+   git clone https://github.com/phoenix9897/Recipe-App.git
 2. **Navigate to the project directory**.
-   cd repository
+   cd Recipe-App
 3. **Install the necessary dependencies**.
    npm install
 4. **Start node package manager**.
