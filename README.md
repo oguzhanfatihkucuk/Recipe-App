@@ -48,6 +48,8 @@ Make sure the following software is installed to run this project:
 
 ### Before Run
 
+Do not forget ı have used my own JSON data in my app on my local internet. You are free to use your own data.
+
 Make sure that you change your IPV4 IP address if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\js\myIP.js`.
 
 Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. Update the `pass` field with your credentials:
@@ -61,3 +63,5 @@ Additionally, update the sender email address:
 ```js
 user: 'oguzhanfatihk@gmail.com'
 ```
+
+
