@@ -1,6 +1,6 @@
 # Recipe-App
 
-This project is based on the GitHub repository of the mobile cash register application carried out by Toyota and 32-Bit companies.
+This project is based on the GitHub repository of the mobile cash register application carried out by Toyota and 32-Bit companies.Completed using by React Native framework version of  "0.73.6".
 
 ## Getting Started
 
@@ -32,3 +32,7 @@ Make sure the following software is installed to run this project:
    d - open Dev Menu
    r - reload app
     
+### Before Run
+
+Make sure that you changed your IPV4 ip adress if you are going to use local JSON services. (C:\Users\90533\Desktop\Basic_Store-main\assets\js\myIP.js).
+Before starting the mail server in this directory "C:\Users\90533\Desktop\Basic_Store-main\server" you have to get App Password or related API key for STMP and put it "pass:################" and do not forget the change sender e-mail adress user: 'oguzhanfatihk@gmail.com'. 
