@@ -10,11 +10,11 @@ To run this project on your local machine, follow the steps below.
 
 Make sure the following software is installed to run this project:
 
-- Node.js                                     **https://nodejs.org/en**
-- npm                                         **https://www.npmjs.com/**
+- Node.js version:v20.11.0                    **https://nodejs.org/en**
+- npm version:10.7.0                          **https://www.npmjs.com/**
 - Android Studio, Webstorm or related IDEs.   **https://www.jetbrains.com/webstorm/ - https://developer.android.com/studio?hl=tr**
 - An emulator devices.                        **You are able to create a andorid devices in Android Studio as free.**
-- Mockoon or relatable Json services          **https://mockoon.com/**  
+- Mockoon or relatable Json services          **https://mockoon.com/**
 
 ### Installation
 
