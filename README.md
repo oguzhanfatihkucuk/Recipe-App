@@ -19,7 +19,7 @@ Make sure the following software is installed to run this project:
   [https://developer.android.com/studio?hl=tr](https://developer.android.com/studio?hl=tr)
 - **An emulator device**
   You can create an Android device in Android Studio for free.
-  [[https://developer.android.com/studio?hl=tr](https://developer.android.com/studio/run/managing-avds?hl=tr)]
+  [https://developer.android.com/studio?hl=tr](https://developer.android.com/studio/run/managing-avds?hl=tr)
 - **Mockoon or related JSON services**  
   [https://mockoon.com/](https://mockoon.com/)
 
