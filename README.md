@@ -49,9 +49,9 @@ Make sure the following software is installed to run this project:
 
 ### Before Run
 
-Make sure that you change your IPV4 IP address if you are going to use local JSON services. Update the IP address in `C:\Users\90533\Desktop\Basic_Store-main\assets\js\myIP.js`.
+Make sure that you change your IPV4 IP address if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\js\myIP.js`.
 
-Before starting the mail server in the directory `C:\Users\90533\Desktop\Basic_Store-main\server`, you need to obtain an App Password or related API key for SMTP. Update the `pass` field with your credentials:
+Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. Update the `pass` field with your credentials:
 
 ```js
 pass: '################'
