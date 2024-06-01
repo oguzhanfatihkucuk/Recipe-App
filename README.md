@@ -87,6 +87,27 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ```
 
 
+### Requirements
+| Feature  | Applied  | Tested |
+| :------------ |:---------------:| -----:|
+| NfC Login      | ✓  | ✓ |  
+| Incorrect Login      |     ✓   |   ✓ |
+| Version Information |     ✓   |    ✓ |
+| Store Status |     ✓   |   ✓  |
+| Product Entry Via Barcode |    ✓    |  ✓   |
+| Choosing Products From Categories |    ✓    |  ✓   |
+| Product Sorting And Filtering |    ✓    |   ✓  |
+|Payment Process Cash-Credit Card  |   ✓     |  ✓   |
+| Receipt Service By E-mail |   ✓     |   ✓  |
+| Virtual Receipt Display - Save As PDF |    ✓    |    ✓ |
+| Theme Selection |   ✓     |  ✓   |
+| Multilanguage |    ✓    |    ✓ |
+|Reporting Past Sales |   ✓     |    ✓ |
+| Manual synchronization |     ✓   |  ✓   |
+|Explore Screen |    ✓    |   ✓  |
+|Staff-Register Information |    ✓    |   ✓  |
+
+
 
 
 
