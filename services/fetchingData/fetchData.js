@@ -5,7 +5,7 @@ export const fetchMockBackendData = async () => {
     //const response = await axios.get(API_URL);
     const response = await fetch(API_URL);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+       new Error(`HTTP error! status: ${response.status}`);
     }
     return await response.json();
   } catch (error) {

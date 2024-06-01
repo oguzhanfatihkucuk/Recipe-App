@@ -30,7 +30,7 @@ const LoginPage = ({ navigation }) => {
     try {
       const response = await fetch(API_URL);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+         new Error(`HTTP error! status: ${response.status}`);
       }
       data = await response.json();
       userPassword = data.map((user: any) => user.password);
