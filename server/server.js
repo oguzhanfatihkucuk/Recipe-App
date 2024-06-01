@@ -16,7 +16,7 @@ const sendEmail = (myAddress, content) => {
     secure: false,
     auth: {
       user: 'oguzhanfatihk@gmail.com',
-      pass: 'dxisgisvngdjogcs'
+      pass: '################'
     }
   });
 

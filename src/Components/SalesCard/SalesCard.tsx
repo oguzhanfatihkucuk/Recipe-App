@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/SalesCard/SalesCardStyle.tsx";
 import { deleteItemToTuple} from "../../../assets/js/myTuple";
-import { useStoreStatus } from "../../../services/storeSituation/StoreStatusContext";
+
 
 
 //@ts-ignore
@@ -36,13 +36,13 @@ const SalesCard = ({ product , handlePress}) => {
       <View style={styles.container}>
         <View>
           <Text style={styles.text}>{product.title}</Text>
-          <Text style={styles.text}>Id:{product.id}</Text>
+          <Text style={styles.text2}>Id:{product.id}</Text>
         </View>
         <View>
-          <Text style={styles.text} numberOfLines={2}>KDV{'\n'}%1</Text>
+          <Text style={styles.text3} numberOfLines={2}>KDV{'\n'}%1</Text>
         </View>
         <View>
-          <Text style={styles.text}>Price: ${product.price || 'N/A'}</Text>
+          <Text style={styles.text4}>Price: ${product.price || 'N/A'}</Text>
         </View>
       </View>
     </TouchableOpacity>

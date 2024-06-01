@@ -98,7 +98,7 @@ const ProductFilteredName = () => {
           data={filteredProducts}
           renderItem={({ item }) => (
             <View style={{ flexDirection: "row" }}>
-              <ProductCardMemoized product={item} />
+              <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
             </View>
           )}
           numColumns={numColumns}

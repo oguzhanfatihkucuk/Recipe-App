@@ -11,7 +11,7 @@ const StoreStatusText = () => {
 
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
+  const { isDarkMode} = useContext(DarkMode);
 
   return (
     <View style={styles.container}>

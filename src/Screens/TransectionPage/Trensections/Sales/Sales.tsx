@@ -14,7 +14,7 @@ import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
 import ProductCard from "../../../../../src/Components/ProductCard/productcard.tsx";
 
 //@ts-ignore
-const SalesScreen = ({ navigation }) => {
+const SalesScreen = () => {
 
 
   const { isStoreOpen } = useStoreStatus();
@@ -26,7 +26,6 @@ const SalesScreen = ({ navigation }) => {
   const [productId, setProductId] = React.useState("");
   const SalesCardMemorized = React.memo(SalesCard);
   const ProductCardMemoized = React.memo(ProductCard);
-  const [countOfItem, setCountOfItem] = useState(0);
   let data;
   const [count, setCount] = useState(0);
   const [email, setEmail] = useState("");
@@ -138,12 +137,11 @@ const SalesScreen = ({ navigation }) => {
     if (!isProductInData2) {
       Alert.alert("Ürün bulunamadı!", productid + " kodlu ürün bulunamadı!!");
       return;
-    }
-    else{
+    } else {
       Toast.show(
         `Product ID: ${productId}\nItem Successfully Added to Your List`,
         {
-          duration: Toast.durations.SHORT,
+          duration: Toast.durations.SHORT
         }
       );
     }
@@ -309,7 +307,7 @@ const SalesScreen = ({ navigation }) => {
         <TextInput
           label="Enter Product Id "
           style={styles.textProductId}
-          cursorColor={"white"}
+          cursorColor={"black"}
           keyboardType="numeric"
           value={productId}
           onChangeText={(text) => {
@@ -333,22 +331,20 @@ const SalesScreen = ({ navigation }) => {
             Add Product
           </Text>
         </TouchableOpacity>
-
       </View>
-
-      <View style={{ flexDirection: "row"}}>
-        <View style={{borderWidth:2,borderColor:"black",width:420,margin:20,height:450}}>
+      <View style={{ flexDirection: "row" }}>
+        <View style={styles.productsCategory}>
           <List.Section>
             <List.Accordion
               title="Choose Category"
               left={props => <List.Icon {...props} icon="folder" />}
             >
               {[
-                { title: "Clothing", category: "clothing",icon:"alpha-c-circle-outline"},
-                { title: "Accessories", category: "accessories" ,icon:"alpha-a-box-outline"},
-                { title: "Home", category: "home" ,icon:"alpha-h-box-outline"},
-                { title: "Kitchen", category: "kitchen" ,icon:"alpha-k-box-outline"},
-                { title: "Food", category: "food" ,icon:"alpha-f-box-outline"}
+                { title: "Clothing", category: "clothing", icon: "alpha-c-circle-outline" },
+                { title: "Accessories", category: "accessories", icon: "alpha-a-box-outline" },
+                { title: "Home", category: "home", icon: "alpha-h-box-outline" },
+                { title: "Kitchen", category: "kitchen", icon: "alpha-k-box-outline" },
+                { title: "Food", category: "food", icon: "alpha-f-box-outline" }
               ].map(item => (
                 <List.Item
                   key={item.category}
@@ -360,8 +356,8 @@ const SalesScreen = ({ navigation }) => {
             </List.Accordion>
           </List.Section>
           <FlatList data={filteredAsCT} renderItem={({ item }) => (
-            <View style={{ flexDirection: "row",height:170,margin:2,width:135}}>
-              <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList}/>
+            <View style={{ flexDirection: "row", height: 170, margin: 1, width: 135 }}>
+              <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList} />
             </View>
           )}
                     numColumns={3}
@@ -376,7 +372,7 @@ const SalesScreen = ({ navigation }) => {
               refreshing={loading}
               renderItem={({ item }) => (
                 <View style={{ flexDirection: "row" }}>
-                  <SalesCardMemorized product={item} handlePress={handleRefreshToItemList}/>
+                  <SalesCardMemorized product={item} handlePress={handleRefreshToItemList} />
                 </View>
               )}
               ListEmptyComponent={() => (
@@ -390,7 +386,7 @@ const SalesScreen = ({ navigation }) => {
             <Text style={styles.info1}>
               Toplam Ürün sayısı:{lenghtOfSales}
             </Text>
-            <Text style={styles.info2}>
+            <Text style={styles.info1}>
               Toplam Tutar:{totalPrice.toString().substring(0, 6)}
             </Text>
             <TextInput
@@ -409,38 +405,32 @@ const SalesScreen = ({ navigation }) => {
                   return;
                 }
                 handleTextChange(text);
-
               }}
-
               placeholder="Ödenen Miktarı Giriniz"
               style={styles.info3}>
             </TextInput>
             <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
-            <Text style={styles.info4}>
+            <Text style={styles.info1}>
               {calculateRemainingAmount()}
             </Text>
           </View>
           <View>
             <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
-              <Text>
+              <Text style={styles.innerText}>
                 Tüm Belge İptal
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.creditCard} onPress={() => creditCardMethod()}>
-              <Text>
+            <TouchableOpacity style={styles.belgeIptal} onPress={() => creditCardMethod()}>
+              <Text style={styles.innerText}>
                 Kredi Kartı İle Ödeme
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity disabled={isButtonActive()} style={{
-              margin: 10,
-              height: 50,
-              width: 110,
-              backgroundColor: !isButtonActive() ? "green" : "red",
-              alignItems: "center",
-              justifyContent: "center"
+              ...styles.payButton,
+              backgroundColor: !isButtonActive() ? "#D4F6CC" : "#FA9494"
             }} onPress={() => setModalVisible(true)}>
-              <Text>
+              <Text style={styles.innerText}>
                 E-Arşiv
               </Text>
             </TouchableOpacity>
@@ -455,8 +445,7 @@ const SalesScreen = ({ navigation }) => {
               <View style={{
                 flex: 1,
                 justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "rgba(0, 0, 0, 0.5)"
+                alignItems: "center"
               }}>
                 <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, alignItems: "center" }}>
                   <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
@@ -472,14 +461,10 @@ const SalesScreen = ({ navigation }) => {
               </View>
             </Modal>
             <TouchableOpacity disabled={isButtonActive()} style={{
-              margin: 10,
-              height: 50,
-              width: 110,
-              backgroundColor: !isButtonActive() ? "green" : "red",
-              alignItems: "center",
-              justifyContent: "center"
+              ...styles.payButton,
+              backgroundColor: !isButtonActive() ? "#D4F6CC" : "#FA9494"
             }} onPress={showDataInAlertSatisOnayla}>
-              <Text>
+              <Text style={styles.innerText}>
                 Satıs Onayla
               </Text>
             </TouchableOpacity>
@@ -494,12 +479,3 @@ const SalesScreen = ({ navigation }) => {
 export default SalesScreen;
 
 
-/*
-<FlatList data={filteredAsCT} renderItem={({ item }) => (
-            <View style={{ flexDirection: "row",height:170,margin:2,width:135}}>
-              <ProductCardMemoized product={item} handleRefresh={handleRefreshToItemList}/>
-            </View>
-          )}
-          numColumns={3}
-          keyExtractor={(item) => item.id.toString()} />
-*/

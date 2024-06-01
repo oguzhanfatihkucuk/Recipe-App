@@ -9,7 +9,7 @@ export const sendEmail = (email, myContent) => {
     myAddress: email,
     content: myContent
   })
-    .then(response => {
+    .then(() => {
       Toast.show({
         type: 'success',
         text1: 'Success!!',

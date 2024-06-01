@@ -44,7 +44,7 @@ const LoginPage = ({ navigation }) => {
   };
 
   function checkUser(userNameParam: any, passwordParam: any) {
-    fetchMockBackendData().then(r => {for (let i = 0; i < 10; i++) {
+    fetchMockBackendData().then(()=> {for (let i = 0; i < 10; i++) {
       if (userName[i] == userNameParam && userPassword[i] == passwordParam){
         navigation.navigate("app");
         break;

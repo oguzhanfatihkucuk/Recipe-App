@@ -4,19 +4,24 @@ export default StyleSheet.create(
   {
     OuterContainer: {
       flexDirection: "row",
-      borderWidth: 2,
-      marginLeft:20
+      borderWidth: 3,
+      marginLeft: 20,
+      borderRadius: 20,
+      borderColor: "#718EBF"
     },
-
     textProductId: {
       borderColor: "black",
+      borderRadius: 18,
       width: 280,
       margin: 15,
       height: 50,
-      borderWidth: 3
+      borderWidth: 3,
+      borderTopRightRadius: 15,
+      borderTopLeftRadius: 15,
+      backgroundColor: "transparent"
     },
-
     textProductIdButton: {
+      borderRadius: 15,
       alignItems: "center",
       width: 120,
       height: 50,
@@ -24,57 +29,31 @@ export default StyleSheet.create(
       borderWidth: 3,
       justifyContent: "center",
       marginVertical: 20,
-      marginHorizontal: 10
-    },
-
-    refreshButton: {
-      alignItems: "center",
-      width: 120,
-      height: 50,
-      borderColor: "black",
-      borderWidth: 3,
-      justifyContent: "center",
-      marginVertical: 20,
-      marginHorizontal: 10
-    },
-
-    goToCategoryPageButton: {
-      alignItems: "center",
-      width: 120,
-      height: 50,
-      borderColor: "black",
-      borderWidth: 3,
-      justifyContent: "center",
-      marginVertical: 20,
-      marginHorizontal: 10
+      marginHorizontal: 5
     },
     innerContainer: {
-      borderWidth: 2,
-      height:450,
+      borderColor: "#718EBF",
+      borderRadius: 15,
+      borderWidth: 3,
+      height: 450,
+      padding: 3,
       justifyContent: "space-around",
       flexDirection: "row",
       marginBottom: 200,
       marginTop: 20,
-      width: 818,
+      width: 818
 
     },
     info1: {
       marginVertical: 10,
-      fontSize: 24,
+      textAlign: "center",
+      fontSize: 23,
       width: 270,
       height: 50,
       borderWidth: 2,
-      borderColor: "black",
-      borderRadius: 15,
-      padding: 5
-    },
-    info2: {
-      marginVertical: 10,
-      fontSize: 24,
-      width: 270,
-      height: 80,
-      borderWidth: 2,
-      borderColor: "black",
+      borderColor: "#718EBF",
+      justifyContent: "center",
+      color: "black",
       borderRadius: 15,
       padding: 5
     },
@@ -83,39 +62,49 @@ export default StyleSheet.create(
       marginVertical: 10,
       fontSize: 24,
       width: 270,
-      height: 80,
+      height: 50,
       borderWidth: 2,
-      borderColor: "black",
+      borderColor: "#718EBF",
       borderRadius: 15,
-      padding: 5
+      padding: 5,
+      borderTopRightRadius: 15,
+      borderTopLeftRadius: 15
     },
-    info4: {
-      marginVertical: 10,
-      fontSize: 24,
-      width: 270,
-      height: 80,
-      borderWidth: 2,
-      borderColor: "black",
-      borderRadius: 15,
-      padding: 5
-    },
+
     belgeIptal: {
+      borderWidth: 2,
+      borderRadius: 15,
+      borderColor: "#718EBF",
+      color: "black",
       margin: 10,
       height: 50,
       width: 110,
-      backgroundColor: "white",
+      backgroundColor: "transparent",
       alignItems: "center",
       justifyContent: "center"
     },
-    creditCard: {
+    productsCategory: {
+      borderRadius: 15,
+      borderWidth: 3,
+      borderColor: "#718EBF",
+      width: 420,
+      margin: 20,
+      height: 450
+    },
+    innerText: {
+      color: "black",
+      fontSize: 16,
+      textAlign: "center"
+    },
+    payButton:{
       margin: 10,
       height: 50,
       width: 110,
-      backgroundColor: "white",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      borderRadius:15,
+      borderWidth:3,
+      borderColor: "#718EBF",
     }
-
-
   }
 );
