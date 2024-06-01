@@ -1,6 +1,6 @@
 # Recipe-App
 
-This project is based on the GitHub repository of the mobile cash register application carried out by Toyota and 32-Bit companies. Completed using the React Native framework version "0.73.6".
+This project is based on the GitHub repository of the mobile cash register application carried out by Toyota and 32-Bit companies. Completed using the `React Native` framework version `"0.73.6"`.
 
 ## Getting Started
 
@@ -41,16 +41,18 @@ Make sure the following software is installed to run this project:
    npm start
    ```
 5. **Choose an emulator**:
-   - i - run on iOS
-   - a - run on Android
-   - d - open Dev Menu
-   - r - reload app
+   - i - run on `iOS`
+   - a - run on `Android`
+   - d - open `Dev Menu`
+   - r - `reload app`
 
 ### Before Run
 
-Do not forget ı have used my own JSON data in my app on my local internet. You are free to use your own data.
+Do not forget I have used my own JSON data in my app on my local internet. You are free to use your own data.
 
-Make sure that you change your IPV4 IP address if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\js\myIP.js`.
+Make sure that you change your `IP address variable`  if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\js\myIP.js`.
+
+After that you have to update your JSON services port.On directory `C:\Users\Recipe-App\assets\js\api.js` you should specify your port number that you are using localhost side.
 
 Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. Update the `pass` field with your credentials:
 
@@ -63,5 +65,29 @@ Additionally, update the sender email address:
 ```js
 user: 'oguzhanfatihk@gmail.com'
 ```
+
+After you made those changes, you should start Node.js project in directory `C:\Users\Recipe-App\server\server.js`
+
+Do not forget! I have chosen port `3002 to STMP server`. You should be aware of that. You should check if this port is available or not.
+
+At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should give those permissions:
+
+```sh
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    .
+    .
+    .
+</manifest>
+```
+
+
+
+
 
 
