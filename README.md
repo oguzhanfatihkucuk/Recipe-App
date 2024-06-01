@@ -87,7 +87,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ```
 
 
-### Requirements
+### Provided Procect Requirements
 | Feature  | Applied  | Tested |
 | :------------ |:---------------:| -----:|
 | NfC Login      | ✓  | ✓ |  
