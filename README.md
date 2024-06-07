@@ -48,13 +48,19 @@ Make sure the following software is installed to run this project:
 
 ### Before Run
 
-Do not forget I have used my own JSON data in my app on my local internet. You are free to use your own data.
+Do not forget I have used my own JSON data in my app on my local internet. You are free to use your own data. 
 
-Make sure that you change your `IP address variable`  if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\js\myIP.js`.
+You can find under this file the JSON data that I have used in my project. 
+‘C:\Users\90533\Desktop\Basic_Store-main\assets\json\demo.json’. This is the JSON file that you have open with Mockoon. First copy this json file and put any directory and open it with Mockoon.
 
-After that you have to update your JSON services port.On directory `C:\Users\Recipe-App\assets\js\api.js` you should specify your port number that you are using localhost side.
+Make sure that you change your `IP address variable`  if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\is\myIP.js`. Do not forget that you should use your IPV4 Ip address.
 
-Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. Update the `pass` field with your credentials:
+After that you have to update your JSON services port.On directory `C:\Users\Recipe-App\assets\js\api.js` you should specify your port number that you are using on the localhost side.
+
+Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. 
+
+Update the `pass` field with your credentials.This is the website of how you can generate your app password using Gmail SMTP
+[ https://support.google.com/accounts/answer/185833?hl=en]
 
 ```js
 pass: '################'
@@ -68,7 +74,14 @@ user: 'oguzhanfatihk@gmail.com'
 
 After you made those changes, you should start Node.js project in directory `C:\Users\Recipe-App\server\server.js`
 
-Do not forget! I have chosen port `3002 to STMP server`. You should be aware of that. You should check if this port is available or not.
+Do not forget! I have chosen port `3002 to SMTP server`. You should be aware of that. You should check if this port is available or not.
+
+
+
+
+### Permissions
+
+As default, these permissions were  provided by project but you should check if your emulator that you are using is available for these permissions.
 
 At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should give those permissions:
 
@@ -87,9 +100,10 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ```
 
 
-### Provided Procect Requirements
+### Provided Project Requirements
+
 | Feature  | Applied  | Tested |
-| :------------ |:---------------:| -----:|
+| :------------ |:---------------:| :-----:|
 | NfC Login      | ✓  | ✓ |  
 | Incorrect Login      |     ✓   |   ✓ |
 | Version Information |     ✓   |    ✓ |
@@ -97,15 +111,17 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Product Entry Via Barcode |    ✓    |  ✓   |
 | Choosing Products From Categories |    ✓    |  ✓   |
 | Product Sorting And Filtering |    ✓    |   ✓  |
-|Payment Process Cash-Credit Card  |   ✓     |  ✓   |
+| Payment Process Cash-Credit Card  |   ✓     |  ✓   |
 | Receipt Service By E-mail |   ✓     |   ✓  |
 | Virtual Receipt Display - Save As PDF |    ✓    |    ✓ |
 | Theme Selection |   ✓     |  ✓   |
-| Multilanguage |    ✓    |    ✓ |
-|Reporting Past Sales |   ✓     |    ✓ |
+| Multi Language |    ✓    |    ✓ |
+| Reporting Past Sales |   ✓     |    ✓ |
 | Manual synchronization |     ✓   |  ✓   |
-|Explore Screen |    ✓    |   ✓  |
-|Staff-Register Information |    ✓    |   ✓  |
+| Explore Screen |    ✓    |   ✓  |
+| Staff-Register Information |    ✓    |   ✓  |
+
+
 
 
 
