@@ -1,0 +1,128 @@
+{
+  "uuid": "e0cf6e86-43b6-499e-87c1-e9d4aea4f875",
+  "lastMigration": 32,
+  "name": "Demo API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "a2fd92ff-8792-4e59-ab61-78a41e1a98c4",
+      "type": "crud",
+      "documentation": "Endpoint performing CRUD operations on a data bucket (automatically creates GET, POST, PUT, DELETE routes)",
+      "method": "",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "0750193e-4c04-4fc7-956f-7fb311dd652a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Perform CRUD operations on the \"Users\" databucket (\"Data\" tab at the top)",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "bcdv",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "9c036d2c-0452-4f2e-b265-52ea3593eb41",
+      "type": "crud",
+      "documentation": "",
+      "method": "",
+      "endpoint": "products",
+      "responses": [
+        {
+          "uuid": "8084f068-5bb6-4805-975e-fc07d0fa4255",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "9zcl",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "a2fd92ff-8792-4e59-ab61-78a41e1a98c4"
+    },
+    {
+      "type": "route",
+      "uuid": "9c036d2c-0452-4f2e-b265-52ea3593eb41"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "736543db-c2e8-4e33-b805-cf3ccf0d75f5",
+      "id": "bcdv",
+      "name": "Users",
+      "documentation": "",
+      "value": "[\n  {\n    \"id\": \"1000\",\n    \"username\": \"oguz\",\n    \"email\": \"{{faker 'internet.email'}}\",\n    \"firstName\": \"{{faker 'name.firstName'}}\",\n    \"lastName\": \"{{faker 'name.lastName'}}\",\n    \"password\": \"123456\"\n  },\n  {{#repeat 10}}\n  {\n    \"id\": \"{{faker 'string.uuid'}}\",\n    \"username\": \"{{faker 'internet.userName'}}\",\n    \"email\": \"{{faker 'internet.email'}}\",\n    \"firstName\": \"{{faker 'name.firstName'}}\",\n    \"lastName\": \"{{faker 'name.lastName'}}\",\n    \"password\": \"{{faker 'internet.password'}}\"\n  }\n  {{/repeat}}\n]"
+    },
+    {
+      "uuid": "ec354e27-8627-4e81-b10d-b0267165a0c4",
+      "id": "9zcl",
+      "name": "products",
+      "documentation": "",
+      "value": "[\n  {\n    \"id\": \"1\",\n    \"title\": \"T-Shirt\",\n    \"price\": 19.99,\n    \"description\": \"Cotton\",\n    \"category\": \"clothing\",\n    \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"2\",\n    \"title\": \"Jeans\",\n    \"price\": 49.99,\n    \"description\": \"Denim\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"3\",\n    \"title\": \"Hat\",\n    \"price\": 14.99,\n    \"description\": \"Straw\",\n    \"category\": \"accessories\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"4\",\n    \"title\": \"Sneakers\",\n    \"price\": 79.99,\n    \"description\": \"Sport\",\n    \"category\": \"shoes\",\n    \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"},\n  {\n    \"id\": \"5\",\n    \"title\": \"Bag\",\n    \"price\": 39.99,\n    \"description\": \"Backpack\",\n    \"category\": \"accessories\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"6\",\n    \"title\": \"Watch\",\n    \"price\": 129.99,\n    \"description\": \"Digital\",\n    \"category\": \"accessories\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"7\",\n    \"title\": \"Book\",\n    \"price\": 9.99,\n    \"description\": \"Novel\",\n    \"category\": \"entertainment\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"8\",\n    \"title\": \"Coffee\",\n    \"price\": 4.99,\n    \"description\": \"Ground\",\n    \"category\": \"food\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"9\",\n    \"title\": \"Mug\",\n    \"price\": 7.99,\n    \"description\": \"Ceramic\",\n    \"category\": \"kitchen\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"10\",\n    \"title\": \"Lamp\",\n    \"price\": 29.99,\n    \"description\": \"Desk\",\n    \"category\": \"home\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"11\",\n    \"title\": \"Sweatshirt\",\n    \"price\": 29.99,\n    \"description\": \"Fleece\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"12\",\n    \"title\": \"Dress Pants\",\n    \"price\": 34.99,\n    \"description\": \"Cotton blend\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"13\",\n    \"title\": \"Dress Black\",\n    \"price\": 42.99,\n    \"description\": \"Cotton blend\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"14\",\n    \"title\": \"Sandals\",\n    \"price\": 24.99,\n    \"description\": \"Summer\",\n    \"category\": \"shoes\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"15\",\n    \"title\": \"Wallet\",\n    \"price\": 17.99,\n    \"description\": \"Leather\",\n    \"category\": \"accessories\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"16\",\n    \"title\": \"Jewelry Set\",\n    \"price\": 39.99,\n    \"description\": \"Necklace and earrings\",\n    \"category\": \"accessories\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"17\",\n    \"title\": \"Magazine\",\n    \"price\": 5.99,\n    \"description\": \"Fashion\",\n    \"category\": \"entertainment\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"18\",\n    \"title\": \"Tea\",\n    \"price\": 7.99,\n    \"description\": \"Loose leaf\",\n    \"category\": \"food\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"19\",\n    \"title\": \"Plate\",\n    \"price\": 4.99,\n    \"description\": \"Dinner plate\",\n    \"category\": \"kitchen\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"20\",\n    \"title\": \"Chair\",\n    \"price\": 99.99,\n    \"description\": \"Office chair\",\n    \"category\": \"home\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"21\",\n    \"title\": \"Dress\",\n    \"price\": 49.99,\n    \"description\": \"Floral print\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {\n    \"id\": \"22\",\n    \"title\": \"Skirt\",\n    \"price\": 29.99,\n    \"description\": \"Midi skirt\",\n    \"category\": \"clothing\",\n     \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n  },\n  {{#repeat 990}}\n  {\n    \"id\": \"{{faker 'location.zipCode'}}\",\n    \"title\": \"{{faker 'commerce.productName'}}\",\n    \"price\": {{faker 'commerce.price'}},\n    \"description\": \"{{faker 'lorem.sentence'}}\",\n    \"category\": \"{{faker 'commerce.department'}}\",\n    \"imageUrl\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg\"\n}\n  {{/repeat}}\n \n]"
+    }
+  ],
+  "callbacks": []
+}
