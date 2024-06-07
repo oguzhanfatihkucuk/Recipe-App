@@ -135,7 +135,7 @@ const SalesScreen = () => {
     const isProductInData2 = data2.some(item => item.id === productid);
 
     if (!isProductInData2) {
-      Alert.alert("Ürün bulunamadı!", productid + " kodlu ürün bulunamadı!!");
+      Alert.alert("Product not found!", productid + "The product with the code was not found!!");
       return;
     } else {
       Toast.show(
@@ -167,14 +167,14 @@ const SalesScreen = () => {
   const calculateRemainingAmount = () => {
     const remainingAmount = totalPrice - count;
     if (remainingAmount < 0) {
-      return `Para üstünüz: ${Math.abs(remainingAmount).toFixed(2)}`;
+      return `Your change: ${Math.abs(remainingAmount).toFixed(2)}`;
     } else {
-      return `Kalan Tutar: ${remainingAmount.toFixed(2)}`;
+      return `Remaining: ${remainingAmount.toFixed(2)}`;
     }
   };
 
   const showDataInAlertSatisOnayla = () => {
-    var message = "Satış Fişi:\n";
+    var message = "Sales Receipt:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
     message += "Staff Id:00004    \n";
@@ -190,9 +190,9 @@ const SalesScreen = () => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
-    message += "Ödenen Tutar:" + count + "\n";
-    message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
+    message += "Total amount:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Amount Paid:" + count + "\n";
+    message += "Change:" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
 
@@ -209,7 +209,7 @@ const SalesScreen = () => {
   };
 
   const showDataInAlertCreditCard = () => {
-    var message = "Satış Fişi:\n";
+    var message = "Sales Receipt:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
     message += "Staff Id:00004    \n";
@@ -225,10 +225,10 @@ const SalesScreen = () => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Ödeme Kredi Kartı İle Alındı\n";
-    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
-    message += "Ödenen Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
-    message += "Para Üstü : 0 \n";
+    message += "Payment Received by Credit Card\n";
+    message += "Total Amount:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Amount Paid:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Change: 0 \n";
     message += "***********************\n";
     message += "       Good Days...\n";
 
@@ -250,7 +250,7 @@ const SalesScreen = () => {
   };
   const showDataInAlertMail = () => {
 
-    var message = "Satış Fişi:\n";
+    var message = "Sales Receipt:\n";
     message += "***********************\n";
     message += "Staff Name:Oguz     \n";
     message += "Staff Id:00004    \n";
@@ -266,9 +266,9 @@ const SalesScreen = () => {
       message += "        Price:$" + item.price.toFixed(2) + "\n";
       message += "***********************\n";
     });
-    message += "Toplam Tutar:" + totalPrice.toString().substring(0, 6) + "\n";
-    message += "Ödenen Tutar:" + count + "\n";
-    message += "Para Üstü :" + Math.abs(count - totalPrice).toFixed(2) + "\n";
+    message += "Total amount:" + totalPrice.toString().substring(0, 6) + "\n";
+    message += "Amount Paid:" + count + "\n";
+    message += "Change:" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
 
@@ -293,7 +293,7 @@ const SalesScreen = () => {
   }, [myMailContent]);
 
   const isButtonActive = () => {
-    return totalPrice - count >= 0; // Kalan tutar pozitifse true, değilse false döndür
+    return totalPrice - count >= 0;
   };
 
   if (loading) {
@@ -315,7 +315,7 @@ const SalesScreen = () => {
 
             if (!numericRegex.test(text)) {
               Toast.show(
-                "Ürün ID yalnızca sayısal değer içerebilir!",
+                "Product ID can only contain numeric values!",
                 {
                   duration: Toast.durations.SHORT
                 }
@@ -377,17 +377,17 @@ const SalesScreen = () => {
               )}
               ListEmptyComponent={() => (
                 <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-                  <Text style={{ fontSize: 24, margin: 15 }}>Sepetinizde Ürün Yok </Text>
+                  <Text style={{ fontSize: 24, margin: 15 }}>There are no items in your cart</Text>
                 </View>
               )}
             />
           </View>
           <View>
             <Text style={styles.info1}>
-              Toplam Ürün sayısı:{lenghtOfSales}
+              Number of products:{lenghtOfSales}
             </Text>
             <Text style={styles.info1}>
-              Toplam Tutar:{totalPrice.toString().substring(0, 6)}
+              Total amount:{totalPrice.toString().substring(0, 6)}
             </Text>
             <TextInput
               value={count.toString()}
@@ -397,7 +397,7 @@ const SalesScreen = () => {
                 if (!numericRegex.test(text)) {
                   setCount(0);
                   Toast.show(
-                    "Sadece sayısal değer girebilirsiniz!",
+                    "You can only enter numerical values!",
                     {
                       duration: Toast.durations.SHORT
                     }
@@ -406,7 +406,7 @@ const SalesScreen = () => {
                 }
                 handleTextChange(text);
               }}
-              placeholder="Ödenen Miktarı Giriniz"
+              placeholder="Enter the Paid Amount"
               style={styles.info3}>
             </TextInput>
             <Divider style={{ marginVertical: 10, width: 270, height: 3 }}></Divider>
@@ -417,12 +417,12 @@ const SalesScreen = () => {
           <View>
             <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
               <Text style={styles.innerText}>
-                Tüm Belge İptal
+                Cancel All Document
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.belgeIptal} onPress={() => creditCardMethod()}>
               <Text style={styles.innerText}>
-                Kredi Kartı İle Ödeme
+                Payment by Credit Card
               </Text>
             </TouchableOpacity>
 
@@ -431,7 +431,7 @@ const SalesScreen = () => {
               backgroundColor: !isButtonActive() ? "#D4F6CC" : "#FA9494"
             }} onPress={() => setModalVisible(true)}>
               <Text style={styles.innerText}>
-                E-Arşiv
+                E-Archive
               </Text>
             </TouchableOpacity>
 
@@ -448,15 +448,15 @@ const SalesScreen = () => {
                 alignItems: "center"
               }}>
                 <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, alignItems: "center" }}>
-                  <Text style={{ marginBottom: 10 }}>E-posta adresinizi girin:</Text>
+                  <Text style={{ marginBottom: 10 }}>Enter your email address:</Text>
                   <TextInput
                     style={{ borderColor: "gray", borderWidth: 1, width: 200, marginBottom: 10, padding: 5 }}
                     value={email}
                     onChangeText={setEmail}
 
                   />
-                  <Button title="Gönder" onPress={sendRecipeToMail} />
-                  <Button title="İptal" onPress={() => setModalVisible(false)} />
+                  <Button title="Send" onPress={sendRecipeToMail} />
+                  <Button title="Cancel" onPress={() => setModalVisible(false)} />
                 </View>
               </View>
             </Modal>
@@ -465,13 +465,12 @@ const SalesScreen = () => {
               backgroundColor: !isButtonActive() ? "#D4F6CC" : "#FA9494"
             }} onPress={showDataInAlertSatisOnayla}>
               <Text style={styles.innerText}>
-                Satıs Onayla
+                Confirm Sale
               </Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
-
     </SafeAreaView>
   );
 };

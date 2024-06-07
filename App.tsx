@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <StoreStatusProvider>
-      <RootSiblingParent>{/* <- use RootSiblingParent to wrap your root component */}
+      <RootSiblingParent>
         <DarkMode.Provider
           value={{
             isDarkMode,

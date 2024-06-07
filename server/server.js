@@ -16,14 +16,14 @@ const sendEmail = (myAddress, content) => {
     secure: false,
     auth: {
       user: 'oguzhanfatihk@gmail.com',
-      pass: '################'
+      pass: 'dxisgisvngdjogcs'
     }
   });
 
   const mailOptions = {
     from: 'oguzhanfatihk@gmail.com',
     to: myAddress,
-    subject: 'Sending Email using Nodemailer',
+    subject: 'Sale Recipe',
     text: content
   };
 

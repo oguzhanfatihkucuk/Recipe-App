@@ -11,7 +11,6 @@ export default StyleSheet.create({
     height: 250,
     resizeMode: "contain",
     alignItems: "center",
-    marginBottom: 50
 
   },
   button: {
