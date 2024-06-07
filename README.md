@@ -103,7 +103,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ### Provided Project Requirements
 
 | Feature  | Applied  | Tested |
-| :------------ |:---------------:| -----:|
+| :------------ |:---------------:| :-----:|
 | NfC Login      | ✓  | ✓ |  
 | Incorrect Login      |     ✓   |   ✓ |
 | Version Information |     ✓   |    ✓ |
