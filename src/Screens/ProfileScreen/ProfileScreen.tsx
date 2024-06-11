@@ -65,9 +65,8 @@ const ProfileScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{alignItems:"center"}}>
+      <View style={{alignItems:"center",flex:1}}>
         <FlatList
-
           data={data}
           renderItem={renderItem}
           keyExtractor={(item) => item.date + item.hour}
