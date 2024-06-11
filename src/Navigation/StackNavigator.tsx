@@ -11,9 +11,6 @@ import AddProductScreen from "../Screens/TransectionPage/Trensections/AddProduct
 import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Others.tsx";
 import ProductsScreen from "../Screens/TransectionPage/Trensections/Products/Products.tsx";
 import SalesScreen from "../Screens/TransectionPage/Trensections/Sales/Sales.tsx";
-import ProductFiltered from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFiltered.tsx";
-import ProductFilteredPrice from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFilteredPrice.tsx";
-import ProductFilteredName from "../Screens/TransectionPage/Trensections/Products/FilterPages/ProductFilteredName.tsx";
 import NFCPage from "../Screens/LoginPage/nfc.tsx";
 import AllProducts from "../Screens/TransectionPage/Trensections/Products/FilterPages/allprodcuts.tsx";
 
@@ -35,9 +32,6 @@ export default function StackNavigator() {
       <Stack.Screen name="OtherTrans" component={OtherTransectionScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Products" component={ProductsScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Sales" component={SalesScreen} options={{headerShown:true}}/>
-      <Stack.Screen name="ProductFiltered" component={ProductFiltered} options={{headerShown:true}}/>
-      <Stack.Screen name="ProductFilteredPrice" component={ProductFilteredPrice} options={{headerShown:true}}/>
-      <Stack.Screen name="ProductFilteredName" component={ProductFilteredName} options={{headerShown:true}}/>
       <Stack.Screen name="NFCPage" component={NFCPage} />
       <Stack.Screen name="AllProducts" component={AllProducts} options={{headerShown:true}}/>
     </Stack.Navigator>

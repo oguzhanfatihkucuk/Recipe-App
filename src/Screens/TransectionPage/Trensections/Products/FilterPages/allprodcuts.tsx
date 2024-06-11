@@ -6,7 +6,7 @@ import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../../../assets/js/deviceutils';
 import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
 import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
-import { List } from "react-native-paper";
+
 
 const AllProducts = () => {
   const numColumns = getNumColumns();

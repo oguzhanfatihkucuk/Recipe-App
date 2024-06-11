@@ -43,48 +43,14 @@ const ProductsScreen = ({ navigation }) => {
     <SafeAreaView>
       <StoreStatusText />
       <ScrollView>
-        <SegmentedButtons
-          style={{ marginTop: 15 }}
-          value={""}
-          onValueChange={() => {
-          }}
-          buttons={
-            [
-              {
-                value: "Category",
-                label: "Category",
-                labelStyle: { color: isDarkMode ? "white" : "black" },
-                onPress: () => {
-                  navigation.navigate("ProductFiltered");
-                }
-              },
-              {
-                value: "Price",
-                label: "Cost",
-                labelStyle: { color: isDarkMode ? "white" : "black" },
-                onPress: () => {
-                  navigation.navigate("ProductFilteredPrice");
-                }
-              },
-              {
-                value: "Name",
-                label: "Name",
-                labelStyle: { color: isDarkMode ? "white" : "black" },
-                onPress: () => {
-                  navigation.navigate("ProductFilteredName");
-                }
-              }
-            ]}
-        />
+        <Button title={"See all Products"} onPress={() => navigation.navigate("AllProducts")} />
+
         <TextInput
           onChangeText={(e) => setSearchTerm(e)}
           placeholder="Search products..."
           style={{ backgroundColor: "transparent" }}
           value={searchTerm}
         />
-        <Button title={"See all Products"} onPress={() => navigation.navigate("AllProducts")} />
-
-
         <View style={{ flex: 1 }}>
           {searchTerm ? (<View>
             <Text>
