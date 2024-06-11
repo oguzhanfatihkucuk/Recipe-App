@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, SafeAreaView, View, Text, StyleSheet } from "react-native";
-import { Picker } from '@react-native-picker/picker';
+import { FlatList, SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
 import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from '../../../../../../assets/js/deviceutils';
+import { getNumColumns } from "../../../../../../assets/js/deviceutils";
 import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
 import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
+import { Icon } from "react-native-paper";
 
 
 const AllProducts = () => {
@@ -28,7 +29,7 @@ const AllProducts = () => {
       setData(data);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -101,8 +102,9 @@ const AllProducts = () => {
           selectedValue={selectedCategory}
           style={styles.picker}
           onValueChange={(itemValue) => setSelectedCategory(itemValue)}
+
         >
-          <Picker.Item label="All Categories" value="" />
+          <Picker.Item label="All Categories" value=""  />
           <Picker.Item label="Clothing" value="clothing" />
           <Picker.Item label="Accessories" value="accessories" />
           <Picker.Item label="Home" value="home" />
@@ -157,7 +159,8 @@ const AllProducts = () => {
         data={sortedData}
         renderItem={({ item }) => (
           <View style={{ flexDirection: "row" }}>
-            <ProductCard product={item} handleRefresh={() => { }} />
+            <ProductCard product={item} handleRefresh={() => {
+            }} />
           </View>
         )}
         numColumns={numColumns}
@@ -170,13 +173,13 @@ const AllProducts = () => {
 const styles = StyleSheet.create({
   picker: {
     height: 50,
-    width: '20%',
-    marginVertical: 10,
+    width: "20%",
+    marginVertical: 10
   },
   itemCountText: {
     fontSize: 16,
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default AllProducts;

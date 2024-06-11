@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, FlatList, Text, SafeAreaView, ScrollView, Button } from "react-native";
 import ProductCard from "../../../../Components/ProductCard/productcard.tsx";
-import { SegmentedButtons, TextInput } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
-import DarkMode from "../../../../../services/utils/darkmode.context.ts";
 import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
 import styles from "./Products.Style.tsx";
 import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
@@ -15,7 +14,6 @@ const ProductsScreen = ({ navigation }) => {
   const [data2, setData] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
-  const { isDarkMode } = useContext(DarkMode);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
