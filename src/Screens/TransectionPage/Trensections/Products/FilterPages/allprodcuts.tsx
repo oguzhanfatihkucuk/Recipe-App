@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, SafeAreaView,View } from "react-native";
+import { FlatList, SafeAreaView, View, Text, StyleSheet } from "react-native";
+import { Picker } from '@react-native-picker/picker';
 import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
 import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from '../../../../../../assets/js/deviceutils';
 import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
-import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx"; // DeviceUtils.js dosyasını içe aktarın
+import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
 
 const AllProducts = () => {
-
   const numColumns = getNumColumns();
 
   useEffect(() => {
@@ -16,37 +16,11 @@ const AllProducts = () => {
 
   const [data2, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const sortedAsPriceLowest = data2.filter((item) => item.category.toLowerCase().startsWith("")).slice().sort((a, b) => a.price - b.price);
-  const sortedAsPriceHigh = data2.filter((item) => item.category.toLowerCase().startsWith("")).slice().sort((a, b) => b.price - a.price);
-  const sortedAlphabetically = data2
-    .filter((item) => item.category && item.category.toLowerCase().startsWith(""))
-    .slice()
-    .sort((a, b) => {
-      const nameA = a.title ? a.title.toLowerCase() : "";
-      const nameB = b.title ? b.title.toLowerCase() : "";
-      return nameA.localeCompare(nameB);
-    });
+  const [sortOption, setSortOption] = useState("alphabetically");
 
-  const sortedAlphabeticallyDesc = data2
-    .filter((item) => item.category && item.category.toLowerCase().startsWith(""))
-    .slice()
-    .sort((a, b) => {
-      const nameA = a.title ? a.title.toLowerCase() : "";
-      const nameB = b.title ? b.title.toLowerCase() : "";
-      return nameB.localeCompare(nameA);  // Reverse the comparison
-    });
-
-
-
-
-
-
-
-  let data;
-  const ProductCardMemoized = React.memo(ProductCard);
   const fetchDataFromMockBackend = async () => {
     try {
-      data = await fetchMockBackendData();
+      const data = await fetchMockBackendData();
       setData(data);
       setLoading(false);
     } catch (error) {
@@ -54,19 +28,60 @@ const AllProducts = () => {
     }
   };
 
+  const sortedData = (() => {
+    switch (sortOption) {
+      case "priceLowToHigh":
+        return data2.slice().sort((a, b) => a.price - b.price);
+      case "priceHighToLow":
+        return data2.slice().sort((a, b) => b.price - a.price);
+      case "alphabetically":
+        return data2.slice().sort((a, b) => {
+          const nameA = a.title ? a.title.toLowerCase() : "";
+          const nameB = b.title ? b.title.toLowerCase() : "";
+          return nameA.localeCompare(nameB);
+        });
+      case "alphabeticallyDesc":
+        return data2.slice().sort((a, b) => {
+          const nameA = a.title ? a.title.toLowerCase() : "";
+          const nameB = b.title ? b.title.toLowerCase() : "";
+          return nameB.localeCompare(nameA);
+        });
+      default:
+        return data2;
+    }
+  })();
+
   if (loading) {
     return <LoadingAnimation />;
   }
-  // @ts-ignore
+
   return (
     <SafeAreaView>
       <StoreStatusText />
       <View>
+        <View style={{flexDirection:"row"}}>
+          <Picker
+          selectedValue={sortOption}
+          style={styles.picker}
+          onValueChange={(itemValue) => setSortOption(itemValue)}
+        >
+          <Picker.Item label="Price: Low to High" value="priceLowToHigh" />
+          <Picker.Item label="Price: High to Low" value="priceHighToLow" />
+        </Picker>
+          <Picker
+            selectedValue={sortOption}
+            style={styles.picker}
+            onValueChange={(itemValue) => setSortOption(itemValue)}
+          >
+            <Picker.Item label="Alphabetically: A-Z" value="alphabetically" />
+            <Picker.Item label="Alphabetically: Z-A" value="alphabeticallyDesc" />
+          </Picker>
+        </View>
         <FlatList
-          data={sortedAlphabeticallyDesc}
+          data={sortedData}
           renderItem={({ item }) => (
             <View style={{ flexDirection: "row" }}>
-              <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
+              <ProductCard product={item} handleRefresh={() => { }} />
             </View>
           )}
           numColumns={numColumns}
@@ -76,5 +91,12 @@ const AllProducts = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  picker: {
+    height: 50,
+    width: '25%',
+    marginVertical: 10,
+  }
+});
 
 export default AllProducts;
