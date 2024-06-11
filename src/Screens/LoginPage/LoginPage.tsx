@@ -3,10 +3,11 @@ import { Image, SafeAreaView, Text, TouchableOpacity, View ,Vibration} from "rea
 import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
+import myIp from "../../../assets/js/myIp";
 const myImage = require("../../../assets/png/shopping2.png");
 
 
-const API_URL="http://192.168.1.25:3000/users";
+const API_URL="http://"+myIp+":3000/users";
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
 
@@ -52,6 +53,7 @@ const LoginPage = ({ navigation }) => {
       else{
         setTextColor(false);
         startVibration();
+        console.log("vibrated")
       }
     }});
     return false;
@@ -89,10 +91,10 @@ const LoginPage = ({ navigation }) => {
             />
             {textColor? <View></View> : <Text style={styles.warningText}>Your Information was not correct</Text>}
             <TouchableOpacity style={styles.button} onPress={() => checkUser(usercode, password)}
-                              children={<Text style={styles.button_text}>Giriş Yap</Text>} />
+                              children={<Text style={styles.button_text}>Enter System</Text>} />
           </View>
           <TouchableOpacity children={<Text style={styles.password} >
-            Sifremi Unuttum
+            Forgot My Password
           </Text>} />
 
           <Divider style={{ height: 30, backgroundColor: "transparent" }}></Divider>

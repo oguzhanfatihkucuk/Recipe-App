@@ -16,6 +16,31 @@ const AllProducts = () => {
 
   const [data2, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const sortedAsPriceLowest = data2.filter((item) => item.category.toLowerCase().startsWith("")).slice().sort((a, b) => a.price - b.price);
+  const sortedAsPriceHigh = data2.filter((item) => item.category.toLowerCase().startsWith("")).slice().sort((a, b) => b.price - a.price);
+  const sortedAlphabetically = data2
+    .filter((item) => item.category && item.category.toLowerCase().startsWith(""))
+    .slice()
+    .sort((a, b) => {
+      const nameA = a.title ? a.title.toLowerCase() : "";
+      const nameB = b.title ? b.title.toLowerCase() : "";
+      return nameA.localeCompare(nameB);
+    });
+
+  const sortedAlphabeticallyDesc = data2
+    .filter((item) => item.category && item.category.toLowerCase().startsWith(""))
+    .slice()
+    .sort((a, b) => {
+      const nameA = a.title ? a.title.toLowerCase() : "";
+      const nameB = b.title ? b.title.toLowerCase() : "";
+      return nameB.localeCompare(nameA);  // Reverse the comparison
+    });
+
+
+
+
+
+
 
   let data;
   const ProductCardMemoized = React.memo(ProductCard);
@@ -38,7 +63,7 @@ const AllProducts = () => {
       <StoreStatusText />
       <View>
         <FlatList
-          data={data2}
+          data={sortedAlphabeticallyDesc}
           renderItem={({ item }) => (
             <View style={{ flexDirection: "row" }}>
               <ProductCardMemoized product={item} handleRefresh={()=>{}}/>
@@ -47,7 +72,6 @@ const AllProducts = () => {
           numColumns={numColumns}
           keyExtractor={(item) => item.id.toString()} />
       </View>
-
     </SafeAreaView>
   );
 };
