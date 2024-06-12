@@ -146,11 +146,13 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
    <img src="./assets/ProjectScreenShots/Products.png" alt="Products" width="200" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/ProductsFiltering2.png" alt="Products Filtering" width="200" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Products Screen" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/SalesScreen.png" alt="Sales Screen " width="400" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/VirtualRecipe.png" alt="Virtual Recipe" width="400" style="margin: 10px;"/>
+  
 </div>
 
-
+<div style="display: flex; flex-wrap: wrap;">
+   <img src="./assets/ProjectScreenShots/SalesScreen.png" alt="Sales Screen " width="400" style="margin: 10px;"/>
+   <img src="./assets/ProjectScreenShots/VirtualRecipe.png" alt="Virtual Recipe" width="400" style="margin: 10px;"/>
+</div>
 ### Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
