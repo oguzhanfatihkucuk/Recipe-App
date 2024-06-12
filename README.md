@@ -124,6 +124,13 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 
 <img src="./assets/ProjectScreenShots/AboutUs.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/DarkMode.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/ExploreScreen.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/FilteringProducts.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/Privacy.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/Products.png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/ProductsFiltering2png" alt="Logo" width="200"/>
+<img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Logo" width="200"/>
 
 
 
