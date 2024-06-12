@@ -6,7 +6,7 @@ import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
 import { getNumColumns } from "../../../../../../assets/js/deviceutils";
 import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
 import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
-import { Icon } from "react-native-paper";
+
 
 
 const AllProducts = () => {
@@ -99,18 +99,19 @@ const AllProducts = () => {
       <StoreStatusText />
       <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10 }}>
         <Picker
+
           selectedValue={selectedCategory}
           style={styles.picker}
           onValueChange={(itemValue) => setSelectedCategory(itemValue)}
-
         >
-          <Picker.Item label="All Categories" value=""  />
+          <Picker.Item label="All Categories" value="" />
           <Picker.Item label="Clothing" value="clothing" />
           <Picker.Item label="Accessories" value="accessories" />
           <Picker.Item label="Home" value="home" />
           <Picker.Item label="Kitchen" value="kitchen" />
           <Picker.Item label="Food" value="food" />
         </Picker>
+
         <Picker
           selectedValue={priceTerm}
           style={styles.picker}
