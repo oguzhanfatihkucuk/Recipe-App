@@ -26,7 +26,7 @@ const StoreStatusText = () => {
      </View>
       <View style={{flexDirection:"row"}}>
         <Text isDarkMode={isDarkMode} style={styles.text}>
-          {isStoreOpen ? 'Mağaza Açık' : 'Mağaza Kapalı'}
+          {isStoreOpen ? 'Store Open' : 'Store Closed'}
         </Text>
         <Icon size={24} source={isStoreOpen?"check-circle":"close-circle"} color={isStoreOpen?"green":"red"}/>
       </View>
