@@ -120,6 +120,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Manual synchronization |     ✓   |  ✓   |
 | Explore Screen |    ✓    |   ✓  |
 | Staff-Register Information |    ✓    |   ✓  |
+| Responsive-Design |    ✓    |   ✓  |
 
 
 
