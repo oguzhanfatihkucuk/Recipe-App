@@ -123,14 +123,16 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Responsive-Design |    ✓    |   ✓  |
 
 
-<img src="./assets/ProjectScreenShots/AboutUs.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/DarkMode.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/ExploreScreen.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/FilteringProducts.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/Privacy.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/Products.png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/ProductsFiltering2png" alt="Logo" width="200"/>
-<img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Logo" width="200"/>
+<div style="display: flex; flex-wrap: wrap;">
+  <img src="./assets/ProjectScreenShots/AboutUs.png" alt="About Us" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/DarkMode.png" alt="Dark Mode" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/ExploreScreen.png" alt="Explore Screen" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/FilteringProducts.png" alt="Filtering Products" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/Privacy.png" alt="Privacy" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/Products.png" alt="Products" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/ProductsFiltering2.png" alt="Products Filtering" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Products Screen" width="200" style="margin: 10px;"/>
+</div>
 
 
 
