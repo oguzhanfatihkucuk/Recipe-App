@@ -1,8 +1,9 @@
 
-<p>
-  <img src="./assets/ProjectScreenShots/32Bit.png" alt="32Bit.png" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/Toyota.png" alt="Toyota.png" width="200" style="margin: 10px;"/>
-</p>
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+  <img src="./assets/ProjectScreenShots/32Bit.png" alt="32Bit.png" style="width: 45%; margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/Toyota.png" alt="Toyota.png" style="width: 45%; margin: 10px;"/>
+</div>
+
 
 # Recipe-App
 
