@@ -132,10 +132,10 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
   <img src="./assets/ProjectScreenShots/Products.png" alt="Products" width="200" style="margin: 10px;"/>
   <img src="./assets/ProjectScreenShots/ProductsFiltering2.png" alt="Products Filtering" width="200" style="margin: 10px;"/>
   <img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Products Screen" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/ProfileScreen.png" alt="Privacy" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/ReportsScreen.png.png" alt="Products" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/SettingsScreen.png.png" alt="Products Filtering" width="200" style="margin: 10px;"/>
-  <img src="./assets/ProjectScreenShots/TransectionScreen.png.png" alt="Products Screen" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/ProfileScreen.png" alt="ProfileScreen" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/ReportsScreen.png" alt="ReportsScreen" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/SettingsScreen.png" alt="SettingsScreen" width="200" style="margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/TransectionScreen.png" alt="TransectionScreen.png" width="200" style="margin: 10px;"/>
 </div>
 
 
