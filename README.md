@@ -133,21 +133,64 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ### Screenshots
 
 <div style="display: flex; flex-wrap: wrap;">
-   <img src="./assets/ProjectScreenShots/AppLoading.png" alt="AppLoading.png" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/LoginScreen.png" alt="LoginScreen.png" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/ExploreScreen.png" alt="Explore Screen" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/ReportsScreen.png" alt="ReportsScreen" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/TransectionScreen.png" alt="TransectionScreen.png" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/ProfileScreen.png" alt="ProfileScreen" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/SettingsScreen.png" alt="SettingsScreen" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/AboutUs.png" alt="About Us" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/DarkMode.png" alt="Dark Mode" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/Privacy.png" alt="Privacy" width="200" style="margin: 10px;"/>  
-   <img src="./assets/ProjectScreenShots/FilteringProducts.png" alt="Filtering Products" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/Products.png" alt="Products" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/ProductsFiltering2.png" alt="Products Filtering" width="200" style="margin: 10px;"/>
-   <img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Products Screen" width="200" style="margin: 10px;"/>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">App Loading</p>
+    <img src="./assets/ProjectScreenShots/AppLoading.png" alt="AppLoading.png" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Login Screen</p>
+    <img src="./assets/ProjectScreenShots/LoginScreen.png" alt="LoginScreen.png" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Explore Screen</p>
+    <img src="./assets/ProjectScreenShots/ExploreScreen.png" alt="Explore Screen" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Reports Screen</p>
+    <img src="./assets/ProjectScreenShots/ReportsScreen.png" alt="ReportsScreen" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Transection Screen</p>
+    <img src="./assets/ProjectScreenShots/TransectionScreen.png" alt="TransectionScreen.png" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Profile Screen</p>
+    <img src="./assets/ProjectScreenShots/ProfileScreen.png" alt="ProfileScreen" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Settings Screen</p>
+    <img src="./assets/ProjectScreenShots/SettingsScreen.png" alt="SettingsScreen" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">About Us</p>
+    <img src="./assets/ProjectScreenShots/AboutUs.png" alt="About Us" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Dark Mode</p>
+    <img src="./assets/ProjectScreenShots/DarkMode.png" alt="Dark Mode" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Privacy</p>
+    <img src="./assets/ProjectScreenShots/Privacy.png" alt="Privacy" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Filtering Products</p>
+    <img src="./assets/ProjectScreenShots/FilteringProducts.png" alt="Filtering Products" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Products</p>
+    <img src="./assets/ProjectScreenShots/Products.png" alt="Products" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Products Filtering</p>
+    <img src="./assets/ProjectScreenShots/ProductsFiltering2.png" alt="Products Filtering" width="200" />
+  </div>
+  <div style="margin: 10px;">
+    <p style="text-align: center;">Products Screen</p>
+    <img src="./assets/ProjectScreenShots/ProductsScreen.png" alt="Products Screen" width="200" />
+  </div>
 </div>
+
 
 
 ### Support
