@@ -193,6 +193,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 
 
+
 ### Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
