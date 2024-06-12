@@ -153,6 +153,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
    <img src="./assets/ProjectScreenShots/SalesScreen.png" alt="Sales Screen " width="400" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/VirtualRecipe.png" alt="Virtual Recipe" width="400" style="margin: 10px;"/>
 </div>
+
 ### Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
