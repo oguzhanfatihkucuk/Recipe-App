@@ -124,7 +124,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 
 
-
+![Project Logo](./assets/ProjectScreenShots/AboutUs.png)
 
 
 
