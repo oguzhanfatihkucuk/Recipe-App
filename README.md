@@ -1,3 +1,10 @@
+
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+  <img src="./assets/ProjectScreenShots/32Bit.png" alt="32Bit.png" style="width: 45%; margin: 10px;"/>
+  <img src="./assets/ProjectScreenShots/Toyota.png" alt="Toyota.png" style="width: 45%; margin: 10px;"/>
+</div>
+
+
 # Recipe-App
 
 This project is based on the GitHub repository of the mobile cash register application carried out by Toyota and 32-Bit companies. Completed using the `React Native` framework version `"0.73.6"`.
@@ -123,6 +130,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Responsive-Design |    ✓    |   ✓  |
 
 
+### Screenshots
 <div style="display: flex; flex-wrap: wrap;">
    <img src="./assets/ProjectScreenShots/AppLoading.png" alt="AppLoading.png" width="200" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/LoginScreen.png" alt="LoginScreen.png" width="200" style="margin: 10px;"/>
@@ -141,4 +149,12 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 </div>
 
 
+### Support
+
+For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
+
+
+### Lisans
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
