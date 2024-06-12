@@ -123,9 +123,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Responsive-Design |    ✓    |   ✓  |
 
 
-
-![Project Logo](./assets/ProjectScreenShots/AboutUs.png)
-
+<img src="./assets/ProjectScreenShots/AboutUs.png" alt="Logo" width="200"/>
 
 
 
