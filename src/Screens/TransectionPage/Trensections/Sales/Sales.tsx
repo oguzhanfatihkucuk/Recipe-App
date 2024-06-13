@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
-import { addItemToTuple, myTuple } from "../../../../../assets/js/myTuple";
+import {myTuple,addItemToTuple, revenueCashInc, revenueCreditInc} from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, List, TextInput } from "react-native-paper";
 import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
@@ -196,6 +196,8 @@ const SalesScreen = () => {
     message += "***********************\n";
     message += "       Good Days...";
 
+    revenueCashInc(count);
+
     Alert.alert("", message);
     deleteData();
 
@@ -231,6 +233,8 @@ const SalesScreen = () => {
     message += "Change: 0 \n";
     message += "***********************\n";
     message += "       Good Days...\n";
+
+    revenueCreditInc(totalPrice);
 
     Alert.alert("", message);
     deleteData();
@@ -271,6 +275,8 @@ const SalesScreen = () => {
     message += "Change:" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
+
+    revenueCashInc(count);
 
     if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);

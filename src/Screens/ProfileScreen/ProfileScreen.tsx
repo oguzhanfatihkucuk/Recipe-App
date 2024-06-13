@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, TouchableOpacity, Image, FlatList, Alert, Modal, Button } from "react-native";
+import { View, TouchableOpacity, Image, FlatList, Modal, Button } from "react-native";
 import styles from "./ProfileScreen.Style";
 import { Divider} from "react-native-paper";
 import ShiftCard from "../../Components/ShiftEnterOut/ShiftCard";
