@@ -57,7 +57,23 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     borderRadius: 15
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent', // Modal arka plan rengi
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+  },
+  chartContainer: {
+    marginTop: 20,
+    height: 200, // Grafik boyutunu ayarlayın
+  },
 
 
 });
