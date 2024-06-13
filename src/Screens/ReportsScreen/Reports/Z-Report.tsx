@@ -2,13 +2,7 @@ import React, {} from "react";
 import { Alert, Button, FlatList, Platform, SafeAreaView, Text, View } from "react-native";
 import { reports, reportsOffline } from "../../../../assets/js/reports";
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import { PieChart } from "react-native-gifted-charts";
-import {
-  getNumberOfCashSale,
-  getNumberOfCreditCardSale,
-  getTotalRevenueCash,
-  getTotalRevenueCreditCard
-} from "../../../../assets/js/myTuple";
+
 const ZReports = () => {
 
   const now = new Date();
@@ -29,24 +23,6 @@ const ZReports = () => {
       // @ts-ignore
       console.log('Failed to generate pdf', error.message);
     }
-  };
-
-  //@ts-ignore
-  const renderLegend = (text, color) => {
-    return (
-      <View style={{flexDirection: 'row', marginBottom: 12}}>
-        <View
-          style={{
-            height: 18,
-            width: 18,
-            marginRight: 10,
-            borderRadius: 4,
-            backgroundColor: color || 'white',
-          }}
-        />
-        <Text style={{color: 'white', fontSize: 16}}>{text || ''}</Text>
-      </View>
-    );
   };
 
   //@ts-ignore

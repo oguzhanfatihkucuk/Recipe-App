@@ -213,62 +213,8 @@ const OtherReports = () => {
             </View>
           </View>
           <View>
-            <View
-              style={{
-                height:340,
-                marginVertical: 10,
-                borderRadius: 10,
-                marginHorizontal:15,
-                paddingVertical: 5,
-                backgroundColor: '#414141',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 32,
-                  fontWeight: 'bold',
-                  marginBottom: 12,
-                }}>
-                Total Revenue ($)
-              </Text>
-              <PieChart
-                strokeColor="white"
-                strokeWidth={4}
-                donut
-                data={[
-                  {value: 30, color: 'rgb(84,219,234)'},
-                  {value: 40, color: 'lightgreen'},
 
-                ]}
-                innerCircleColor="#414141"
-                innerCircleBorderWidth={4}
-                innerCircleBorderColor={'white'}
-                showValuesAsLabels={true}
-                showText
-                textSize={18}
-                showTextBackground={true}
-                centerLabelComponent={() => {
-                  return (
-                    <View>
-                      <Text style={{color: 'white', fontSize: 36}}>70</Text>
-                      <Text style={{color: 'white', fontSize: 18}}>Total</Text>
-                    </View>
-                  );
-                }}
-              />
-              <View
-                style={{
-                  width: '60%',
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  marginTop: 5,
-                }}>
-                {renderLegend('Credit Card', 'rgb(84,219,234)')}
-                {renderLegend('Cash', 'lightgreen')}
-              </View>
-            </View>
+
           </View>
         </View>
       </View>

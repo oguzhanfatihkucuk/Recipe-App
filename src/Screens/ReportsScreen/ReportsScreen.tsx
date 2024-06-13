@@ -35,7 +35,7 @@ const ReportsScreen = () => {
       icon: "file-star",
       nav: 3
     },
-    { reportname: "Charts", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
+    { reportname: "Charts", description: "OtherDesc", icon: "chart-donut-variant", nav: 4 }
   ];
   function navigateToPage(navValue: any) {
     switch (navValue) {
