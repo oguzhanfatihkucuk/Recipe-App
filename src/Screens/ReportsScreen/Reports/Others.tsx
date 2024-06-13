@@ -1,7 +1,13 @@
 import React, {} from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
-import {getNumberOfCashSale, getNumberOfCreditCardSale,getTotalRevenueCash,getTotalRevenueCreditCard} from "../../../../assets/js/reports.js";
+import {
+  getNumberOfCashSale,
+  getNumberOfCreditCardSale,
+  getTotalLenghtCash, getTotalLenghtCreditCard,
+  getTotalRevenueCash,
+  getTotalRevenueCreditCard
+} from "../../../../assets/js/reports.js";
 
 const OtherReports = () => {
   //@ts-ignore
@@ -81,6 +87,7 @@ const OtherReports = () => {
                   justifyContent: 'space-evenly',
                   marginTop: 20,
                 }}>
+
                 {renderLegend('Credit Card', 'rgb(84,219,234)')}
                 {renderLegend('Cash', 'lightgreen')}
               </View>
@@ -105,15 +112,15 @@ const OtherReports = () => {
                   fontWeight: 'bold',
                   marginBottom: 12,
                 }}>
-                Total Revenue ($)
+                Number Of Products (Quantity)
               </Text>
               <PieChart
                 strokeColor="white"
                 strokeWidth={4}
                 donut
                 data={[
-                  {value: 30, color: 'rgb(84,219,234)'},
-                  {value: 40, color: 'lightgreen'},
+                  {value: getTotalLenghtCash(), color: 'lightgreen'},
+                  {value: getTotalLenghtCreditCard(), color: 'rgb(84,219,234)'},
 
                 ]}
                 innerCircleColor="#414141"
@@ -126,7 +133,7 @@ const OtherReports = () => {
                 centerLabelComponent={() => {
                   return (
                     <View>
-                      <Text style={{color: 'white', fontSize: 36}}>70</Text>
+                      <Text style={{color: 'white', fontSize: 36}}>{getTotalLenghtCreditCard()+getTotalLenghtCash()}</Text>
                       <Text style={{color: 'white', fontSize: 18}}>Total</Text>
                     </View>
                   );
@@ -139,7 +146,7 @@ const OtherReports = () => {
                   justifyContent: 'space-evenly',
                   marginTop: 5,
                 }}>
-                {renderLegend('Credit Card', 'rgb(84,219,234)')}
+                {renderLegend('Credit CardCash', 'rgb(84,219,234)')}
                 {renderLegend('Cash', 'lightgreen')}
               </View>
             </View>
@@ -172,8 +179,9 @@ const OtherReports = () => {
                 strokeWidth={4}
                 donut
                 data={[
-                  {value: getNumberOfCreditCardSale(), color: 'rgb(84,219,234)'},
+
                   {value: getNumberOfCashSale(), color: 'lightgreen'},
+                  {value: getNumberOfCreditCardSale(), color: 'rgb(84,219,234)'},
 
                 ]}
                 innerCircleColor="#414141"

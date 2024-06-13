@@ -197,7 +197,7 @@ const SalesScreen = () => {
     message += "***********************\n";
     message += "       Good Days...";
 
-    revenueCashInc(totalPrice);
+    revenueCashInc(totalPrice,lenghtOfSales);
 
     Alert.alert("", message);
     deleteData();
@@ -235,7 +235,7 @@ const SalesScreen = () => {
     message += "***********************\n";
     message += "       Good Days...\n";
 
-    revenueCreditInc(totalPrice);
+    revenueCreditInc(totalPrice,lenghtOfSales);
 
     Alert.alert("", message);
     deleteData();
@@ -277,7 +277,7 @@ const SalesScreen = () => {
     message += "***********************\n";
     message += "       Good Days...";
 
-    revenueCashInc(totalPrice);
+    revenueCashInc(totalPrice,lenghtOfSales);
 
     if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
@@ -300,7 +300,7 @@ const SalesScreen = () => {
   }, [myMailContent]);
 
   const isButtonActive = () => {
-    return totalPrice - count >= 0;
+    return totalPrice - count > 0;
   };
 
   if (loading) {

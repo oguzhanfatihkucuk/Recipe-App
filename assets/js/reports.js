@@ -7,22 +7,30 @@ let totalRevenueCreditCard = 0;
 let numberOfCashSale = 0;
 let numberOfCreditCardSale = 0;
 
+let lenghtOfCashSale = 0;
+let lenghtOfCreditCardSale = 0;
+
 export const getNumberOfCashSale = () => numberOfCashSale;
 export const getNumberOfCreditCardSale = () => numberOfCreditCardSale;
 
 export const getTotalRevenueCash = () => totalRevenueCash;
 export const getTotalRevenueCreditCard = () => totalRevenueCreditCard;
 
-export const revenueCashInc = (price) => {
+export const getTotalLenghtCash = () => lenghtOfCashSale;
+export const getTotalLenghtCreditCard = () => lenghtOfCreditCardSale;
+
+export const revenueCashInc = (price,lenght) => {
   numberOfCashSale++;
   totalRevenueCash += price;
+  lenghtOfCashSale+=lenght;
   return totalRevenueCash;
 
 };
 
-export const revenueCreditInc = (price) => {
+export const revenueCreditInc = (price,lenght) => {
   numberOfCreditCardSale++;
   totalRevenueCreditCard += price;
+  lenghtOfCreditCardSale+=lenght;
   return totalRevenueCreditCard;
 };
 
