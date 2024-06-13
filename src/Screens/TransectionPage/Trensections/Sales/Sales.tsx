@@ -211,6 +211,8 @@ const SalesScreen = () => {
 
   };
 
+
+
   const showDataInAlertCreditCard = () => {
     var message = "Sales Receipt:\n";
     message += "***********************\n";
