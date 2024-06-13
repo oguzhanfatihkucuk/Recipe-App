@@ -23,6 +23,7 @@ export default StyleSheet.create({
     height: 50
   },
   subButton: {
+    color:"white",
     backgroundColor: "#58A399",
     alignItems: "center",
     borderRadius: 20,
@@ -30,6 +31,7 @@ export default StyleSheet.create({
     marginHorizontal:5,
     width:180,
     height: 90,
+
   },
   button_text: {
     fontSize: 22,
