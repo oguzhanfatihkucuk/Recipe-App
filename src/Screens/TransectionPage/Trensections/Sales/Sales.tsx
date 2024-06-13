@@ -221,6 +221,7 @@ const SalesScreen = () => {
     message += "***********************\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
+
       message += "Title: " + item.title + "\n";
       //@ts-ignore
       message += "Id: " + item.id + "";
