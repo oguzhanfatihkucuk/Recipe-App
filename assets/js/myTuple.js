@@ -2,13 +2,20 @@ export let myTuple = [];
 
 
 export const addItemToTuple = (item) => {
-
-  if (!myTuple.includes(item)) {
     myTuple.push(item);
     console.log(myTuple)
-  }
 };
 
+export const countItems = (productId) => {
+  let count = 0;
+  myTuple.forEach((item) => {
+    if (item === productId) {
+      count++;
+    }
+
+  });
+  return count;
+};
 export const deleteItemToTuple = (item) => {
   const index = myTuple.indexOf(item);
   if (index !== -1) {

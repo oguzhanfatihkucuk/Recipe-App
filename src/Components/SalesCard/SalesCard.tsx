@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/SalesCard/SalesCardStyle.tsx";
-import { deleteItemToTuple} from "../../../assets/js/myTuple";
+import { deleteItemToTuple,countItems} from "../../../assets/js/myTuple";
 
 
 
@@ -43,6 +43,7 @@ const SalesCard = ({ product , handlePress}) => {
         </View>
         <View>
           <Text style={styles.text4}>Price: ${product.price || 'N/A'}</Text>
+          <Text style={styles.text3}>Quantity: {countItems(product.id)} </Text>
         </View>
       </View>
     </TouchableOpacity>

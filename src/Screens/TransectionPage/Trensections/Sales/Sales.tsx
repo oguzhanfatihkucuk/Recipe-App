@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
 import { revenueCashInc, revenueCreditInc} from "../../../../../assets/js/reports";
-import {myTuple,addItemToTuple,} from  "../../../../../assets/js/myTuple";
+import { myTuple, addItemToTuple, countItems } from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, List, TextInput } from "react-native-paper";
 import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
@@ -188,7 +188,8 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) + "\n";
+      message += "        Price:$" + item.price.toFixed(2) +"X"+countItems(item.id)+"\n" ;
+
       message += "***********************\n";
     });
     message += "Total amount:" + totalPrice.toString().substring(0, 6) + "\n";
