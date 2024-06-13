@@ -1,5 +1,33 @@
 export let reports = [];
 export let reportsOffline = [];
+
+let totalRevenueCash = 0;
+let totalRevenueCreditCard = 0;
+
+let numberOfCashSale = 0;
+let numberOfCreditCardSale = 0;
+
+export const getNumberOfCashSale = () => numberOfCashSale;
+export const getNumberOfCreditCardSale = () => numberOfCreditCardSale;
+
+export const getTotalRevenueCash = () => totalRevenueCash;
+export const getTotalRevenueCreditCard = () => totalRevenueCreditCard;
+
+export const revenueCashInc = (price) => {
+  numberOfCashSale++;
+  totalRevenueCash += price;
+  return totalRevenueCash;
+
+};
+
+export const revenueCreditInc = (price) => {
+  numberOfCreditCardSale++;
+  totalRevenueCreditCard += price;
+  return totalRevenueCreditCard;
+};
+
+
+
 export const addItemToReports = (item) => {
 
   if (!reports.includes(item)) {

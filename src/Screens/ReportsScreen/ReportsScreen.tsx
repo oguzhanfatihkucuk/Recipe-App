@@ -35,7 +35,7 @@ const ReportsScreen = () => {
       icon: "file-star",
       nav: 3
     },
-    { reportname: "other", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
+    { reportname: "Charts", description: "OtherDesc", icon: "dots-horizontal", nav: 4 }
   ];
   function navigateToPage(navValue: any) {
     switch (navValue) {
@@ -53,7 +53,7 @@ const ReportsScreen = () => {
         break;
       case 4:
         // @ts-ignore
-        navigation.navigate('Other');
+        navigation.navigate('Charts');
         break;
 
       default:

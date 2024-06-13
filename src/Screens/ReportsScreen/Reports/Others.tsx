@@ -1,7 +1,7 @@
 import React, {} from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
-import {getNumberOfCashSale, getNumberOfCreditCardSale,getTotalRevenueCash,getTotalRevenueCreditCard} from "../../../../assets/js/myTuple";
+import {getNumberOfCashSale, getNumberOfCreditCardSale,getTotalRevenueCash,getTotalRevenueCreditCard} from "../../../../assets/js/reports.js";
 
 const OtherReports = () => {
   //@ts-ignore
@@ -26,7 +26,7 @@ const OtherReports = () => {
   // @ts-ignore
   return (
     <SafeAreaView>
-      <View style={{flexDirection:"row"}}>
+      <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
         <View >
           <View>
             <View
@@ -54,8 +54,8 @@ const OtherReports = () => {
                 strokeWidth={4}
                 donut
                 data={[
-                  {value: getTotalRevenueCreditCard()+1, color: 'rgb(84,219,234)'},
-                  {value: getTotalRevenueCash()+1, color: 'lightgreen'},
+                  {value: getTotalRevenueCreditCard(), color: 'rgb(84,219,234)'},
+                  {value: getTotalRevenueCash(), color: 'lightgreen'},
 
                 ]}
                 innerCircleColor="#414141"
@@ -68,7 +68,7 @@ const OtherReports = () => {
                 centerLabelComponent={() => {
                   return (
                     <View>
-                      <Text style={{color: 'white', fontSize: 36}}>70</Text>
+                      <Text style={{color: 'white', fontSize: 36}}>{getTotalRevenueCreditCard()+getTotalRevenueCash()}</Text>
                       <Text style={{color: 'white', fontSize: 18}}>Total</Text>
                     </View>
                   );
@@ -76,7 +76,7 @@ const OtherReports = () => {
               />
               <View
                 style={{
-                  width: '42%',
+                  width: '60%',
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   marginTop: 20,
@@ -134,7 +134,7 @@ const OtherReports = () => {
               />
               <View
                 style={{
-                  width: '42%',
+                  width: '60%',
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   marginTop: 5,
@@ -172,8 +172,8 @@ const OtherReports = () => {
                 strokeWidth={4}
                 donut
                 data={[
-                  {value: getNumberOfCreditCardSale()+1, color: 'rgb(84,219,234)'},
-                  {value: getNumberOfCashSale()+1, color: 'lightgreen'},
+                  {value: getNumberOfCreditCardSale(), color: 'rgb(84,219,234)'},
+                  {value: getNumberOfCashSale(), color: 'lightgreen'},
 
                 ]}
                 innerCircleColor="#414141"
@@ -186,7 +186,7 @@ const OtherReports = () => {
                 centerLabelComponent={() => {
                   return (
                     <View>
-                      <Text style={{color: 'white', fontSize: 36}}>13</Text>
+                      <Text style={{color: 'white', fontSize: 36}}>{getNumberOfCreditCardSale()+getNumberOfCashSale()}</Text>
                       <Text style={{color: 'white', fontSize: 18}}>Total</Text>
                     </View>
                   );
@@ -194,7 +194,7 @@ const OtherReports = () => {
               />
               <View
                 style={{
-                  width: '42%',
+                  width: '60%',
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   marginTop: 20,
@@ -252,7 +252,7 @@ const OtherReports = () => {
               />
               <View
                 style={{
-                  width: '42%',
+                  width: '60%',
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   marginTop: 5,

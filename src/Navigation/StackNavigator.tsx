@@ -27,7 +27,7 @@ export default function StackNavigator() {
       <Stack.Screen name="X-Report" component={XReports} options={{headerShown:true}}/>
       <Stack.Screen name="Z-Report" component={ZReports} options={{headerShown:true}}/>
       <Stack.Screen name="Campaings" component={CampaignsScreen} options={{headerShown:true}}/>
-      <Stack.Screen name="Other" component={OtherReportScreen} options={{headerShown:true}}/>
+      <Stack.Screen name="Charts" component={OtherReportScreen} options={{headerShown:true}}/>
       <Stack.Screen name="AddProduct" component={AddProductScreen} options={{headerShown:true}}/>
       <Stack.Screen name="OtherTrans" component={OtherTransectionScreen} options={{headerShown:true}}/>
       <Stack.Screen name="Products" component={ProductsScreen} options={{headerShown:true}}/>
