@@ -18,7 +18,7 @@ const ReportsScreen = () => {
 
   const report = [
     {
-      reportname: "UserList",
+      reportname: "User Information Screen",
       description: "X-ReportDesc",
       icon: "file-send",
       nav: 1
@@ -41,7 +41,7 @@ const ReportsScreen = () => {
     switch (navValue) {
       case 1:
         // @ts-ignore
-        navigation.navigate('X-Report');
+        navigation.navigate('User Information Screen');
         break;
       case 2:
         // @ts-ignore
