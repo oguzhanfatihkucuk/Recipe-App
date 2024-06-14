@@ -33,14 +33,12 @@ const OtherReports = () => {
   return (
     <SafeAreaView>
       <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
-        <View >
+        <View style={{backgroundColor:"transparent"}}>
           <View>
             <View
               style={{
-                height:340,
-                marginVertical: 15,
                 borderRadius: 10,
-                marginHorizontal:20,
+                marginHorizontal:10,
                 paddingVertical: 5,
                 backgroundColor: '#414141',
                 justifyContent: 'center',
@@ -96,10 +94,9 @@ const OtherReports = () => {
           <View>
             <View
               style={{
-                height:340,
-                marginVertical: 10,
+                marginVertical: 3,
                 borderRadius: 10,
-                marginHorizontal:15,
+                marginHorizontal:10,
                 paddingVertical: 5,
                 backgroundColor: '#414141',
                 justifyContent: 'center',
