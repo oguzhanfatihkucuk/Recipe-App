@@ -145,6 +145,7 @@ const OtherReports = () => {
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   marginTop: 5,
+
                 }}>
                 {renderLegend('Credit CardCash', 'rgb(84,219,234)')}
                 {renderLegend('Cash', 'lightgreen')}
