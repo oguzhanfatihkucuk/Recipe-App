@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../../Components/SalesCard/SalesCardStyle.tsx";
-import { deleteItemToTuple,countItems} from "../../../assets/js/myTuple";
+import { deleteItemToTuple, countItems, addItemToTuple, deleteItemFromTuple } from "../../../assets/js/myTuple";
 
 
 
 //@ts-ignore
-const SalesCard = ({ product , handlePress}) => {
+const SalesCard = ({ product , handlePress }) => {
 
 //@ts-ignore
   const handleLongPress = (productId) => {
@@ -22,7 +22,7 @@ const SalesCard = ({ product , handlePress}) => {
         {
           text: 'Delete',
           onPress: () => {
-            deleteItemToTuple(productId);
+            deleteItemFromTuple(productId);
             handlePress();
           }
         }
@@ -44,6 +44,20 @@ const SalesCard = ({ product , handlePress}) => {
         <View>
           <Text style={styles.text4}>Price: ${product.price || 'N/A'}</Text>
           <Text style={styles.text3}>Quantity: {countItems(product.id)} </Text>
+        </View>
+        <View>
+          <TouchableOpacity style={{alignItems:"center",height:23,width:23,backgroundColor:"green",borderRadius:3,marginBottom:1}} onPress={() => {
+            addItemToTuple(product.id);
+            handlePress();
+          }}>
+            <Text style={{color:"white",fontSize:20}}>+</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{alignItems:"center",height:23,width:23,backgroundColor:"red",borderRadius:3}} onPress={()=>{
+            deleteItemToTuple(product.id);
+            handlePress();
+            }}>
+            <Text style={{color:"white",fontSize:20}}>-</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableOpacity>

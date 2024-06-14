@@ -14,6 +14,7 @@ import { useStoreStatus } from "../../../../../services/storeSituation/StoreStat
 import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
 import ProductCard from "../../../../../src/Components/ProductCard/productcard.tsx";
 
+
 //@ts-ignore
 const SalesScreen = () => {
 
@@ -73,7 +74,7 @@ const SalesScreen = () => {
     }
   };
 
-  const handleRefreshToItemList = () => {
+   const handleRefreshToItemList = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
     setFilteredAsSaleList(updatedFilteredAsSaleList);
     setlenghtOfSales(myTuple.length);
@@ -229,7 +230,7 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) + "\n";
+      message += "        Price:$" + item.price.toFixed(2) +"X"+countItems(item.id)+"\n";
       message += "***********************\n";
     });
     message += "Payment Received by Credit Card\n";

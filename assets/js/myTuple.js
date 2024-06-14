@@ -6,6 +6,7 @@ export const addItemToTuple = (item) => {
     console.log(myTuple)
 };
 
+
 export const countItems = (productId) => {
   let count = 0;
   myTuple.forEach((item) => {
@@ -24,4 +25,13 @@ export const deleteItemToTuple = (item) => {
   } else {
     console.log("Item not found in myTuple");
   }
+};
+
+export const deleteItemFromTuple = (item) => {
+  let index = myTuple.indexOf(item);
+  while (index !== -1) {
+    myTuple.splice(index, 1);
+    index = myTuple.indexOf(item);
+  }
+  console.log(myTuple);
 };
