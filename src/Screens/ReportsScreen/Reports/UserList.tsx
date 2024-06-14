@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { FlatList, View } from "react-native";
+import { FlatList} from "react-native";
 import UserInformationCard from "../../../Components/UserInformation/UserInformationCard.tsx";
 import { fetchMockBackendUserData } from "../../../../services/fetchingData/fetchData";
 import LoadingAnimation from "../../../Components/Loading/Loading.tsx";

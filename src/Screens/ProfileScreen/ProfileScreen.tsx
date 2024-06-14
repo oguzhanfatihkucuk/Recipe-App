@@ -48,6 +48,7 @@ const ProfileScreen = () => {
   );
 
   return (
+
     <View style={styles.container}>
       <StoreStatusText />
       <View style={styles.header}>

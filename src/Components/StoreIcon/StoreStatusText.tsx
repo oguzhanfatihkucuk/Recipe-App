@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import {  StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { useStoreStatus } from '../../../services/storeSituation/StoreStatusContext';
 import { Icon } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
 import DarkMode from "../../../services/utils/darkmode.context";
 import { Text } from "../../../services/utils/Theme";
+
+const localPhoto = require('../../../assets/ProjectScreenShots/32Bit.png');
 const StoreStatusText = () => {
 
   const { isStoreOpen } = useStoreStatus();
@@ -16,13 +18,19 @@ const StoreStatusText = () => {
   return (
     <View style={styles.container}>
 
+      <View>
+        <Text isDarkMode={isDarkMode} style={{...styles.text,justifyContent:"center"}}>
+          App Version: {readableVersion}
+        </Text>
+        <Text isDarkMode={isDarkMode} style={{...styles.text,justifyContent:"flex-start"}}>
+          System Version: {systemVersion}
+        </Text>
+      </View>
      <View>
-       <Text isDarkMode={isDarkMode} style={{...styles.text,justifyContent:"center"}}>
-         App Version: {readableVersion}
-       </Text>
-       <Text isDarkMode={isDarkMode} style={{...styles.text,justifyContent:"flex-start"}}>
-         System Version: {systemVersion}
-       </Text>
+       <Image
+         source={localPhoto}
+         style={styles.photo}
+       />
      </View>
       <View style={{flexDirection:"row"}}>
         <Text isDarkMode={isDarkMode} style={styles.text}>
@@ -44,7 +52,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection:"row",
     justifyContent:"space-between"
-  }
+  },
+  photo: {
+    width: 90,
+    height: 80,
+    borderRadius: 0,
+    objectFit:"contain"
+  },
 
 });
 
