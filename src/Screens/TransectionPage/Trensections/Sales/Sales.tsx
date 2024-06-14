@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
-import { revenueCashInc, revenueCreditInc} from "../../../../../assets/js/reports";
+import { revenueCashInc, revenueCreditInc } from "../../../../../assets/js/reports";
 import { myTuple, addItemToTuple, countItems } from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, List, TextInput } from "react-native-paper";
@@ -74,7 +74,7 @@ const SalesScreen = () => {
     }
   };
 
-   const handleRefreshToItemList = () => {
+  const handleRefreshToItemList = () => {
     const updatedFilteredAsSaleList = filterSaleList(data2, myTuple);
     setFilteredAsSaleList(updatedFilteredAsSaleList);
     setlenghtOfSales(myTuple.length);
@@ -189,17 +189,17 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) +"X"+countItems(item.id)+"\n" ;
+      message += "        Price:$" + item.price.toFixed(2) + "X" + countItems(item.id) + "\n";
 
-      message += "***********************\n";
     });
+    message += "***********************\n";
     message += "Total amount:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Amount Paid:" + count + "\n";
     message += "Change:" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
 
-    revenueCashInc(totalPrice,lenghtOfSales);
+    revenueCashInc(totalPrice, lenghtOfSales);
 
     Alert.alert("", message);
     deleteData();
@@ -212,7 +212,6 @@ const SalesScreen = () => {
     }
 
   };
-
 
 
   const showDataInAlertCreditCard = () => {
@@ -230,9 +229,10 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) +"X"+countItems(item.id)+"\n";
-      message += "***********************\n";
+      message += "        Price:$" + item.price.toFixed(2) + "X" + countItems(item.id) + "\n";
+
     });
+    message += "***********************\n";
     message += "Payment Received by Credit Card\n";
     message += "Total Amount:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Amount Paid:" + totalPrice.toString().substring(0, 6) + "\n";
@@ -240,7 +240,7 @@ const SalesScreen = () => {
     message += "***********************\n";
     message += "       Good Days...\n";
 
-    revenueCreditInc(totalPrice,lenghtOfSales);
+    revenueCreditInc(totalPrice, lenghtOfSales);
 
     Alert.alert("", message);
     deleteData();
@@ -274,15 +274,16 @@ const SalesScreen = () => {
       message += "Id: " + item.id + "";
       //@ts-ignore
       message += "        Price:$" + item.price.toFixed(2) + "\n";
-      message += "***********************\n";
+
     });
+    message += "***********************\n";
     message += "Total amount:" + totalPrice.toString().substring(0, 6) + "\n";
     message += "Amount Paid:" + count + "\n";
     message += "Change:" + Math.abs(count - totalPrice).toFixed(2) + "\n";
     message += "***********************\n";
     message += "       Good Days...";
 
-    revenueCashInc(totalPrice,lenghtOfSales);
+    revenueCashInc(totalPrice, lenghtOfSales);
 
     if (!isStoreOpen) {
       setCountOfPrinterWork((prevCount: number) => prevCount + 1);
@@ -305,7 +306,7 @@ const SalesScreen = () => {
   }, [myMailContent]);
 
   const isButtonActive = () => {
-    return totalPrice - count > 0;
+    return totalPrice - count >= 0;
   };
 
   if (loading) {
@@ -375,7 +376,6 @@ const SalesScreen = () => {
                     numColumns={3}
                     keyExtractor={(item) => item.id.toString()} />
         </View>
-
         <View style={styles.innerContainer}>
           <View>
             <FlatList
@@ -427,12 +427,18 @@ const SalesScreen = () => {
             </Text>
           </View>
           <View>
+            <TouchableOpacity style={styles.belgeIptal} onPress={() => {
+            }}>
+              <Text style={styles.innerText}>
+                Campaing Aplly
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
               <Text style={styles.innerText}>
                 Cancel All Document
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.belgeIptal} onPress={() => creditCardMethod()}>
+            <TouchableOpacity style={styles.belgeIptal} disabled={totalPrice!<=0} onPress={() => creditCardMethod()}>
               <Text style={styles.innerText}>
                 Payment by Credit Card
               </Text>
