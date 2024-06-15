@@ -128,6 +128,13 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Explore Screen |    ✓    |   ✓  |
 | Staff-Register Information |    ✓    |   ✓  |
 | Responsive-Design |    ✓    |   ✓  |
+| End of Day Reports |    ✓    |   ✓  |
+| Other User Information Page |    ✓    |   ✓  |
+| Campaign List and Campaign Application |    ✓    |   ✓  |
+| Add Product |    ✓    |   ✓  |
+| View Shift Hours |    ✓    |   ✓  |
+| Adding Multiple Items to Cart |    ✓    |   ✓  |
+| Row and Entire Document Canceled |    ✓    |   ✓  |
 
 
 ### Screenshots
