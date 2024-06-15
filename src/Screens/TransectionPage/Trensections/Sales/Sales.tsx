@@ -315,20 +315,30 @@ const SalesScreen = () => {
   };
   //@ts-ignore
   const countFives = (array: string[]) => {
-    return array.filter(item => item === "5").length;
+    setTotalPrice(totalPrice-((array.filter(item => item === "5").length)*39)/2);
   };
+
+  const percent20 = (array: string[]) => {
+    setTotalPrice(totalPrice-(((array.filter(item => item === "19").length)*4)/5));
+  };
+
+  const percent5 = (array: string[]) => {
+    console.log(array.filter(item => item === "5").length)
+    setTotalPrice((totalPrice*95)/100);
+  };
+
+
   //@ts-ignore
   const campaignApply = (selectedCampaign) => {
     switch (selectedCampaign) {
       case "1":
-        console.log("kampanya1");
-        console.log(countFives(filteredAsSaleList));
+        countFives(myTuple)
         break;
       case "2":
-        console.log("kampanya2");
+        percent20(myTuple)
         break;
       case "3":
-        console.log("kampanya3");
+        percent5(myTuple)
         break;
 
     }
