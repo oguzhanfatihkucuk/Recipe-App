@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
-import { revenueCashInc, revenueCreditInc } from "../../../../../assets/js/reports";
-import { myTuple, addItemToTuple, countItems } from "../../../../../assets/js/myTuple";
+import {
+  addItemToReports,
+  addItemToReportsOffline,
+  revenueCashInc,
+  revenueCreditInc
+} from "../../../../../assets/js/reports";
+import { addItemToTuple, countItems, myTuple } from "../../../../../assets/js/myTuple";
 import SalesCard from "../../../../Components/SalesCard/SalesCard.tsx";
 import { Divider, List, TextInput } from "react-native-paper";
-import { addItemToReports, addItemToReportsOffline } from "../../../../../assets/js/reports";
 import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
 import Toast from "react-native-root-toast";
 import styles from "./SalesStyles.tsx";
@@ -310,20 +314,24 @@ const SalesScreen = () => {
     return totalPrice - count >= 0;
   };
   //@ts-ignore
-  const countFives = (array) => {
-    //@ts-ignore
-    return array.reduce((count, num) => num === 5 ? count + 1 : count, 0);
+  const countFives = (array: string[]) => {
+    return array.filter(item => item === "5").length;
   };
-  const campaignApply = () => {
-      if(selectedCampaign=="1"){
+  //@ts-ignore
+  const campaignApply = (selectedCampaign) => {
+    switch (selectedCampaign) {
+      case "1":
+        console.log("kampanya1");
         console.log(countFives(filteredAsSaleList));
-      }
-      if(selectedCampaign=="2"){
+        break;
+      case "2":
+        console.log("kampanya2");
+        break;
+      case "3":
+        console.log("kampanya3");
+        break;
 
-      }
-      if(selectedCampaign=="3"){
-
-      }
+    }
   };
 
   if (loading) {
@@ -447,7 +455,7 @@ const SalesScreen = () => {
           <View>
             <Picker
             selectedValue={selectedCampaign}
-            onValueChange={(itemValue) => {setSelectedCampaign(itemValue);campaignApply()}}
+            onValueChange={(itemValue) => {setSelectedCampaign(itemValue);campaignApply(itemValue)}}
             >
               <Picker.Item label="Bag 2 buy 1 pay" value="1"/>
               <Picker.Item label="Plate %20" value="2"/>
