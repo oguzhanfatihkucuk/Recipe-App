@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import campaignData from "../../../../assets/js/campaings";
 
-const CampaignsScreen = () => {
-  const [selectedCampaign, setSelectedCampaign] = useState();
+type Campaign = {
+  id: string;
+  title: string;
+  description: string;
+  details: string;
+};
 
-  //@ts-ignore
-  const handlePress = (campaign) => {
+const CampaignsScreen = () => {
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+
+  const handlePress = (campaign: Campaign) => {
     setSelectedCampaign(campaign);
   };
 
@@ -14,7 +20,6 @@ const CampaignsScreen = () => {
     setSelectedCampaign(null);
   };
 
-  // @ts-ignore
   return (
     <View style={styles.container}>
       <FlatList
@@ -27,24 +32,26 @@ const CampaignsScreen = () => {
           </TouchableOpacity>
         )}
       />
-      {selectedCampaign && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={!!selectedCampaign}
-          onRequestClose={closeModal}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>{selectedCampaign.title}</Text>
-              <Text style={styles.modalDetails}>{selectedCampaign.details}</Text>
-              <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
-                <Text style={styles.closeButtonText}>Kapat</Text>
-              </TouchableOpacity>
-            </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={!!selectedCampaign}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {selectedCampaign && (
+              <>
+                <Text style={styles.modalTitle}>{selectedCampaign.title}</Text>
+                <Text style={styles.modalDetails}>{selectedCampaign.details}</Text>
+                <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
+                  <Text style={styles.closeButtonText}>Kapat</Text>
+                </TouchableOpacity>
+              </>
+            )}
           </View>
-        </Modal>
-      )}
+        </View>
+      </Modal>
     </View>
   );
 };
