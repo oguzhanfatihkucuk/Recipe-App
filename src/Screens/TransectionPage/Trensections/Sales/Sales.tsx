@@ -194,7 +194,7 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) + "X" + countItems(item.id) + "\n";
+      message += "        Price:$" + item.price.toFixed(2) + " X " + countItems(item.id) + "\n\n";
 
     });
     message += "***********************\n";
@@ -234,7 +234,7 @@ const SalesScreen = () => {
       //@ts-ignore
       message += "Id: " + item.id + "";
       //@ts-ignore
-      message += "        Price:$" + item.price.toFixed(2) + "X" + countItems(item.id) + "\n";
+      message += "        Price:$" + item.price.toFixed(2) + " X " + countItems(item.id) + "\n\n";
 
     });
     message += "***********************\n";
