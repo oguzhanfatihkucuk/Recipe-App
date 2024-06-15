@@ -362,7 +362,6 @@ const SalesScreen = () => {
       ]
     )
     setTotalPrice((totalPrice*95)/100);
-
   };
 
 
