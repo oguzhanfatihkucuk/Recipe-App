@@ -99,7 +99,6 @@ const AllProducts = () => {
       <StoreStatusText />
       <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10 }}>
         <Picker
-
           selectedValue={selectedCategory}
           style={styles.picker}
           onValueChange={(itemValue) => setSelectedCategory(itemValue)}

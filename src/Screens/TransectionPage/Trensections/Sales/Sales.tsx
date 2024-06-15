@@ -13,6 +13,7 @@ import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.ts
 import { useStoreStatus } from "../../../../../services/storeSituation/StoreStatusContext";
 import { sendEmail } from "../../../../../services/sendEmail/sendEmail";
 import ProductCard from "../../../../../src/Components/ProductCard/productcard.tsx";
+import { Picker } from "@react-native-picker/picker";
 
 
 //@ts-ignore
@@ -39,7 +40,7 @@ const SalesScreen = () => {
   const { setCountOfPrinterWork } = useStoreStatus();
   const [categoryTerm, setCategoryTerm] = useState("none");
   const filteredAsCT = data2.filter((item) => item.category.toLowerCase().startsWith(categoryTerm.toLowerCase()));
-
+  const [selectedCampaign, setSelectedCampaign] = useState("");
   //@ts-ignore
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
@@ -308,10 +309,27 @@ const SalesScreen = () => {
   const isButtonActive = () => {
     return totalPrice - count >= 0;
   };
+  //@ts-ignore
+  const countFives = (array) => {
+    //@ts-ignore
+    return array.reduce((count, num) => num === 5 ? count + 1 : count, 0);
+  };
+  const campaignApply = () => {
+      if(selectedCampaign=="1"){
+        console.log(countFives(filteredAsSaleList));
+      }
+      if(selectedCampaign=="2"){
+
+      }
+      if(selectedCampaign=="3"){
+
+      }
+  };
 
   if (loading) {
     return <LoadingAnimation />;
   }
+
   // @ts-ignore
   return (
     <SafeAreaView>
@@ -427,12 +445,14 @@ const SalesScreen = () => {
             </Text>
           </View>
           <View>
-            <TouchableOpacity style={styles.belgeIptal} onPress={() => {
-            }}>
-              <Text style={styles.innerText}>
-                Campaing Aplly
-              </Text>
-            </TouchableOpacity>
+            <Picker
+            selectedValue={selectedCampaign}
+            onValueChange={(itemValue) => {setSelectedCampaign(itemValue);campaignApply()}}
+            >
+              <Picker.Item label="Bag 2 buy 1 pay" value="1"/>
+              <Picker.Item label="Plate %20" value="2"/>
+              <Picker.Item label="All %5" value="3"/>
+            </Picker>
             <TouchableOpacity style={styles.belgeIptal} onPress={deleteData}>
               <Text style={styles.innerText}>
                 Cancel All Document

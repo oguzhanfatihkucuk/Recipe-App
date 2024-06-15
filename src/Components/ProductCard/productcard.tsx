@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Modal, TextInput, Button } from "react-native";
 import styles from "../../Components/ProductCard/productCardStyle.tsx";
-import { addItemToTuple, deleteItemFromTuple } from "../../../assets/js/myTuple.js";
+import { addItemToTuple } from "../../../assets/js/myTuple.js";
 import Toast from 'react-native-root-toast';
 
 // @ts-ignore

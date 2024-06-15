@@ -45,7 +45,7 @@ const CampaignsScreen = () => {
                 <Text style={styles.modalTitle}>{selectedCampaign.title}</Text>
                 <Text style={styles.modalDetails}>{selectedCampaign.details}</Text>
                 <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
-                  <Text style={styles.closeButtonText}>Kapat</Text>
+                  <Text style={styles.closeButtonText}>Close</Text>
                 </TouchableOpacity>
               </>
             )}
