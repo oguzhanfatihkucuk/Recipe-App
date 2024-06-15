@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, Modal, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { View, Text, TextInput, Button, Modal, TouchableOpacity, StyleSheet, FlatList, Image } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
 // Mock data array
@@ -22,9 +22,10 @@ const AddProductScreen = () => {
     price: '',
     description: '',
     category: 'clothing',
-    imageUrl: ''
+    imageUrl: 'https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg'
   });
   const [products, setProducts] = useState(mockData);
+
 
   //@ts-ignore
   const handleChange = (name, value) => {
@@ -32,10 +33,10 @@ const AddProductScreen = () => {
   };
 
   const handleSave = () => {
-    // Add the new product to the list
+
     //@ts-ignore
     setProducts([...products, newProduct]);
-    // Reset the form and close the modal
+
     setModalVisible(false);
     setNewProduct({
       id: '',
@@ -56,11 +57,16 @@ const AddProductScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.productCard}>
-            <Text style={styles.productTitle}>{item.title}</Text>
-            <Text>Price: ${item.price}</Text>
-            <Text>Description: {item.description}</Text>
-            <Text>Category: {item.category}</Text>
-            <Text>Image URL: {item.imageUrl}</Text>
+            <View style={{flexDirection:"row",justifyContent:"space-between"}}>
+            <View>
+              <Text style={styles.productTitle}>{item.title}</Text>
+              <Text>Price: ${item.price}</Text>
+              <Text>Description: {item.description}</Text>
+              <Text>Category: {item.category}</Text>
+            </View>
+            <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
+            </View>
+
           </View>
         )}
       />
@@ -155,6 +161,11 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  productImage: {
+    width: 100,
+    height: 100,
+    marginTop: 10,
   },
   modalContainer: {
     flex: 1,
