@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button, FlatList, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Button, FlatList, Linking, Modal, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
 import {
   addItemToReports,
@@ -315,16 +315,54 @@ const SalesScreen = () => {
   };
   //@ts-ignore
   const countFives = (array: string[]) => {
-    setTotalPrice(totalPrice-((array.filter(item => item === "5").length)*39)/2);
+
+    if(array.filter(item => item === "5").length>0)
+    {
+      setTotalPrice(totalPrice-((array.filter(item => item === "5").length)*39)/2);
+      Alert.alert(
+        "Buy 2 Get 1 Free","Buy 2 get 1 free on selected bags items. Don't miss the chance to get your favorite items.",[
+          { text: "OK"},
+        ]
+      )
+    }
+    else{
+      Alert.alert(
+        "Error","The items on packet are not valid for this campaings",[
+          { text: "OK"},
+        ]
+      )
+    }
   };
 
   const percent20 = (array: string[]) => {
-    setTotalPrice(totalPrice-(((array.filter(item => item === "19").length)*4)/5));
+
+    if(array.filter(item => item === "19").length>0)
+    {
+      setTotalPrice(totalPrice-(((array.filter(item => item === "19").length)*4)/5));
+      Alert.alert(
+        "%20 Discount on Plates","Plates that in your packet are %20 discount aplied. ",[
+          { text: "OK"},
+        ]
+      )
+    }
+    else{
+      Alert.alert(
+        "Error","The items on packet are not valid for this campaings",[
+          { text: "OK"},
+        ]
+      )
+    }
+
   };
 
   const percent5 = (array: string[]) => {
-    console.log(array.filter(item => item === "5").length)
+    Alert.alert(
+      "%5 Discount on all items","The items in you packet are %5 discount applied.",[
+        { text: "OK"},
+      ]
+    )
     setTotalPrice((totalPrice*95)/100);
+
   };
 
 
