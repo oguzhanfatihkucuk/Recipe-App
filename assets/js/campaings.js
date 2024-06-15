@@ -7,15 +7,15 @@ const campaignData = [
   },
   {
     id: "2",
-    title: "Winter Sale",
-    description: "30% off on winter coats!",
-    details: "Stay warm during cold winter days with 30% off on all winter coats.",
+    title: "Plates War",
+    description: "20% off on plates!",
+    details: "Stay warm during cold winter days with 20% off on all plates.",
   },
   {
     id: "3",
     title: "Buy 2 Get 1 Free",
     description: "Buy 2 get 1 free offer!",
-    details: "Buy 2 get 1 free on selected products. Don't miss the chance to get your favorite items.",
+    details: "Buy 2 get 1 free on selected bag products. Don't miss the chance to get your favorite items.",
   },
   {
     id: "4",
@@ -44,8 +44,8 @@ const campaignData = [
   {
     id: "8",
     title: "Special Day Sale",
-    description: "50% off on special days!",
-    details: "50% discount on all products during special days. Unmissable offer!",
+    description: "5% off on all products!",
+    details: "5% discount on all products during special days. Unmissable offer!",
   },
 ];
 

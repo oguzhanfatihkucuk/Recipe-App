@@ -355,7 +355,7 @@ const SalesScreen = () => {
 
   };
 
-  const percent5 = (array: string[]) => {
+  const percent5 = () => {
     Alert.alert(
       "%5 Discount on all items","The items in you packet are %5 discount applied.",[
         { text: "OK"},
@@ -375,7 +375,7 @@ const SalesScreen = () => {
         percent20(myTuple)
         break;
       case "3":
-        percent5(myTuple)
+        percent5()
         break;
 
     }
