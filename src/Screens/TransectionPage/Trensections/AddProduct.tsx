@@ -46,12 +46,12 @@ const AddProductScreen = () => {
       category: 'clothing',
       imageUrl: ''
     });
+
   };
 
   return (
     <View style={styles.container}>
       <Button title="Add New Product" onPress={() => setModalVisible(true)} />
-
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
@@ -66,7 +66,6 @@ const AddProductScreen = () => {
             </View>
             <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
             </View>
-
           </View>
         )}
       />
