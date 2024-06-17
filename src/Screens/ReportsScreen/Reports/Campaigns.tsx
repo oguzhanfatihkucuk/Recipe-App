@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet, Image } from "react-native";
 import campaignData from "../../../../assets/js/campaings";
+
+const localPhoto = require('../../../../assets/png/campaings.png');
 
 type Campaign = {
   id: string;
@@ -27,8 +29,16 @@ const CampaignsScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.card} onPress={() => handlePress(item)}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
+            <View style={{flexDirection:"row",alignItems:"center"}}>
+              <Image
+                source={localPhoto}
+                style={styles.photo}
+              />
+              <View>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.description}>{item.description}</Text>
+              </View>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -112,6 +122,12 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: "#fff",
     fontSize: 16,
+  },
+  photo: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginRight: 15,
   },
 });
 

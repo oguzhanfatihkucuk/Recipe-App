@@ -187,7 +187,7 @@ const SalesScreen = () => {
     message += "Staff Id:00004    \n";
     message += "                   " + time + "\n";
     message += "                   " + date + "\n";
-    message += "***********************\n";
+    message += "***********************\n\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
       message += "Title: " + item.title + "\n";
@@ -226,7 +226,7 @@ const SalesScreen = () => {
     message += "Staff Id:00004    \n";
     message += "                   " + time + "\n";
     message += "                   " + date + "\n";
-    message += "***********************\n";
+    message += "***********************\n\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
 
@@ -271,7 +271,7 @@ const SalesScreen = () => {
     message += "Staff Id:00004    \n";
     message += "                   " + time + "\n";
     message += "                   " + date + "\n";
-    message += "***********************\n";
+    message += "***********************\n\n";
     filteredAsSaleList.forEach(function(item) {
       //@ts-ignore
       message += "Title: " + item.title + "\n";
