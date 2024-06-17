@@ -111,30 +111,30 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 | Feature  | Applied  | Tested |
 | :------------ |:---------------:| :-----:|
-| NfC Login      | ✓  | ✓ |  
-| Incorrect Login      |     ✓   |   ✓ |
-| Version Information |     ✓   |    ✓ |
-| Store Status |     ✓   |   ✓  |
-| Product Entry Via Barcode |    ✓    |  ✓   |
-| Choosing Products From Categories |    ✓    |  ✓   |
-| Product Sorting And Filtering |    ✓    |   ✓  |
-| Payment Process Cash-Credit Card  |   ✓     |  ✓   |
-| Receipt Service By E-mail |   ✓     |   ✓  |
-| Virtual Receipt Display - Save As PDF |    ✓    |    ✓ |
-| Theme Selection |   ✓     |  ✓   |
-| Multi Language |    ✓    |    ✓ |
-| Reporting Past Sales |   ✓     |    ✓ |
-| Manual synchronization |     ✓   |  ✓   |
-| Explore Screen |    ✓    |   ✓  |
-| Staff-Register Information |    ✓    |   ✓  |
-| Responsive-Design |    ✓    |   ✓  |
-| End of Day Reports |    ✓    |   ✓  |
-| Other User Information Page |    ✓    |   ✓  |
-| Campaign List and Campaign Application |    ✓    |   ✓  |
-| Add Product |    ✓    |   ✓  |
-| View Shift Hours |    ✓    |   ✓  |
-| Adding Multiple Items to Cart |    ✓    |   ✓  |
-| Row and Entire Document Canceled |    ✓    |   ✓  |
+| Add Product                          |    ✓    |   ✓    |
+| Adding Multiple Items to Cart         |    ✓    |   ✓    |
+| Campaign List and Campaign Application|    ✓    |   ✓    |
+| Choosing Products From Categories     |    ✓    |   ✓    |
+| End of Day Reports                    |    ✓    |   ✓    |
+| Explore Screen                        |    ✓    |   ✓    |
+| Incorrect Login                       |    ✓    |   ✓    |
+| Manual synchronization                |    ✓    |   ✓    |
+| Multi Language                        |    ✓    |   ✓    |
+| NfC Login                            |    ✓    |   ✓    |
+| Other User Information Page           |    ✓    |   ✓    |
+| Payment Process Cash-Credit Card      |    ✓    |   ✓    |
+| Product Entry Via Barcode             |    ✓    |   ✓    |
+| Product Sorting And Filtering         |    ✓    |   ✓    |
+| Receipt Service By E-mail             |    ✓    |   ✓    |
+| Reporting Past Sales                 |    ✓    |   ✓    |
+| Responsive-Design                    |    ✓    |   ✓    |
+| Row and Entire Document Canceled      |    ✓    |   ✓    |
+| Staff-Register Information           |    ✓    |   ✓    |
+| Store Status                         |    ✓    |   ✓    |
+| Theme Selection                      |    ✓    |   ✓    |
+| Version Information                  |    ✓    |   ✓    |
+| View Shift Hours                     |    ✓    |   ✓    |
+| Virtual Receipt Display - Save As PDF |    ✓    |   ✓    |
 
 
 ### Screenshots
@@ -157,6 +157,10 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 <div style="display: flex; flex-wrap: wrap;">
    <img src="./assets/ProjectScreenShots/SalesScreen.png" alt="Sales Screen " width="400" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/VirtualRecipe.png" alt="Virtual Recipe" width="400" style="margin: 10px;"/>
+   <img src="./assets/ProjectScreenShots/Userlist.png" alt="Userlist" width="400" style="margin: 10px;"/>
+   <img src="./assets/ProjectScreenShots/Campaings.png" alt="Campaings" width="400" style="margin: 10px;"/>
+   <img src="./assets/ProjectScreenShots/ReportChart.png" alt="ReportChart" width="400" style="margin: 10px;"/>
+   <img src="./assets/ProjectScreenShots/AddProducts.png" alt="AddProducts" width="400" style="margin: 10px;"/>
 </div>
 
 ### Support
