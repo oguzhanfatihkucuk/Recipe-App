@@ -4,6 +4,7 @@ import styles from "./LoginPage.Style";
 import { Divider, TextInput } from "react-native-paper";
 import DeviceInfo from "react-native-device-info";
 import myIp from "../../../assets/js/myIp";
+
 const myImage = require("../../../assets/png/shopping2.png");
 
 

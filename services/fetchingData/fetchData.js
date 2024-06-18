@@ -1,5 +1,4 @@
 import API_URL, { API_URL_USR } from "../../assets/js/api";
-import { post } from "axios";
 //import axios from 'axios'; //this is optional to use axios
 
 export const fetchMockBackendData = async () => {

@@ -9,8 +9,6 @@ import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.ts
 //@ts-ignore
 const ProductsScreen = ({ navigation }) => {
 
-
-
   const [data2, setData] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
@@ -20,8 +18,10 @@ const ProductsScreen = ({ navigation }) => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
 
+
   const ProductCardMemoized = React.memo(ProductCard);
   let data;
+
   const fetchDataFromMockBackend = async () => {
     try {
       data = await fetchMockBackendData();
@@ -42,7 +42,6 @@ const ProductsScreen = ({ navigation }) => {
       <StoreStatusText />
       <ScrollView>
         <Button title={"See all Products"} onPress={() => navigation.navigate("AllProducts")} />
-
         <TextInput
           onChangeText={(e) => setSearchTerm(e)}
           placeholder="Search products..."
