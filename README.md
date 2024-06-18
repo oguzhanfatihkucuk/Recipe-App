@@ -141,10 +141,12 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | Libraries                            | Module                               | Purpose                             |
 |--------------------------------------|--------------------------------------|-------------------------------------|
 | axios| axios| HTTP Requests, Fetching Data|
+| expo-status-bar            | StatusBar  | User Interface Components                         |
+| nodemailer            | nodemailer  | Sending Email                         |
 | lottie-react-native| LottieView | Animations, UI Blocking|
-| react| useContext, useState                 | State Management                   |
-| react-i18next                         | useTranslation                       | Multilanguage                       |
-| react-native                          |  View, Text, Image, TouchableOpacity, Modal, TextInput, Button, FlatList, SafeAreaView | User Interface Components                   |
+| react| useContext, useState| State Management|
+| react-i18next| useTranslation                       | Multilanguage                       |
+| react-native|  View, Text, Image, TouchableOpacity, Modal, TextInput, Button, FlatList, SafeAreaView | User Interface Components                   |
 | react-native                          | Alert, StyleSheet, Vibration, Platform, BackHandler, | Device Management                   |
 | react-native-community/slider         | Slider                               |     User Interface Components                                |
 | react-native-device-info              | DeviceInfo                           | Getting information of working devices |
@@ -157,7 +159,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | react-native-root-toast               | Toast                                | Toast Message                       |
 | react-native-picker/picker            | Picker                               | User Interface Components                          |
 | react-navigation/native            | NavigationContainer                               | Routes-Navigation                        |
-| expo-status-bar            | StatusBar                              | User Interface Components                         |
+
 
 ### Screenshots
 <div style="display: flex; flex-wrap: wrap;">
