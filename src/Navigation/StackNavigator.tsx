@@ -11,7 +11,7 @@ import OtherTransectionScreen from "../Screens/TransectionPage/Trensections/Othe
 import ProductsScreen from "../Screens/TransectionPage/Trensections/Products/Products.tsx";
 import SalesScreen from "../Screens/TransectionPage/Trensections/Sales/Sales.tsx";
 import NFCPage from "../Screens/LoginPage/nfc.tsx";
-import AllProducts from "../Screens/TransectionPage/Trensections/Products/FilterPages/allprodcuts.tsx";
+import AllProducts from "../Screens/TransectionPage/Trensections/Products/allprodcuts.tsx";
 import UserInformationScreen from "../Screens/ReportsScreen/Reports/UserList.tsx";
 
 

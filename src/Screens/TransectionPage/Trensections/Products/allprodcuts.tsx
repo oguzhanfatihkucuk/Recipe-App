@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, View, Text, StyleSheet,} from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import ProductCard from "../../../../../Components/ProductCard/productcard.tsx";
-import LoadingAnimation from "../../../../../Components/Loading/Loading.tsx";
-import { getNumColumns } from "../../../../../../assets/js/deviceutils";
-import { fetchMockBackendData } from "../../../../../../services/fetchingData/fetchData";
-import StoreStatusText from "../../../../../Components/StoreIcon/StoreStatusText.tsx";
+import ProductCard from "../../../../Components/ProductCard/productcard.tsx";
+import LoadingAnimation from "../../../../Components/Loading/Loading.tsx";
+import { getNumColumns } from "../../../../../assets/js/deviceutils";
+import { fetchMockBackendData } from "../../../../../services/fetchingData/fetchData";
+import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.tsx";
 
 
 

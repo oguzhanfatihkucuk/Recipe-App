@@ -1,3 +1,3 @@
-export const MY_IP="10.22.52.206";
+export const MY_IP="172.16.22.52";
 export default MY_IP;
 

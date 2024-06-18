@@ -21,7 +21,7 @@ import { Picker } from "@react-native-picker/picker";
 
 
 //@ts-ignore
-const SalesScreen = () => {
+const SalesScreen = ({navigation}) => {
 
 
   const { isStoreOpen } = useStoreStatus();
@@ -415,6 +415,11 @@ const SalesScreen = () => {
         <TouchableOpacity onPress={() => handleAddItem(productId)} style={styles.textProductIdButton}>
           <Text>
             Add Product
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("AllProducts")} style={styles.textProductIdButton}>
+          <Text>
+            Products Screen
           </Text>
         </TouchableOpacity>
       </View>
