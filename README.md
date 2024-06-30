@@ -259,7 +259,7 @@ This page is the page where settings related to our application will be made. Th
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
 
 
-### Lisans
+## Lisans
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
