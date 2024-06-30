@@ -174,7 +174,7 @@ This page is the page where settings related to our application will be made. Th
 
 
 
-### Provided Project Requirements
+## Provided Project Requirements
 
 | Feature  | Applied  | Tested |
 | :------------ |:---------------:| :-----:|
@@ -203,7 +203,7 @@ This page is the page where settings related to our application will be made. Th
 | View Shift Hours                     |    ✓    |   ✓    |
 | Virtual Receipt Display - Save As PDF |    ✓    |   ✓    |
 
-### Libraries Used In the Project
+## Libraries Used In the Project
 
 | Libraries                            | Module                               | Purpose                             |
 |--------------------------------------|--------------------------------------|-------------------------------------|
@@ -228,7 +228,7 @@ This page is the page where settings related to our application will be made. Th
 | react-navigation/native            | NavigationContainer                               | Routes-Navigation                        |
 
 
-### Screenshots
+## Screenshots
 <div style="display: flex; flex-wrap: wrap;">
    <img src="./assets/ProjectScreenShots/AppLoading.png" alt="AppLoading.png" width="200" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/LoginScreen.png" alt="LoginScreen.png" width="200" style="margin: 10px;"/>
@@ -254,7 +254,7 @@ This page is the page where settings related to our application will be made. Th
    <img src="./assets/ProjectScreenShots/AddProducts.png" alt="AddProducts" width="400" style="margin: 10px;"/>
 </div>
 
-### Support
+## Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
 
