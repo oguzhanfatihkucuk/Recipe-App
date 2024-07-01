@@ -53,7 +53,9 @@ Make sure the following software is installed to run this project:
    - d - open `Dev Menu`
    - r - `reload app`
 
-### Before Run
+## Before Run
+
+### JSON Data Usage
 
 Do not forget I have used my own JSON data in my app on my local internet. You are free to use your own data. 
 
@@ -62,9 +64,13 @@ You can find under this file the JSON data that I have used in my project.
 
 Make sure that you change your `IP address variable`  if you are going to use local JSON services. Update the IP address in `C:\Users\Recipe-App\assets\is\myIP.js`. Do not forget that you should use your IPV4 Ip address.
 
+You can learn your IPV4 adress from your terminal.Search `cmd` on your computer and run `ipconfig`, you will see `IPv4 Address. . . . . . . . . . . : 172.16.20.225` something like this and copy IP adress.
+
 After that you have to update your JSON services port.On directory `C:\Users\Recipe-App\assets\js\api.js` you should specify your port number that you are using on the localhost side.
 
-Before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. 
+
+### E-mail Service
+In order to use e-mail service,before starting the mail server in the directory `C:\Users\Recipe-App\server`, you need to obtain an App Password or related API key for SMTP. 
 
 Update the `pass` field with your credentials.This is the website of how you can generate your app password using Gmail SMTP
 [ https://support.google.com/accounts/answer/185833?hl=en]
@@ -86,7 +92,7 @@ Do not forget! I have chosen port `3002 to SMTP server`. You should be aware of 
 
 
 
-### Permissions
+## Permissions
 
 As default, these permissions were  provided by project but you should check if your emulator that you are using is available for these permissions.
 
@@ -107,7 +113,64 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ```
 
 
-### Provided Project Requirements
+
+## Usage Of App
+
+### Login
+
+User information is sourced from JSON data. There is a test user with `name: oguz` and `password: 123456` that allows access to the system.
+
+### Products
+
+In the transaction screen, there is an option labeled `Products`. Clicking on this option will display a list of available products. You can add products to your list by clicking on them. To add multiple quantities of the same product, press and hold (long press) to prompt a dialog asking for the quantity you wish to add. After this process, the products will be added to your list.
+
+Additionally, there is an option for filtering and sorting products. By selecting `See All Products`, you can view all products and filter or sort them by `Categories`, `Prices`, `Alphabetically`, and more.
+
+If you wish to delete a product, simply long press on the product in the list to prompt an alert for deletion. Alternatively, you can delete all products by selecting `Cancel All Document`.
+
+
+### Sale
+
+After adding products to your list, you can access the sales screen by clicking `Transaction/Sales`. Here, you will see the products on your list.
+
+You can also add products by their ID using the `Enter Product ID` field and clicking `Add Product` to add them to the list.
+
+Furthermore, you can quickly add products categorized on the left side.
+
+Following these steps, you can adjust the quantity of products in your list.
+
+You can apply campaigns before starting the sales process by selecting the option at the top-right of 
+
+### Sale Confirm
+
+There are two options to complete the sale process: cash and credit card. If you choose credit card, simply click `Payment By Credit Card`. Alternatively, for cash payment, enter the amount received under `Cash Received` and click `Confirm Sale`.
+
+### E-mail
+
+Only the cash option offers e-mail services. After entering the amount of cash received, the `E-archive` option becomes available. You can enter the customer's e-mail address, and the receipt will be sent to that e-mail.
+
+### Add Product
+
+This functionality is currently unavailable but is demonstrated. Follow this path: `Transaction/Add Product`, and click `Add New Products` after filling in the required fields.
+
+### Reports
+
+This screen provides information and charts for the app, accessible under `User Information`, `Z-Report`, `Campaigns`, and `Charts`.
+
+`User Information`: Stores all registered user information.
+`Z-Report`: Access receipts of sales made during the day, categorized as sent and unsent.
+`Campaigns`: Detailed information about registered campaigns.
+`Charts`: Reports on daily sales, including the number of sales, income generated, and total products sold via credit card and cash, presented in separate graphs.
+
+### Explore Screen
+
+This page lists and allows manual search of application features. Clicking on a feature directs you to its respective page.
+
+### Settings Screen
+
+This page is where application settings are managed. Settings include `sound, theme selection, language preference, logout, and security` options. Receipts that haven't been sent can be manually synchronized to the center.
+
+## Provided Project Requirements
 
 | Feature  | Applied  | Tested |
 | :------------ |:---------------:| :-----:|
@@ -136,7 +199,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | View Shift Hours                     |    ✓    |   ✓    |
 | Virtual Receipt Display - Save As PDF |    ✓    |   ✓    |
 
-### Libraries Used In the Project
+## Libraries Used In the Project
 
 | Libraries                            | Module                               | Purpose                             |
 |--------------------------------------|--------------------------------------|-------------------------------------|
@@ -161,7 +224,7 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | react-navigation/native            | NavigationContainer                               | Routes-Navigation                        |
 
 
-### Screenshots
+## Screenshots
 <div style="display: flex; flex-wrap: wrap;">
    <img src="./assets/ProjectScreenShots/AppLoading.png" alt="AppLoading.png" width="200" style="margin: 10px;"/>
    <img src="./assets/ProjectScreenShots/LoginScreen.png" alt="LoginScreen.png" width="200" style="margin: 10px;"/>
@@ -187,12 +250,12 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
    <img src="./assets/ProjectScreenShots/AddProducts.png" alt="AddProducts" width="400" style="margin: 10px;"/>
 </div>
 
-### Support
+## Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
 
 
-### Lisans
+## Lisans
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
