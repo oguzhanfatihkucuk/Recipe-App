@@ -114,8 +114,11 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 
 ## Usage Of App
-
-
+[Usage Of App](docs/UsageOfApp.md)
+## Libraries Used In the Project
+[Libraries Used In the Project](docs/Libraries.md)
+## Screenshots
+[Screenshots](docs/Screenshots.md)
 
 ## Provided Project Requirements
 
@@ -146,18 +149,13 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 | View Shift Hours                     |    ✓    |   ✓    |
 | Virtual Receipt Display - Save As PDF |    ✓    |   ✓    |
 
-## Libraries Used In the Project
-
-
-## Screenshots
-
 
 ## Support
 
 For support, send an e-mail to oguzhan.kucuk@ogr.sakarya.edu.tr.
 
 
-## Lisans
+## Licence
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
