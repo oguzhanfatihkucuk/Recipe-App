@@ -116,9 +116,9 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 ## Usage Of App
 [Usage Of App](docs/UsageOfApp.MD)
 ## Libraries Used In the Project
-[Libraries Used In the Project](docs/Libraries.md)
+[Libraries Used In the Project](docs/Libraries.MD)
 ## Screenshots
-[Screenshots](docs/Screenshots.md)
+[Screenshots](docs/Screenshots.MD)
 
 ## Provided Project Requirements
 
