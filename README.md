@@ -118,61 +118,57 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 ### Login
 
-User informations come from JSON data. There is test user that is `name:oguz` and `password:123456` you will be able to acces system.
+User information is sourced from JSON data. There is a test user with name: oguz and password: 123456 that allows access to the system.
 
 ### Products
 
-In transection screen there is option that named `products` after clicking that, you will see some products. You can add your list by clicking any products. If you want to add more than one same products you should click and keep clicking (longpress) so there will be shown ad model that asks quantity of products that you want add.After those process products will be added on your list.
+In the transaction screen, there is an option labeled Products. Clicking on this option will display a list of available products. You can add products to your list by clicking on them. To add multiple quantities of the same product, press and hold (long press) to prompt a dialog asking for the quantity you wish to add. After this process, the products will be added to your list.
 
-Also there is an option that will provide you to filtering and sorting products. By clicking `See All Products` you can see all products and you can filter or sort products as `Categories`, `Prices`, `Alphabetically` and soon.
+Additionally, there is an option for filtering and sorting products. By selecting See All Products, you can view all products and filter or sort them by Categories, Prices, Alphabetically, and more.
 
-Just in case you want the delete a product you can click long press any products on list and alert will be shown so that you can delete this products. On the other hand if you want to delete all products you can click `Cancel All Document`.
+If you wish to delete a product, simply long press on the product in the list to prompt an alert for deletion. Alternatively, you can delete all products by selecting Cancel All Document.
 
 
 ### Sale
 
-After adding your products on your list you can reach sale screen clicking `Transection/Sales`. You will be able to see products on your list.
+After adding products to your list, you can access the sales screen by clicking Transaction/Sales. Here, you will see the products on your list.
 
-You can add products if you know ID of product by writing on `Enter Product Id` and click `Add Product` so products will shown the list.
+You can also add products by their ID using the Enter Product ID field and clicking Add Product to add them to the list.
 
-Also you can add products quickly as categories on the left side.
+Furthermore, you can quickly add products categorized on the left side.
 
-After all those process you can increase and decrease the quantity of products on the list.
+Following these steps, you can adjust the quantity of products in your list.
 
-You can apply campaing after before sales process on the top-right at the screen.
+You can apply campaigns before starting the sales process by selecting the option at the top-right of 
 
 ### Sale Confirm
 
-There is two option to finish sale process; cash and credit card. If you choose credit card you just click `Payment By Credit Card`. On the other side you can choose cash payment. You should write amount of cash you get on the `Cash Received` than click `Confirm Sale`. 
+There are two options to complete the sale process: cash and credit card. If you choose credit card, simply click Payment By Credit Card. Alternatively, for cash payment, enter the amount received under Cash Received and click Confirm Sale.
 
 ### E-mail
 
-There is only cash option which provides e-mail services. After enter the amount of cash you get, `E-archive` option will be available and you can enter customer's e-mail and the recipe will be sent to the that e-mail.
+Only the cash option offers e-mail services. After entering the amount of cash received, the E-archive option becomes available. You can enter the customer's e-mail address, and the receipt will be sent to that e-mail.
 
 ### Add Product
 
-This functionality is not available right now but there is just a demonstration.Follow this directory `Transection/Add Product` and click `Add New Products` after fill in the blank fields.
-
+This functionality is currently unavailable but is demonstrated. Follow this path: Transaction/Add Product, and click Add New Products after filling in the required fields.
 
 ### Reports
 
-This screen basically keep information and charts of app which you can reach `User Informations`, `Z-Report`,`Campaing` and `Charts`.
+This screen provides information and charts for the app, accessible under User Information, Z-Report, Campaigns, and Charts.
 
-`User Information`: Keeps all user information registered in the system.
-
-`Z-Report`: You can access the receipts of sales made during the day. The receipts are divided into two: those sent to the center and those not sent.
-`Campaing`:Page where you can get detailed information about the campaigns registered in the system
-`Charts`:This is the report page of sales made during the day. The number of sales, the income generated from them, and the total number of products sold by credit card and cash are presented in separate graphs.
+User Information: Stores all registered user information.
+Z-Report: Access receipts of sales made during the day, categorized as sent and unsent.
+Campaigns: Detailed information about registered campaigns.
+Charts: Reports on daily sales, including the number of sales, income generated, and total products sold via credit card and cash, presented in separate graphs.
 
 ### Explore Screen
 
-This is the page where the features in the application are listed and can be searched manually. By clicking on the features, you will be directed to the page where the feature is located.
+This page lists and allows manual search of application features. Clicking on a feature directs you to its respective page.
 
 ### Settings Screen
 
-This page is the page where settings related to our application will be made. These settings include features such as sound, theme selection, language selection, logout, and also offer services such as security and about us. With manual synchronization, receipts that are not sent to the center are manually sent to the center.
-
-
+This page is where application settings are managed. Settings include sound, theme selection, language preference, logout, and security options. Receipts that haven't been sent can be manually synchronized to the center.
 
 ## Provided Project Requirements
 
