@@ -115,40 +115,15 @@ At `C:\Users\Recipe-App\android\app\src\main\AndroidManifest.xml`. You should gi
 
 ## Usage Of App
 [Usage Of App](docs/UsageOfApp.MD)
+
 ## Libraries Used In the Project
 [Libraries Used In the Project](docs/Libraries.MD)
+
 ## Screenshots
 [Screenshots](docs/Screenshots.MD)
 
 ## Provided Project Requirements
-
-| Feature  | Applied  | Tested |
-| :------------ |:---------------:| :-----:|
-| Add Product                          |    ✓    |   ✓    |
-| Adding Multiple Items to Cart         |    ✓    |   ✓    |
-| Campaign List and Campaign Application|    ✓    |   ✓    |
-| Choosing Products From Categories     |    ✓    |   ✓    |
-| End of Day Reports                    |    ✓    |   ✓    |
-| Explore Screen                        |    ✓    |   ✓    |
-| Incorrect Login                       |    ✓    |   ✓    |
-| Manual synchronization                |    ✓    |   ✓    |
-| Multi Language                        |    ✓    |   ✓    |
-| NfC Login                            |    ✓    |   ✓    |
-| Other User Information Page           |    ✓    |   ✓    |
-| Payment Process Cash-Credit Card      |    ✓    |   ✓    |
-| Product Entry Via Barcode             |    ✓    |   ✓    |
-| Product Sorting And Filtering         |    ✓    |   ✓    |
-| Receipt Service By E-mail             |    ✓    |   ✓    |
-| Reporting Past Sales                 |    ✓    |   ✓    |
-| Responsive-Design                    |    ✓    |   ✓    |
-| Row and Entire Document Canceled      |    ✓    |   ✓    |
-| Staff-Register Information           |    ✓    |   ✓    |
-| Store Status                         |    ✓    |   ✓    |
-| Theme Selection                      |    ✓    |   ✓    |
-| Version Information                  |    ✓    |   ✓    |
-| View Shift Hours                     |    ✓    |   ✓    |
-| Virtual Receipt Display - Save As PDF |    ✓    |   ✓    |
-
+[Provided Project Requirements](docs/Features.MD)
 
 ## Support
 
