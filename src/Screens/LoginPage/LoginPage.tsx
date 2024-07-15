@@ -101,12 +101,12 @@ const LoginPage = ({ navigation }) => {
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity style={styles.subButton} onPress={()=>navigation.navigate("NFCPage")}>
               <Text style={{color:"white"}}>
-                Press With NFC Login
+                NFC Login
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.subButton}>
               <Text style={{color:"white"}}>
-                Press With FingerPrint
+                FingerPrint
               </Text>
             </TouchableOpacity>
           </View>

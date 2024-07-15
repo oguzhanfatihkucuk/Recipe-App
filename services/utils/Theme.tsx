@@ -1,42 +1,25 @@
 import { View, Text as DefaultText, TextProps, ViewProps } from "react-native";
 import React from "react";
 
+
 type ThemeProps = {
-  isDarkMode?: boolean;
+  isDarkMode?: boolean; // Karanlık mod durumu isteğe bağlı
 };
 
+// Özel Text bileşenini tanımla
 export function Text(props: TextProps & ThemeProps) {
-  const { isDarkMode, style, ...rest } = props;
+  const { isDarkMode, style, ...rest } = props; // Props'tan isDarkMode, style ve diğer özellikleri al
+
   return (
     <DefaultText
       style={[
-        style,
+        style, // Kullanıcının verdiği stil
         {
-          color: isDarkMode ? "white" : "black",
-          opacity: isDarkMode ? 1 : 1
+          color: isDarkMode ? "white" : "black", // Karanlık moddaysa beyaz, değilse siyah renk
+          opacity: isDarkMode ? 1 : 1 // Opaklık ayarı (her iki durumda da 1)
         }
       ]}
-      {...rest}
+      {...rest} // Diğer tüm props'u geçir
     />
   );
 }
-
-export function Card(props: ViewProps & ThemeProps) {
-  const { isDarkMode, style, ...rest } = props;
-  return (
-    <View
-      style={[
-        style,
-        {
-          backgroundColor: isDarkMode ? '#121212' : 'white',
-        },
-      ]}
-      {...rest}
-    />
-  );
-}
-
-
-
-
-

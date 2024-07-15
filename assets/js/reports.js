@@ -23,7 +23,8 @@ export const getTotalLenghtCreditCard = () => lenghtOfCreditCardSale; // 11.sat�
 
 
 /*
-Sistemde nakit satış  yapıldığı takdirde çağırılan method. "price" satışta yapılan toplam tutar olarak ve "lenght" kaç
+Sistemde nakit satış  yapıldığı takdirde çağırılan method. "price"
+satışta yapılan toplam tutar olarak ve "lenght" kaç
 adet ürün satıldığını attribute alarak gerekli işlemleri yapıyor.
 İlk olarak toplam nakit satış sayısını artırma işlemi yapıyor. (33.satır)
 Toplam nakit satış değerini artırma işlemi yapıyor. (34.satır)
@@ -39,7 +40,8 @@ export const revenueCashInc = (price,lenght) => {
 
 
 /*
-Sistemde kredi kartı satış  yapıldığı takdirde çağırılan method. "price" satışta yapılan toplam tutar olarak ve "lenght" kaç
+Sistemde kredi kartı satış  yapıldığı takdirde çağırılan method. "price"
+satışta yapılan toplam tutar olarak ve "lenght" kaç
 adet ürün satıldığını attribute alarak gerekli işlemleri yapıyor.
 İlk olarak toplam kredi kartı satış sayısını artırma işlemi yapıyor. (49.satır)
 Toplam kredi kartı satış değerini artırma işlemi yapıyor. (50.satır)
