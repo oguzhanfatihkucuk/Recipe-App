@@ -1,3 +1,5 @@
+//Kampanyaların bulunduğu datalar
+
 const campaignData = [
   {
     id: "1",

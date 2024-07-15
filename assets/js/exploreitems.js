@@ -1,3 +1,5 @@
+// Arama ve Keşfet sayfasındaki datalar.
+
 const items = [
   { word: "Dark Mode", description: "Desc1", nav: 1,icon:"theme-light-dark" },
   { word: "Privacy", description: "Desc2", nav: 1,icon:"security" },

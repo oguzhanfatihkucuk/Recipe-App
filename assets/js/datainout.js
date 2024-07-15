@@ -1,3 +1,4 @@
+//Kullanıcıların giriş çıkış yaptığı ve kaç adet satış yaptığına dair datalar.
 const data = [
   {
     inOut: true,

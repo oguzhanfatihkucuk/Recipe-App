@@ -7,11 +7,10 @@ import myIp from "../../../assets/js/myIp";
 
 const myImage = require("../../../assets/png/shopping2.png");
 
-
 const API_URL="http://"+myIp+":3000/users";
+
 //@ts-ignore
 const LoginPage = ({ navigation }) => {
-
 
   const [usercode, setText] = React.useState("");
   const [password, setPassword] = React.useState("");
