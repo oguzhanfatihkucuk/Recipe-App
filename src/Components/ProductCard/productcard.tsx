@@ -57,6 +57,21 @@ const ProductCard = ({ product, handleRefresh }) => {
     setModalVisible(true);
   };
 
+
+  /*
+    handleLongPress fonksiyonun görünür yaptığı modelin kullandığı method.
+
+    Bu modelin görevi bir ürünü birden fazla miktarda sepete eklemektir.
+
+    Model görünür olduğunda kullanıcıdan bir int deger isteyerek bu miktar kadar ürünü sepete ekleme işlemi yapar.
+
+    Aynı zamanda product.id ve product.title değerlerini kullanarak ekrana, sepete eklenen ürünün kaç adet eklendiğini
+    toast mesajı ile kullanıcıya gösterir.
+
+    addItemToTuple ile productId degerini myTuple yani sepetimizdeki ürünlerin id değerlerinin olduğu listeye ekleme yapar.
+
+    Arından modeli görünürlüğünü false yaparak ekranda kaldırır.
+  */
   const handleAddToCart = () => {
     const productId = product.id;
     const productTitle = product.title;

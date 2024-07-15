@@ -9,10 +9,15 @@ import { Text } from "../../../services/utils/Theme";
 const localPhoto = require('../../../assets/ProjectScreenShots/32Bit.png');
 const StoreStatusText = () => {
 
+  //Context API kullanarak mağaza durumunun açık-kapalı olmasını öğrenir.
   const { isStoreOpen } = useStoreStatus();
+
+
+  // DeviceInfo kütüphanesinden yararlanarak sistem bilgilerini öğrenir ve bunları ekrana text komponenti ile ekranda gösterir.
 
   let readableVersion = DeviceInfo.getReadableVersion();
   let systemVersion = DeviceInfo.getSystemVersion();
+
   const { isDarkMode} = useContext(DarkMode);
 
   return (

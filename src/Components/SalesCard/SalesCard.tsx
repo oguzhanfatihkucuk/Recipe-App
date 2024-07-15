@@ -8,6 +8,14 @@ import { deleteItemToTuple, countItems, addItemToTuple, deleteItemFromTuple } fr
 //@ts-ignore
 const SalesCard = ({ product , handlePress }) => {
 
+  /*
+  Sepetimizde var olan ürünlerin, belirtirlen ID değerinde olanların hepsini kaldıran fonksiyon.
+
+  Sepetimizdeki ürünlerin bulundukları card komponenetine uzun basıldığı takdirde ekrana bir alert mesajı çıkar.
+  Belirtilen mesajda "ok" a basılması sonucunda belirtilen ürünün miktarı farketmeksizin sepetten kaldırılır.
+
+  'deleteItemFromTuple' ile productID değeri ,myTuple yani sepetteki ürünlerin bulunduğu listeden kaldırılır.
+  */
 //@ts-ignore
   const handleLongPress = (productId) => {
 
