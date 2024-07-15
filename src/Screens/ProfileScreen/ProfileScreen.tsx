@@ -18,10 +18,13 @@ const ProfileScreen = () => {
   const { t  } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
+
+  //Kullanıcının mesai saatlerine ulaşabilmesi için modalı görünürlüğünü true yapan fonkisyon.
   const onPressButton = () => {
     setModalVisible(true);
   };
 
+  //Kullanıcının mesai saatlerine ulaşabilmesi için modalı görünürlüğünü false yapan fonkisyon.
   const closeModal = () => {
     setModalVisible(false);
   };
