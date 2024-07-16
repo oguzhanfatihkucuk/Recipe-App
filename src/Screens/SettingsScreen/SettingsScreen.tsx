@@ -18,16 +18,31 @@ import Toast from 'react-native-root-toast';
 import {  Badge } from 'react-native-paper';
 const SettingsScreen = () => {
 
-
+  //Mağaza kapalı iken yapılan satışların -merkeze gönderilmeyenler- kaç adet olduğunu tutan ve kontrol eden Hook.
   const { countOfPrinterWork, setCountOfPrinterWork } = useStoreStatus();
+
+  //Mağaza durumunu kontrol eden hook.
   const { isStoreOpen, setIsStoreOpen } = useStoreStatus();
+
+  //Translate işlemi için kullandığımız fonksiyon.
   const { t } = useTranslation();
+
+  //Sistemin ses düzeyini ayarlamak için kullandığımız Hooklar.
   const [currentSystemVolume, setReportedSystemVolume] = useState<number>(0);
   const [hideUI] = useState<boolean>(false);
   const volumeChangedByListener = useRef(true);
+
+  //Koyu tema için kullandığımız switchin bool değerinin kontrol eden hook.
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+
+  //Mevcut translate dilini kontrol eden hook.
   const [selectedLanguage, setSelectedLanguage] = useState("");
 
+
+  //Mevcut tema seçimi bilgisini Context API ile elde ettiğimiz hook.
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
+
+  //Uygulamadan çıkış yapmak için kullandığımız hook.
   useEffect(() => {
     const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
       BackHandler.exitApp();
@@ -37,6 +52,8 @@ const SettingsScreen = () => {
     return () => backHandler.remove();
   }, []);
 
+
+  //Mevcut ses düzeyi bilgisini elde ettiğimiz hook.
   //@ts-ignore
   useEffect(() => {
     VolumeManager.getVolume().then((result) => {
@@ -52,20 +69,34 @@ const SettingsScreen = () => {
       volumeListener.remove();
     };
   }, []);
+
+  //Tema seçiminde switch harketine bağlı olarak belirtilen bool değeri değiştiren fonksiyon.
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
+
+  //Dil değişimi için kullandığımız fonksiyon.
   const changeLng = (lng: string | undefined) => {
     i18next.changeLanguage(lng);
   };
 
-  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
-
+  //Tema seçimine ait switchin değişmesi durumunda tema seçimini tersine çeviren fonksiyon.
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode(!isDarkMode);
   }, [isDarkMode]);
 
+  //Mevcut tema seçimi bilgisine göre ikon renklerini belirleyen değişken.
   const iconColor = isDarkMode ? "white" : "black";
 
+
+
+  /*Manuel Synchronization ile merkeze gönderilmeyen raporların, bu fonksiyon çağırılması halinde gönderildi olarak sistemde
+
+  değişmesi. 2 adet listemiz vardı; Merkeze gönderilenler ve gönderilmeyenler olarak. Bu listelerde mağaza durumunun açık ya da kapalı
+
+  olma durumuna göre satış fişleri bu listelere kayıt ediliyordu. Buradaki amacımız mağaza kapalı iken merkeze gönderilmeyen fişlerin
+
+  manuel olarak merkeze gönderildi olarak işaretlenmesi.
+  */
   const handleManualSYNC = ()=>{
     Alert.alert( // Display alert
       "Manuel SYNC",

@@ -10,19 +10,46 @@ import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.ts
 
 
 const AllProducts = () => {
+
+  //Cihazın boyutuna göre flatlistle kaç adet ürün yan yana gösterilecek olmasını belirleyen değişken.
   const numColumns = getNumColumns();
 
+
+  //Sayfa yüklenmesi halinde Mockoon servisine dataları almak için kullandığımız hook.
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
 
+
+  //Mockoon servisinden çektiğimiz dataları liste halinde tutacağımız değişken ve bunu kontrol eden hookumuz.
   const [data2, setData] = useState<any[]>([]);
+
+  /*Data alışverişi sırasında UI blocking sağlamak için kullanacağımız bool değer. True olması halinde ekranda
+  bir animasyon çıkar ve olası kullanıcı etkileşimini önler.*/
   const [loading, setLoading] = useState(true);
+
+  //Sıralama opsiyonunu tuttuğumuz değişken ve bunu kontrol ettiğimiz hook.
   const [sortOption, setSortOption] = useState("alphabetically");
+
+  //Seçili kategoriyi tuttuğumuz string ifade ve bunu kontrol ettiğimiz hook.
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  //Fiyat aralığına göre sıralamada kullandığımız int değer ve bunu kontrol ettiğimiz hook.
   const [priceTerm, setPriceTerm] = useState(0);
+
+  //Harf aralığına göre sıralamada kullandığımız string değer ve bunu kontrol ettiğimiz hook.
   const [selectedLetterRange, setSelectedLetterRange] = useState("a-z");
 
+
+  /*
+    Mockoon servisinden data çekmek için kullanıdığımız fonksiyon. Çektiğimiz datalar 'data' adlı değişkende tutulur.
+
+    Bu data değişkeni 'data2' adlı değişkenimize güncellenir.
+
+    'Loading' bool değeri false olarak değiştirerek data alışverişinin tamamlandığını söyler ve ekrandaki animasyon biter.
+
+    Herhangi bir error halinde consola hatayı yazdırır.
+  */
   const fetchDataFromMockBackend = async () => {
     try {
       const data = await fetchMockBackendData();
@@ -33,10 +60,14 @@ const AllProducts = () => {
     }
   };
 
+
+  //Seçtiğimiz kategoriye göre selectedCategory değerini günceller.
   const filteredByCategory = selectedCategory
     ? data2.filter((item) => item.category.toLowerCase() === selectedCategory.toLowerCase())
     : data2;
 
+
+  //Seçtiğimiz fiyat aralığına göre itemPrice değerini günceller.
   const filteredByPrice = filteredByCategory.filter((item) => {
     const itemPrice = item.price;
 
@@ -58,6 +89,8 @@ const AllProducts = () => {
     }
   });
 
+
+  //Seçtiğimiz harf aralığına  göre selectedLetterRange değerini günceller.
   const filteredByLetterRange = selectedLetterRange
     ? filteredByPrice.filter((item) => {
       const itemTitle = item.title.toLowerCase();
@@ -66,6 +99,18 @@ const AllProducts = () => {
     })
     : filteredByPrice;
 
+
+  /*
+  Burada ürünlerimizi 'sortOption' a göre sıralamaları gerçekleşir.
+
+  'sortOption' değerinin 'priceLowToHigh' olması halinde ürünlerimiz price değerine göre azdan çoka sıralanır.
+
+  'sortOption' değerinin 'priceHighToLow' olması halinde ürünlerimiz price değerine göre çoktan aza sıralanır.
+
+  'sortOption' değerinin 'alphabetically' olması halinde ürünlerimiz price değerine göre alfabetik sıralanır.
+
+  'sortOption' değerinin 'alphabeticallyDesc' olması halinde ürünlerimiz price değerine göre ters alfabetik olarak  sıralanır.
+  */
   const sortedData = (() => {
     switch (sortOption) {
       case "priceLowToHigh":
@@ -89,6 +134,8 @@ const AllProducts = () => {
     }
   })();
 
+
+  // 'loading' değişkenin true olması halinde ekrana 'LoadingAnimation' animasyonu gösterilir.
   if (loading) {
     return <LoadingAnimation />;
   }

@@ -9,19 +9,44 @@ import StoreStatusText from "../../../../Components/StoreIcon/StoreStatusText.ts
 //@ts-ignore
 const ProductsScreen = ({ navigation }) => {
 
+
+  //Mockoon servisinden çektiğimiz dataları liste halinde tutacağımız değişken ve bunu kontrol eden hookumuz.
   const [data2, setData] = useState<any[]>([]);
+
+  /*
+    Bu değişken ve hook ürün arama kısmında kullanılmıştır. Textinput komponentinde bulunan arama harflerini
+    setSearchTerm ile güncelleyerek filtreleme işlemini gerçekleştirme üzere kullanılacaktır.
+  */
   const [searchTerm, setSearchTerm] = useState("");
+
+  //searchTerm değişkenine göre data2 değerini filtreleyerek eşleşen ürün isimlerini döndürür.
   const filteredAsFL = data2.filter((item) => item.title.toLowerCase().startsWith(searchTerm.toLowerCase()));
+
+  /*Data alışverişi sırasında UI blocking sağlamak için kullanacağımız bool değer. True olması halinde ekranda
+  bir animasyon çıkar ve olası kullanıcı etkileşimini önler.*/
   const [loading, setLoading] = useState(true);
 
+
+  //Sayfa yüklenmesi halinde Mockoon servisine dataları almak için kullandığımız hook.
   useEffect(() => {
     fetchDataFromMockBackend(); // Call the function on component mount
   }, []);
 
-
+  //Performans iyileştirmesi için sadece gerekli olduğunda yeniden render etmek için kullanılan bir yüksek düzeyli bileşendir.
   const ProductCardMemoized = React.memo(ProductCard);
-  let data;
 
+
+  /*
+    Mockoon servisinden data çekmek için kullanıdığımız fonksiyon. Çektiğimiz datalar 'data' adlı değişkende tutulur.
+
+    Bu data değişkeni 'data2' adlı değişkenimize güncellenir.
+
+    'Loading' bool değeri false olarak değiştirerek data alışverişinin tamamlandığını söyler ve ekrandaki animasyon biter.
+
+    Herhangi bir error halinde consola hatayı yazdırır.
+  */
+
+  let data;
   const fetchDataFromMockBackend = async () => {
     try {
       data = await fetchMockBackendData();
@@ -32,6 +57,8 @@ const ProductsScreen = ({ navigation }) => {
     }
   };
 
+
+  // 'loading' değişkenin true olması halinde ekrana 'LoadingAnimation' animasyonu gösterilir.
   // @ts-ignore
   if (loading) {
     return <LoadingAnimation />;

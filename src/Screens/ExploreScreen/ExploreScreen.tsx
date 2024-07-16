@@ -25,6 +25,9 @@ const ExploreScreen = () => {
 
   const iconColor = isDarkMode ? "white" : "black";
 
+
+
+
   function navigateToPage(navValue: any) {
     switch (navValue) {
       case 1:

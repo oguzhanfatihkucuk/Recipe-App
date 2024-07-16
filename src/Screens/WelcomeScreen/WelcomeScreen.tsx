@@ -5,9 +5,11 @@ import styles from "./WelcomeScreen.Style";
 //@ts-ignore
 const WelcomeScreen= ({navigation}) => {
 
+
+  //Uygulama başlangıcında animasyon için kullandığımız hook.
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.navigate('app');
     }, 1000); // 5 seconds delay
     return () => clearTimeout(timeoutId); // Cleanup on unmount
   }, []);

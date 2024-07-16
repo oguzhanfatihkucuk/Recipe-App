@@ -10,9 +10,10 @@ import StoreStatusText from "../../Components/StoreIcon/StoreStatusText.tsx";
 // @ts-ignore
 const Transection = () => {
 
-  const { isDarkMode} =
-    useContext(DarkMode);
+  const { isDarkMode} =useContext(DarkMode);
+
   const navigation = useNavigation();
+
   const report = [
     { name: "Sales", description: "SalesDesc", icon: "cash-register", nav: 1 },
     { name: "Products", description: "ProductDesc", icon: "clipboard-list-outline", nav: 2 },
