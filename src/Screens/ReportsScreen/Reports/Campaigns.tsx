@@ -12,6 +12,8 @@ type Campaign = {
 };
 
 const CampaignsScreen = () => {
+
+
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
 
   const handlePress = (campaign: Campaign) => {

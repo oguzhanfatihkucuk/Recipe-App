@@ -24,10 +24,15 @@ export const countItems = (productId) => {
 };
 
 
-/* Sepette var olan ürünün ProductId ile listeden dolayısıyla sepetten silinmesini sağlayan fonksiyon.
+/*
+Sepette var olan ürünün ProductId ile listeden dolayısıyla sepetten silinmesini sağlayan fonksiyon.
+
 ProductId burada item olarak fonksiyona referans gösterilerek."myTuple" adlı listemizden siliniyor.
+
 Bu özellik Sales sayfasında sepette olan ürünlerin LongPress aktivitesi gerçekleştiği takdirde çağırılıyor.
-Bu fonksiyonun amacı sepette olan ayın id değerine sahip ürünlerin hepsinin sepetten silinmesi için kullanılıyor.*/
+
+Bu fonksiyonun amacı sepette olan ayın id değerine sahip ürünlerin hepsinin sepetten silinmesi için kullanılıyor.
+*/
 export const deleteItemToTuple = (item) => {
 
   const index = myTuple.indexOf(item);
@@ -40,10 +45,15 @@ export const deleteItemToTuple = (item) => {
 };
 
 
-/* Sepette var olan ürünün ProductId ile listeden dolayısıyla sepetten silinmesini sağlayan fonksiyon.
+/*
+Sepette var olan ürünün ProductId ile listeden dolayısıyla sepetten silinmesini sağlayan fonksiyon.
+
 ProductId burada item olarak fonksiyona referans gösterilerek."myTuple" adlı listemizden kaldırılıyor.
+
 Bu özellik Sales sayfasında sepette olan ürünlerin sağ tarafında bulunan "-" butonuna basıldığı takdirde çalışıyor
-genel olarak sepette birden fazla ürün olduğu zaman ürün sayısın azaltmak için kullanılıyor.*/
+
+genel olarak sepette birden fazla ürün olduğu zaman ürün sayısın azaltmak için kullanılıyor.
+*/
 export const deleteItemFromTuple = (item) => {
   let index = myTuple.indexOf(item);
   while (index !== -1) {

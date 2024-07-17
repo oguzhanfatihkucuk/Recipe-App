@@ -13,8 +13,8 @@ Temel olarak 2 ana fonksiyonu vardır:
 Birden çok ürünü sepete ekleme.
 
 Ürünlerin sepete eklendikten sonra mevcut myTuple listesini de referans ile 'handleRefresh' fonksiyonu ile tekrardan
-yenileyerek sepetteki ürünlerin güncel olmasını sağlıyor.
 
+yenileyerek sepetteki ürünlerin güncel olmasını sağlıyor.
 */
 // @ts-ignore
 const ProductCard = ({ product, handleRefresh }) => {

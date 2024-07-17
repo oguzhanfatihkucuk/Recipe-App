@@ -20,12 +20,11 @@ const ExploreScreen = () => {
   const filteredItems = items.filter((item) =>
     item.word.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  const { isDarkMode } =
-    useContext(DarkMode);
+
+
+  const { isDarkMode } =useContext(DarkMode);
 
   const iconColor = isDarkMode ? "white" : "black";
-
-
 
 
   function navigateToPage(navValue: any) {

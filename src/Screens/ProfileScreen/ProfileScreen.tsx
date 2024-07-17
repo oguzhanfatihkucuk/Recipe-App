@@ -13,9 +13,9 @@ const ProfileScreen = () => {
 
   const myImage = require("../../../assets/png/images.png");
 
-  const { isDarkMode} =
-    useContext(DarkMode);
+  const { isDarkMode} =useContext(DarkMode);
   const { t  } = useTranslation();
+
   const [modalVisible, setModalVisible] = useState(false);
 
 
