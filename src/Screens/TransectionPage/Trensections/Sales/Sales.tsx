@@ -546,6 +546,7 @@ const SalesScreen = ({navigation}) => {
     }
   };
 
+
   if (loading) {
     return <LoadingAnimation />;
   }
