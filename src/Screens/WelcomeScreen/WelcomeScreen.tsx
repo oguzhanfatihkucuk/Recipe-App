@@ -9,7 +9,7 @@ const WelcomeScreen= ({navigation}) => {
   //Uygulama başlangıcında animasyon için kullandığımız hook.
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigation.navigate('app');
+      navigation.navigate('Login');
     }, 1000); // 5 seconds delay
     return () => clearTimeout(timeoutId); // Cleanup on unmount
   }, []);
